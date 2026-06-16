@@ -1,0 +1,3095 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Igor Alves - Corretor de Imóveis | Especialista em imóveis de alto padrão no Rio de Janeiro. Encontre seu imóvel dos sonhos com quem entende do mercado." />
+  <meta name="keywords" content="corretor de imóveis, imóveis Rio de Janeiro, Leblon, Ipanema, Barra da Tijuca, compra e venda, avaliação de imóveis" />
+  <meta property="og:title" content="Igor Alves | Corretor de Imóveis de Alto Padrão" />
+  <meta property="og:description" content="Especialista em imóveis de alto padrão no Rio de Janeiro com 15 anos de experiência." />
+  <title>Igor Alves | Corretor de Imóveis</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --navy: #0a1628;
+      --navy-light: #0f2040;
+      --navy-mid: #152b50;
+      --gold: #c9a84c;
+      --gold-light: #e2c97a;
+      --gold-dark: #a8893a;
+      --white: #ffffff;
+      --off-white: #f8f5f0;
+      --gray-100: #f0ece4;
+      --gray-200: #e0dcd2;
+      --gray-400: #9e9b94;
+      --gray-600: #5a5752;
+      --text-dark: #1a1a1a;
+      --text-medium: #444444;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+      --shadow-gold: 0 8px 30px rgba(201,168,76,0.25);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .section-title span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 540px;
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: var(--white);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20b858;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 22, 40, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 14px 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 800;
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .logo-title {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--navy);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 16px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.75) 40%, rgba(10,22,40,0.60) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23152b50'/%3E%3Cstop offset='50%25' stop-color='%230d1f3a'/%3E%3Cstop offset='100%25' stop-color='%23060f1e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1600' height='900'/%3E%3Cg fill-opacity='0.04'%3E%3Ccircle fill='%23c9a84c' cx='400' cy='300' r='300'/%3E%3Ccircle fill='%23c9a84c' cx='1200' cy='600' r='400'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Decorative lines */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .hero-orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(21,43,80,0.8) 0%, transparent 70%);
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge i {
+      font-size: 0.85rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .hero-title .accent {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-avatars {
+      display: flex;
+    }
+
+    .hero-avatars .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--navy);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-left: -10px;
+      flex-shrink: 0;
+    }
+
+    .hero-avatars .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .hero-trust-text {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-trust-text strong {
+      color: var(--gold);
+      display: block;
+    }
+
+    /* Hero Visual side */
+    .hero-visual {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45%;
+      max-width: 600px;
+      z-index: 1;
+      padding-right: 32px;
+    }
+
+    .hero-property-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-property-img {
+      height: 260px;
+      background: linear-gradient(135deg, #152b50 0%, #0d1f3a 40%, #1a3a60 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-property-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 60%);
+    }
+
+    .hero-property-img-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: rgba(201,168,76,0.25);
+    }
+
+    .hero-property-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-body {
+      padding: 22px;
+    }
+
+    .hero-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .hero-card-address {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-card-features {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-card-feature {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+
+    .hero-card-feature i {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    /* Floating stat cards */
+    .hero-stat-card {
+      position: absolute;
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 170px;
+    }
+
+    .hero-stat-card-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .hero-stat-card-value {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .hero-stat-card-label {
+      font-size: 0.7rem;
+      color: var(--gray-600);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-card-1 {
+      top: 20px;
+      right: -20px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .stat-card-2 {
+      bottom: 40px;
+      left: -20px;
+      animation: float 4s ease-in-out infinite 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Hero scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-mouse {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .scroll-mouse::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 2px;
+      animation: scrollAnim 2s ease infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(14px); opacity: 0; }
+    }
+
+    /* ===== STATS BAR ===== */
+    #stats {
+      background: var(--navy);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      transition: width 0.5s ease;
+    }
+
+    .stat-item:hover::before {
+      width: 60%;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-icon {
+      font-size: 1.2rem;
+      color: rgba(201,168,76,0.3);
+      margin-bottom: 12px;
+    }
+
+    /* ===== PROPERTIES ===== */
+    #imoveis {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+
+    .filter-tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .filter-tab.active {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* Property Cards Grid */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .property-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+
+    .property-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .property-card[data-category]:not(.show) {
+      display: none;
+    }
+
+    .property-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .property-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: rgba(255,255,255,0.2);
+      position: relative;
+    }
+
+    .prop-img-1 {
+      background: linear-gradient(135deg, #1a3a5c, #0d2540, #162e50);
+    }
+
+    .prop-img-2 {
+      background: linear-gradient(135deg, #2a1f10, #3d2e18, #1e1508);
+    }
+
+    .prop-img-3 {
+      background: linear-gradient(135deg, #0d2030, #153040, #0a1a28);
+    }
+
+    .property-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .property-tag.venda {
+      background: var(--gold);
+    }
+
+    .property-tag.lancamento {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .property-favorite {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .property-favorite:hover {
+      color: #e74c3c;
+      transform: scale(1.1);
+    }
+
+    .property-body {
+      padding: 22px;
+    }
+
+    .property-price {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .property-price span {
+      color: var(--gold);
+    }
+
+    .property-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .property-location {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+
+    .property-location i {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    .property-features {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      margin-bottom: 16px;
+    }
+
+    .property-feature {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    .property-feature i {
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    .property-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .property-btn:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ===== ABOUT ===== */
+    #sobre {
+      padding: 100px 0;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, var(--navy-light), var(--navy-mid), var(--navy));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 60%);
+    }
+
+    .about-photo-icon {
+      font-size: 6rem;
+      color: rgba(201,168,76,0.2);
+    }
+
+    .about-photo-silhouette {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 80%;
+      background: linear-gradient(180deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.05) 100%);
+      clip-path: polygon(20% 0%, 80% 0%, 95% 100%, 5% 100%);
+    }
+
+    .about-photo-frame {
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      right: 16px;
+      bottom: 16px;
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-lg);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      right: -24px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-md);
+      min-width: 160px;
+      border: 1px solid var(--gray-100);
+    }
+
+    .about-badge-number {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .about-badge-text {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    .creci-badge {
+      position: absolute;
+      top: 24px;
+      right: -24px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .creci-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .creci-number {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .about-text .section-label { margin-bottom: 8px; }
+
+    .about-name {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .about-name-subtitle {
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+
+    .about-desc {
+      font-size: 0.97rem;
+      color: var(--text-medium);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    .about-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+    }
+
+    .about-differentials {
+      margin-bottom: 36px;
+    }
+
+    .differential-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .differential-item:last-child {
+      border-bottom: none;
+    }
+
+    .differential-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .differential-text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .differential-text p {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+    }
+
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ===== SERVICES ===== */
+    #servicos {
+      padding: 100px 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #servicos::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    #servicos .section-title {
+      color: var(--white);
+    }
+
+    #servicos .section-subtitle {
+      color: rgba(255,255,255,0.6);
+    }
+
+    #servicos .section-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(201,168,76,0.2);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon-wrap {
+      width: 60px;
+      height: 60px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon-wrap {
+      background: rgba(201,168,76,0.2);
+      transform: scale(1.05);
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .service-link i {
+      font-size: 0.75rem;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-link i {
+      transform: translateX(4px);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    #depoimentos {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-100);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-stars i {
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.93rem;
+      color: var(--text-medium);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+    }
+
+    .avatar-a { background: linear-gradient(135deg, #f7d89e, #e2c97a); }
+    .avatar-b { background: linear-gradient(135deg, #a8d8ea, #7fbfd9); }
+    .avatar-c { background: linear-gradient(135deg, #f7c5c5, #e8a0a0); }
+
+    .testimonial-info .author-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .testimonial-info .author-detail {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+    }
+
+    /* ===== CTA SECTION ===== */
+    #contato {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .cta-left .section-title {
+      margin-bottom: 16px;
+    }
+
+    .cta-left .section-subtitle {
+      margin-bottom: 32px;
+    }
+
+    .cta-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-400);
+      margin-bottom: 2px;
+    }
+
+    .contact-item-text .value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .cta-wpp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: var(--transition);
+      width: 100%;
+      justify-content: center;
+      max-width: 340px;
+    }
+
+    .cta-wpp-btn:hover {
+      background: #20b858;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .contact-form p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gray-400);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      padding: 64px 0 24px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .navbar-logo {
+      margin-bottom: 16px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .footer-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 4px;
+    }
+
+    .footer-contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .footer-contact-item i {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item span {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copyright {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-copyright span {
+      color: var(--gold);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      transition: var(--transition);
+    }
+
+    .footer-legal a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ===== WHATSAPP FLOATING BUTTON ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 900;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--white);
+      box-shadow: 0 6px 25px rgba(37,211,102,0.45);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 35px rgba(37,211,102,0.55);
+    }
+
+    .whatsapp-float::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #25d366;
+      animation: wppPulse 2.5s ease-out infinite;
+    }
+
+    @keyframes wppPulse {
+      0% { transform: scale(1); opacity: 0.75; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    .whatsapp-float i {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-top {
+      position: fixed;
+      bottom: 98px;
+      right: 28px;
+      z-index: 900;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .back-top:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 900px) {
+      .properties-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-photo-main { aspect-ratio: 4/3; max-height: 400px; }
+      .creci-badge, .about-badge { position: static; margin-top: 16px; }
+      .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.07); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .properties-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #hero { align-items: flex-end; padding-bottom: 100px; min-height: 100vh; }
+      .hero-content { padding-top: 100px; }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { text-align: center; justify-content: center; }
+      .contact-form { padding: 24px; }
+      .creci-badge, .about-badge { display: inline-flex; width: auto; }
+    }
+
+    /* ===== SECTION DIVIDER ===== */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="navbar-logo">
+        <div class="logo-icon">IA</div>
+        <div class="logo-text">
+          <span class="logo-name">Igor Alves</span>
+          <span class="logo-title">Corretor de Imóveis</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#imoveis">Imóveis</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato" class="nav-cta">
+          <i class="fa-brands fa-whatsapp"></i> Falar Agora
+        </a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#imoveis" class="mobile-link">Imóveis</a>
+    <a href="#sobre" class="mobile-link">Sobre</a>
+    <a href="#servicos" class="mobile-link">Serviços</a>
+    <a href="#depoimentos" class="mobile-link">Depoimentos</a>
+    <a href="#contato" class="mobile-link">Contato</a>
+    <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20saber%20mais%20sobre%20imóveis!" class="mobile-cta">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient-orb hero-orb-1"></div>
+      <div class="hero-gradient-orb hero-orb-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-up">
+          <i class="fa-solid fa-star"></i>
+          Corretor Premium · Rio de Janeiro
+        </div>
+
+        <h1 class="hero-title fade-up delay-1">
+          Encontre o Imóvel<br>
+          dos <span class="accent">Seus Sonhos</span>
+        </h1>
+
+        <p class="hero-subtitle fade-up delay-2">
+          Especialista em imóveis de alto padrão nos bairros mais exclusivos do Rio de Janeiro.
+          Com 15 anos de experiência, realizo o seu sonho com segurança e transparência.
+        </p>
+
+        <div class="hero-buttons fade-up delay-3">
+          <a href="#imoveis" class="btn btn-primary">
+            <i class="fa-solid fa-building"></i>
+            Ver Imóveis
+          </a>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20falar%20sobre%20imóveis!" class="btn btn-outline" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            Falar com Corretor
+          </a>
+        </div>
+
+        <div class="hero-trust fade-up delay-4">
+          <div class="hero-avatars">
+            <div class="avatar">MA</div>
+            <div class="avatar">RB</div>
+            <div class="avatar">CT</div>
+            <div class="avatar">FS</div>
+            <div class="avatar">+</div>
+          </div>
+          <div class="hero-trust-text">
+            <strong>+500 clientes satisfeitos</strong>
+            Avaliação 5 estrelas no Google
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual (desktop) -->
+    <div class="hero-visual">
+      <div class="hero-property-card">
+        <div class="hero-property-img">
+          <div class="hero-property-img-icon">
+            <i class="fa-solid fa-city"></i>
+          </div>
+          <div class="hero-property-badge">Destaque</div>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-card-price">R$ 4.800.000</div>
+          <div class="hero-card-address">
+            <i class="fa-solid fa-location-dot"></i>
+            Leblon, Rio de Janeiro
+          </div>
+          <div class="hero-card-features">
+            <div class="hero-card-feature">
+              <i class="fa-solid fa-bed"></i> 4 Quartos
+            </div>
+            <div class="hero-card-feature">
+              <i class="fa-solid fa-bath"></i> 3 Banheiros
+            </div>
+            <div class="hero-card-feature">
+              <i class="fa-solid fa-expand"></i> 220m²
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stat-card stat-card-1">
+        <div class="hero-stat-card-icon">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+        <div>
+          <div class="hero-stat-card-value">#1 Ranking</div>
+          <div class="hero-stat-card-label">Zona Sul do RJ</div>
+        </div>
+      </div>
+
+      <div class="hero-stat-card stat-card-2">
+        <div class="hero-stat-card-icon">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+        <div>
+          <div class="hero-stat-card-value">98%</div>
+          <div class="hero-stat-card-label">Satisfação</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"></div>
+      <span>Role para baixo</span>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item fade-up">
+          <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Imóveis Vendidos</div>
+        </div>
+        <div class="stat-item fade-up delay-1">
+          <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Anos de Experiência</div>
+        </div>
+        <div class="stat-item fade-up delay-2">
+          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-number" data-suffix="%" data-target="98">0</div>
+          <div class="stat-label">Clientes Satisfeitos</div>
+        </div>
+        <div class="stat-item fade-up delay-3">
+          <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="stat-number" data-prefix="R$" data-suffix="Bi+" data-target="2">0</div>
+          <div class="stat-label">em Transações</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED PROPERTIES ===== -->
+  <section id="imoveis">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label"><i class="fa-solid fa-sparkles"></i> Portfólio Exclusivo</span>
+        <h2 class="section-title">Imóveis em <span>Destaque</span></h2>
+        <p class="section-subtitle">Seleção premium dos melhores imóveis disponíveis nos bairros mais valorizados do Rio de Janeiro.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs fade-up delay-1">
+        <button class="filter-tab active" data-filter="all">
+          <i class="fa-solid fa-grip"></i> Todos
+        </button>
+        <button class="filter-tab" data-filter="apartamento">
+          <i class="fa-solid fa-building"></i> Apartamentos
+        </button>
+        <button class="filter-tab" data-filter="casa">
+          <i class="fa-solid fa-house"></i> Casas
+        </button>
+        <button class="filter-tab" data-filter="terreno">
+          <i class="fa-solid fa-land-mine-on"></i> Terrenos
+        </button>
+      </div>
+
+      <!-- Properties Grid -->
+      <div class="properties-grid">
+
+        <!-- Card 1 -->
+        <div class="property-card show fade-up" data-category="apartamento">
+          <div class="property-img">
+            <div class="property-img-placeholder prop-img-1">
+              <i class="fa-solid fa-city"></i>
+            </div>
+            <div class="property-tag venda">À Venda</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>4.800.000</span></div>
+            <div class="property-name">Apartamento Alto Padrão Leblon</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Leblon, Zona Sul — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-bed"></i> 4 Quartos
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-bath"></i> 3 Suítes
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 220m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-car"></i> 3 Vagas
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="property-card show fade-up delay-1" data-category="casa">
+          <div class="property-img">
+            <div class="property-img-placeholder prop-img-2">
+              <i class="fa-solid fa-house-chimney"></i>
+            </div>
+            <div class="property-tag lancamento">Lançamento</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>8.200.000</span></div>
+            <div class="property-name">Casa em Condomínio Barra da Tijuca</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Barra da Tijuca — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-bed"></i> 5 Quartos
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-bath"></i> 5 Suítes
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 480m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-car"></i> 4 Vagas
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="property-card show fade-up delay-2" data-category="apartamento">
+          <div class="property-img">
+            <div class="property-img-placeholder prop-img-3">
+              <i class="fa-solid fa-water"></i>
+            </div>
+            <div class="property-tag venda">À Venda</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>3.400.000</span></div>
+            <div class="property-name">Cobertura Vista Mar Ipanema</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Ipanema, Zona Sul — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-bed"></i> 3 Quartos
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-bath"></i> 2 Suítes
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 175m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-car"></i> 2 Vagas
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 4 (Terreno - hidden by default unless filter matches) -->
+        <div class="property-card show fade-up delay-3" data-category="terreno">
+          <div class="property-img">
+            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #1a2a15, #253520, #111a10);">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div class="property-tag venda">À Venda</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>2.100.000</span></div>
+            <div class="property-name">Terreno Condomínio Recreio</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Recreio dos Bandeirantes — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 800m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-shield-halved"></i> Condomínio
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-water"></i> Vista Mar
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="property-card show fade-up delay-4" data-category="apartamento">
+          <div class="property-img">
+            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #1e1530, #2a1f40, #15102a);">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="property-tag venda">À Venda</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>2.650.000</span></div>
+            <div class="property-name">Apartamento Lagoa Rodrigo de Freitas</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Lagoa, Zona Sul — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-bed"></i> 3 Quartos
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-bath"></i> 2 Suítes
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 140m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-car"></i> 2 Vagas
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="property-card show fade-up delay-5" data-category="casa">
+          <div class="property-img">
+            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #200a0a, #361515, #180808);">
+              <i class="fa-solid fa-house-flag"></i>
+            </div>
+            <div class="property-tag venda">À Venda</div>
+            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="property-body">
+            <div class="property-price">R$ <span>5.900.000</span></div>
+            <div class="property-name">Casa Gávea com Piscina e Jardim</div>
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              Gávea, Zona Sul — Rio de Janeiro
+            </div>
+            <div class="property-features">
+              <div class="property-feature">
+                <i class="fa-solid fa-bed"></i> 4 Quartos
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-bath"></i> 4 Suítes
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-expand"></i> 650m²
+              </div>
+              <div class="property-feature">
+                <i class="fa-solid fa-car"></i> 4 Vagas
+              </div>
+            </div>
+            <button class="property-btn">Ver Detalhes</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Photo Column -->
+        <div class="about-photo-wrap slide-left">
+          <div class="about-photo-main">
+            <div class="about-photo-silhouette"></div>
+            <div class="about-photo-icon">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="about-photo-frame"></div>
+          </div>
+
+          <div class="creci-badge" style="position:absolute; top:24px; right:-24px;">
+            <div class="creci-label">CRECI-RJ</div>
+            <div class="creci-number">123.456-F</div>
+          </div>
+
+          <div class="about-badge" style="position:absolute; bottom:24px; right:-24px;">
+            <div class="about-badge-number">15+</div>
+            <div class="about-badge-text">Anos de<br>Experiência</div>
+          </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="about-text slide-right">
+          <span class="section-label"><i class="fa-solid fa-user"></i> Sobre mim</span>
+          <h2 class="about-name">Igor Alves</h2>
+          <div class="about-name-subtitle">Corretor de Imóveis de Alto Padrão · Zona Sul, RJ</div>
+
+          <p class="about-desc">
+            Com mais de 15 anos de atuação no mercado imobiliário carioca, me especializei na intermediação de imóveis de alto padrão nos bairros mais exclusivos do Rio de Janeiro — Leblon, Ipanema, Gávea, Lagoa e Barra da Tijuca.
+          </p>
+          <p class="about-desc" style="margin-top: -16px;">
+            Minha missão é transformar a busca pelo imóvel ideal em uma experiência tranquila, segura e personalizada. Cada cliente recebe atenção exclusiva, do primeiro contato até a entrega das chaves.
+          </p>
+
+          <!-- Certifications -->
+          <div class="about-certs">
+            <span class="cert-badge"><i class="fa-solid fa-medal"></i> CRECI Ativo RJ</span>
+            <span class="cert-badge"><i class="fa-solid fa-award"></i> COFECI Certificado</span>
+            <span class="cert-badge"><i class="fa-solid fa-graduation-cap"></i> MBA Mercado Imobiliário</span>
+            <span class="cert-badge"><i class="fa-solid fa-star"></i> Top 1% Corretor 2024</span>
+          </div>
+
+          <!-- Differentials -->
+          <div class="about-differentials">
+            <div class="differential-item">
+              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="differential-text">
+                <strong>Avaliação Gratuita e Precisa</strong>
+                <p>Análise completa de mercado para garantir o melhor preço na venda ou compra.</p>
+              </div>
+            </div>
+            <div class="differential-item">
+              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="differential-text">
+                <strong>Atendimento Exclusivo e Personalizado</strong>
+                <p>Dedicação total ao seu perfil e necessidades, com suporte 7 dias por semana.</p>
+              </div>
+            </div>
+            <div class="differential-item">
+              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="differential-text">
+                <strong>Documentação e Jurídico Sem Complicação</strong>
+                <p>Toda a burocracia resolvida com equipe jurídica especializada parceira.</p>
+              </div>
+            </div>
+            <div class="differential-item">
+              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="differential-text">
+                <strong>Rede Exclusiva de Compradores e Investidores</strong>
+                <p>Base ativa com mais de 2.000 compradores qualificados prontos para fechar negócio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-actions">
+            <a href="https://wa.me/5521999999999?text=Olá%20Igor!" class="btn btn-primary" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+              Falar Comigo
+            </a>
+            <a href="#servicos" class="btn btn-outline-dark">
+              Ver Serviços
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label"><i class="fa-solid fa-briefcase"></i> Como Posso Ajudar</span>
+        <h2 class="section-title" style="color: var(--white);">Serviços <span>Especializados</span></h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">
+          Ofereço uma gama completa de serviços imobiliários para atender todas as suas necessidades com excelência e dedicação.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade-up delay-1">
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div class="service-title">Compra de Imóvel</div>
+          <p class="service-desc">Encontro o imóvel ideal para você dentro do seu perfil e orçamento. Negoço as melhores condições e cuido de toda a documentação.</p>
+          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-up delay-2">
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <div class="service-title">Venda Rápida</div>
+          <p class="service-desc">Marketing digital avançado, fotografia profissional e acesso à minha rede exclusiva de compradores. Seu imóvel vendido no menor tempo.</p>
+          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-up delay-3">
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+          </div>
+          <div class="service-title">Avaliação Gratuita</div>
+          <p class="service-desc">Análise comparativa de mercado baseada em dados reais. Saiba exatamente quanto vale o seu imóvel sem nenhum custo.</p>
+          <a href="#contato" class="service-link">Solicitar Avaliação <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-up delay-4">
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="service-title">Consultoria de Investimento</div>
+          <p class="service-desc">Análise de rentabilidade, tendências de mercado e melhores oportunidades para seu dinheiro trabalhar por você no setor imobiliário.</p>
+          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label"><i class="fa-solid fa-comments"></i> Depoimentos</span>
+        <h2 class="section-title">O que Dizem<br>Nossos <span>Clientes</span></h2>
+        <p class="section-subtitle">A satisfação dos meus clientes é a minha maior conquista. Confira o que eles têm a dizer sobre a experiência.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card fade-up delay-1">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "O Igor superou todas as minhas expectativas. Em menos de 30 dias vendeu meu apartamento no Leblon pelo preço que eu queria, sem stress e com toda a documentação em ordem. Profissional excepcional!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-a">MA</div>
+            <div class="testimonial-info">
+              <div class="author-name">Marcela Andrade</div>
+              <div class="author-detail">Vendedora — Leblon, RJ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-up delay-2">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "Comprei minha casa na Barra da Tijuca com a ajuda do Igor. Ele me mostrou opções que eu nunca teria encontrado sozinho, negociou um desconto de R$ 200 mil e acompanhou cada detalhe da escritura. Nota 10!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-b">RB</div>
+            <div class="testimonial-info">
+              <div class="author-name">Roberto Barbosa</div>
+              <div class="author-detail">Comprador — Barra da Tijuca, RJ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-up delay-3">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "Investidor há 10 anos, nunca encontrei um corretor tão bem preparado tecnicamente. A consultoria do Igor me ajudou a montar um portfólio de imóveis que rende acima do mercado. Parceria de longo prazo!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-c">CT</div>
+            <div class="testimonial-info">
+              <div class="author-name">Carlos Teixeira</div>
+              <div class="author-detail">Investidor — Ipanema & Gávea, RJ</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Banner -->
+      <div class="fade-up" style="margin-top: 56px; background: var(--white); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--gray-100); display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-around; box-shadow: var(--shadow-sm);">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">⭐ 5.0</div>
+          <div style="font-size: 0.8rem; color: var(--gray-600);">Google Avaliações</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--navy);">+230</div>
+          <div style="font-size: 0.8rem; color: var(--gray-600);">Avaliações Verificadas</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">Top 1%</div>
+          <div style="font-size: 0.8rem; color: var(--gray-600);">Corretores do RJ 2024</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--navy);">15 Anos</div>
+          <div style="font-size: 0.8rem; color: var(--gray-600);">de Mercado</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">R$ 2Bi+</div>
+          <div style="font-size: 0.8rem; color: var(--gray-600);">em Transações</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / CONTACT ===== -->
+  <section id="contato">
+    <div class="container">
+      <div class="cta-grid">
+
+        <!-- Left Column -->
+        <div class="cta-left slide-left">
+          <span class="section-label"><i class="fa-solid fa-phone"></i> Fale Comigo</span>
+          <h2 class="section-title">Pronto para Encontrar<br>seu <span>Imóvel Ideal?</span></h2>
+          <p class="section-subtitle">
+            Entre em contato agora mesmo. Respondo rapidamente pelo WhatsApp ou preencha o formulário e entro em contato em até 2 horas.
+          </p>
+
+          <div class="cta-contact-info">
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="contact-item-text">
+                <div class="label">WhatsApp / Telefone</div>
+                <div class="value">(21) 99999-9999</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-item-text">
+                <div class="label">E-mail</div>
+                <div class="value">igor@igoralvsimoveis.com.br</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-item-text">
+                <div class="label">Escritório</div>
+                <div class="value">Av. Ataulfo de Paiva, 270 · Leblon, Rio de Janeiro</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div class="contact-item-text">
+                <div class="label">Horário</div>
+                <div class="value">Seg – Sab: 8h às 20h</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20conversar%20sobre%20imóveis!" class="cta-wpp-btn" target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+            Chamar no WhatsApp Agora
+          </a>
+        </div>
+
+        <!-- Right Column - Form -->
+        <div class="contact-form slide-right">
+          <h3>Envie uma Mensagem</h3>
+          <p>Preencha o formulário e entro em contato em até 2 horas.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome Completo *</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefone">Telefone / WhatsApp *</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(21) 99999-9999" required />
+              </div>
+              <div class="form-group">
+                <label for="interesse">Interesse</label>
+                <select id="interesse" name="interesse">
+                  <option value="">Selecione...</option>
+                  <option value="comprar">Quero Comprar</option>
+                  <option value="vender">Quero Vender</option>
+                  <option value="avaliar">Avaliar Imóvel</option>
+                  <option value="investir">Investimento</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o que procura..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fa-solid fa-paper-plane"></i>
+              Enviar Mensagem
+            </button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">✅</div>
+            <h4 style="color: var(--navy); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 8px;">Mensagem Enviada!</h4>
+            <p style="font-size: 0.9rem; color: var(--gray-600);">Obrigado! Entrarei em contato em breve.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="#hero" class="navbar-logo">
+            <div class="logo-icon">IA</div>
+            <div class="logo-text">
+              <span class="logo-name">Igor Alves</span>
+              <span class="logo-title">Corretor de Imóveis</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Especialista em imóveis de alto padrão no Rio de Janeiro. CRECI-RJ 123.456-F. Transformando o sonho do imóvel ideal em realidade há mais de 15 anos.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" aria-label="YouTube" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://wa.me/5521999999999" aria-label="WhatsApp" title="WhatsApp" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#imoveis">Imóveis</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="#servicos">Compra de Imóvel</a></li>
+            <li><a href="#servicos">Venda Rápida</a></li>
+            <li><a href="#servicos">Avaliação Gratuita</a></li>
+            <li><a href="#servicos">Consultoria</a></li>
+            <li><a href="#servicos">Investimento</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>(21) 99999-9999</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>igor@igoralvsimoveis.com.br</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Av. Ataulfo de Paiva, 270<br>Leblon — Rio de Janeiro, RJ</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Seg – Sab: 8h às 20h</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © 2025 <span>Igor Alves Imóveis</span>. Todos os direitos reservados. CRECI-RJ 123.456-F
+        </p>
+        <div class="footer-legal">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a class="whatsapp-float" href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20saber%20mais%20sobre%20imóveis!" target="_blank" aria-label="Falar pelo WhatsApp" title="Falar pelo WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top -->
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    'use strict';
+
+    /* ---- Navbar scroll behavior ---- */
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      lastScroll = scrollY;
+    }, { passive: true });
+
+    /* ---- Hamburger / Mobile Menu ---- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ---- Smooth Scroll ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    /* ---- IntersectionObserver Scroll Animations ---- */
+    const observeTargets = document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    observeTargets.forEach(el => observer.observe(el));
+
+    /* Trigger hero animations immediately */
+    document.querySelectorAll('#hero .fade-up').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+
+    /* ---- Counter Animation ---- */
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || (target >= 100 ? '+' : el.dataset.target >= 15 ? ' Anos' : '');
+      const duration = 1800;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = prefix + current + (progress >= 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = prefix + target + suffix;
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    /* Fix stat suffixes */
+    const statItems = document.querySelectorAll('.stat-number');
+    statItems.forEach(el => {
+      // Leave as-is; handled by animateCounter
+    });
+
+    /* ---- Property Filter Tabs ---- */
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const propertyCards = document.querySelectorAll('.property-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        propertyCards.forEach(card => {
+          const category = card.dataset.category;
+          const matches = filter === 'all' || category === filter;
+
+          if (matches) {
+            card.classList.add('show');
+            card.style.display = '';
+            // Re-trigger animation
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            card.classList.remove('show');
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ---- Heart / Favorite Toggle ---- */
+    document.querySelectorAll('.property-favorite').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const icon = btn.querySelector('i');
+        icon.classList.toggle('fa-regular');
+        icon.classList.toggle('fa-solid');
+        icon.style.color = icon.classList.contains('fa-solid') ? '#e74c3c' : '';
+      });
+    });
+
+    /* ---- Contact Form ---- */
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    // Phone mask
+    const phoneInput = document.getElementById('telefone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 7) {
+          v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        } else if (v.length > 2) {
+          v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        } else if (v.length > 0) {
+          v = `(${v}`;
+        }
+        e.target.value = v;
+      });
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+
+        if (!nome || !email || !telefone) {
+          // Simple validation highlight
+          [['nome', nome], ['email', email], ['telefone', telefone]].forEach(([id, val]) => {
+            const el = document.getElementById(id);
+            if (!val) {
+              el.style.borderColor = '#e74c3c';
+              el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+            }
+          });
+          return;
+        }
+
+        const submitBtn = contactForm.querySelector('.form-submit');
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
+
+        // Simulate form submission
+        setTimeout(() => {
+          contactForm.style.display = 'none';
+          formSuccess.classList.add('show');
+        }, 1200);
+      });
+    }
+
+    /* ---- Back to Top ---- */
+    const backTop = document.getElementById('backTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backTop.classList.add('show');
+      } else {
+        backTop.classList.remove('show');
+      }
+    }, { passive: true });
+
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ---- Property Detail Button (demo) ---- */
+    document.querySelectorAll('.property-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.property-card');
+        const name = card.querySelector('.property-name').textContent;
+        const price = card.querySelector('.property-price').textContent.trim();
+        const wppMsg = encodeURIComponent(`Olá Igor! Tenho interesse no imóvel: ${name} (${price}). Pode me dar mais informações?`);
+        window.open(`https://wa.me/5521999999999?text=${wppMsg}`, '_blank');
+      });
+    });
+
+    /* ---- Parallax subtle effect on hero ---- */
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+          heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
