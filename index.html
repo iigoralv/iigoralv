@@ -3,3093 +3,1111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Igor Alves - Corretor de Imóveis | Especialista em imóveis de alto padrão no Rio de Janeiro. Encontre seu imóvel dos sonhos com quem entende do mercado." />
-  <meta name="keywords" content="corretor de imóveis, imóveis Rio de Janeiro, Leblon, Ipanema, Barra da Tijuca, compra e venda, avaliação de imóveis" />
-  <meta property="og:title" content="Igor Alves | Corretor de Imóveis de Alto Padrão" />
-  <meta property="og:description" content="Especialista em imóveis de alto padrão no Rio de Janeiro com 15 anos de experiência." />
+  <meta name="description" content="Igor Alves - Corretor de Imóveis | Especialista em imóveis de alto padrão no Rio de Janeiro." />
   <title>Igor Alves | Corretor de Imóveis</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
-    /* ===== CSS CUSTOM PROPERTIES ===== */
     :root {
-      --navy: #0a1628;
-      --navy-light: #0f2040;
-      --navy-mid: #152b50;
-      --gold: #c9a84c;
-      --gold-light: #e2c97a;
-      --gold-dark: #a8893a;
-      --white: #ffffff;
-      --off-white: #f8f5f0;
-      --gray-100: #f0ece4;
-      --gray-200: #e0dcd2;
-      --gray-400: #9e9b94;
-      --gray-600: #5a5752;
-      --text-dark: #1a1a1a;
-      --text-medium: #444444;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
-      --shadow-gold: 0 8px 30px rgba(201,168,76,0.25);
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      --font-body: 'Inter', sans-serif;
-      --font-heading: 'Playfair Display', serif;
-    }
-
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--text-dark);
-      background: var(--white);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-body);
-    }
-
-    /* ===== UTILITIES ===== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--navy);
-    }
-
-    .section-title span {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .section-subtitle {
-      font-size: 1rem;
-      color: var(--gray-600);
-      max-width: 540px;
-      line-height: 1.75;
-      margin-top: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.5);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-dark {
-      background: transparent;
-      color: var(--navy);
-      border: 2px solid var(--navy);
-    }
-
-    .btn-outline-dark:hover {
-      background: var(--navy);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    .btn-whatsapp {
-      background: #25d366;
-      color: var(--white);
-    }
-
-    .btn-whatsapp:hover {
-      background: #20b858;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
-    }
-
-    /* ===== SCROLL ANIMATIONS ===== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .fade-in {
-      opacity: 0;
-      transition: opacity 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-    }
-
-    .slide-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .slide-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .slide-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .slide-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
-    .delay-6 { transition-delay: 0.6s; }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 20px 0;
-      transition: var(--transition);
-    }
-
-    .navbar.scrolled {
-      background: rgba(10, 22, 40, 0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 14px 0;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-    }
-
-    .navbar .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--white);
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gold);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: var(--navy);
-      font-weight: 800;
-      font-family: var(--font-heading);
-      flex-shrink: 0;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-name {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--white);
-    }
-
-    .logo-title {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.85);
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      background: var(--gold);
-      color: var(--navy) !important;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-    }
-
-    .nav-cta::after {
-      display: none !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--gold-light) !important;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      transition: var(--transition);
-      border-radius: 2px;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--navy);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .mobile-menu.open {
-      display: flex;
-      opacity: 1;
-    }
-
-    .mobile-menu a {
-      color: var(--white);
-      font-size: 1.4rem;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .mobile-menu a:hover {
-      color: var(--gold);
-    }
-
-    .mobile-menu .mobile-cta {
-      margin-top: 16px;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-family: var(--font-body);
-      font-weight: 600;
-    }
-
-    /* ===== HERO ===== */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.75) 40%, rgba(10,22,40,0.60) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23152b50'/%3E%3Cstop offset='50%25' stop-color='%230d1f3a'/%3E%3Cstop offset='100%25' stop-color='%23060f1e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1600' height='900'/%3E%3Cg fill-opacity='0.04'%3E%3Ccircle fill='%23c9a84c' cx='400' cy='300' r='300'/%3E%3Ccircle fill='%23c9a84c' cx='1200' cy='600' r='400'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Decorative lines */
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .hero-gradient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-    }
-
-    .hero-orb-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
-      top: -100px;
-      right: -100px;
-    }
-
-    .hero-orb-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(21,43,80,0.8) 0%, transparent 70%);
-      bottom: -50px;
-      left: -50px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(201,168,76,0.15);
-      border: 1px solid rgba(201,168,76,0.3);
-      color: var(--gold);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    .hero-badge i {
-      font-size: 0.85rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .hero-title .accent {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.15rem);
-      color: rgba(255,255,255,0.75);
-      max-width: 520px;
-      line-height: 1.8;
-      margin-bottom: 40px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 56px;
-    }
-
-    .hero-trust {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hero-avatars {
-      display: flex;
-    }
-
-    .hero-avatars .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 2px solid var(--navy);
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-left: -10px;
-      flex-shrink: 0;
-    }
-
-    .hero-avatars .avatar:first-child {
-      margin-left: 0;
-    }
-
-    .hero-trust-text {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .hero-trust-text strong {
-      color: var(--gold);
-      display: block;
-    }
-
-    /* Hero Visual side */
-    .hero-visual {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 45%;
-      max-width: 600px;
-      z-index: 1;
-      padding-right: 32px;
-    }
-
-    .hero-property-card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .hero-property-img {
-      height: 260px;
-      background: linear-gradient(135deg, #152b50 0%, #0d1f3a 40%, #1a3a60 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-property-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 60%);
-    }
-
-    .hero-property-img-icon {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      color: rgba(201,168,76,0.25);
-    }
-
-    .hero-property-badge {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .hero-card-body {
-      padding: 22px;
-    }
-
-    .hero-card-price {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .hero-card-address {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.85rem;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-card-features {
-      display: flex;
-      gap: 16px;
-    }
-
-    .hero-card-feature {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.8rem;
-    }
-
-    .hero-card-feature i {
-      color: var(--gold);
-      font-size: 0.9rem;
-    }
-
-    /* Floating stat cards */
-    .hero-stat-card {
-      position: absolute;
-      background: rgba(255,255,255,0.95);
-      border-radius: var(--radius-md);
-      padding: 14px 18px;
-      box-shadow: var(--shadow-md);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 170px;
-    }
-
-    .hero-stat-card-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(201,168,76,0.12);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .hero-stat-card-value {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 2px;
-    }
-
-    .hero-stat-card-label {
-      font-size: 0.7rem;
-      color: var(--gray-600);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .stat-card-1 {
-      top: 20px;
-      right: -20px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .stat-card-2 {
-      bottom: 40px;
-      left: -20px;
-      animation: float 4s ease-in-out infinite 2s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Hero scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .scroll-mouse {
-      width: 24px;
-      height: 38px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 12px;
-      position: relative;
-    }
-
-    .scroll-mouse::before {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 2px;
-      animation: scrollAnim 2s ease infinite;
-    }
-
-    @keyframes scrollAnim {
-      0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-      100% { transform: translateX(-50%) translateY(14px); opacity: 0; }
-    }
-
-    /* ===== STATS BAR ===== */
-    #stats {
-      background: var(--navy);
-      padding: 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #stats::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .stats-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .stat-item {
-      padding: 40px 24px;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.07);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-item:last-child {
-      border-right: none;
-    }
-
-    .stat-item::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 3px;
-      background: var(--gold);
-      transition: width 0.5s ease;
-    }
-
-    .stat-item:hover::before {
-      width: 60%;
-    }
-
-    .stat-number {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-
-    .stat-icon {
-      font-size: 1.2rem;
-      color: rgba(201,168,76,0.3);
-      margin-bottom: 12px;
-    }
-
-    /* ===== PROPERTIES ===== */
-    #imoveis {
-      padding: 100px 0;
-      background: var(--off-white);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    /* Filter Tabs */
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 48px;
-    }
-
-    .filter-tab {
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      border: 1.5px solid var(--gray-200);
-      background: var(--white);
-      color: var(--gray-600);
-    }
-
-    .filter-tab.active,
-    .filter-tab:hover {
-      background: var(--navy);
-      color: var(--white);
-      border-color: var(--navy);
-    }
-
-    .filter-tab.active {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    /* Property Cards Grid */
-    .properties-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .property-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-    }
-
-    .property-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .property-card[data-category]:not(.show) {
-      display: none;
-    }
-
-    .property-img {
-      position: relative;
-      height: 220px;
-      overflow: hidden;
-    }
-
-    .property-img-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      color: rgba(255,255,255,0.2);
-      position: relative;
-    }
-
-    .prop-img-1 {
-      background: linear-gradient(135deg, #1a3a5c, #0d2540, #162e50);
-    }
-
-    .prop-img-2 {
-      background: linear-gradient(135deg, #2a1f10, #3d2e18, #1e1508);
-    }
-
-    .prop-img-3 {
-      background: linear-gradient(135deg, #0d2030, #153040, #0a1a28);
-    }
-
-    .property-tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .property-tag.venda {
-      background: var(--gold);
-    }
-
-    .property-tag.lancamento {
-      background: #e74c3c;
-      color: white;
-    }
-
-    .property-favorite {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 34px;
-      height: 34px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--gray-400);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .property-favorite:hover {
-      color: #e74c3c;
-      transform: scale(1.1);
-    }
-
-    .property-body {
-      padding: 22px;
-    }
-
-    .property-price {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-
-    .property-price span {
-      color: var(--gold);
-    }
-
-    .property-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-
-    .property-location {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.82rem;
-      color: var(--gray-600);
-      margin-bottom: 16px;
-    }
-
-    .property-location i {
-      color: var(--gold);
-      font-size: 0.8rem;
-    }
-
-    .property-features {
-      display: flex;
-      gap: 12px;
-      padding: 14px 0;
-      border-top: 1px solid var(--gray-100);
-      border-bottom: 1px solid var(--gray-100);
-      margin-bottom: 16px;
-    }
-
-    .property-feature {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.78rem;
-      color: var(--gray-600);
-      font-weight: 500;
-    }
-
-    .property-feature i {
-      color: var(--gold);
-      font-size: 0.85rem;
-    }
-
-    .property-btn {
-      width: 100%;
-      padding: 12px;
-      border-radius: var(--radius-sm);
-      background: transparent;
-      border: 1.5px solid var(--navy);
-      color: var(--navy);
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: var(--transition);
-      text-align: center;
-    }
-
-    .property-btn:hover {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    /* ===== ABOUT ===== */
-    #sobre {
-      padding: 100px 0;
-      background: var(--white);
-      overflow: hidden;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-photo-wrap {
-      position: relative;
-    }
-
-    .about-photo-main {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, var(--navy-light), var(--navy-mid), var(--navy));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-photo-main::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 60%);
-    }
-
-    .about-photo-icon {
-      font-size: 6rem;
-      color: rgba(201,168,76,0.2);
-    }
-
-    .about-photo-silhouette {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      height: 80%;
-      background: linear-gradient(180deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.05) 100%);
-      clip-path: polygon(20% 0%, 80% 0%, 95% 100%, 5% 100%);
-    }
-
-    .about-photo-frame {
-      position: absolute;
-      top: -16px;
-      left: -16px;
-      right: 16px;
-      bottom: 16px;
-      border: 2px solid var(--gold);
-      border-radius: var(--radius-lg);
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    .about-badge {
-      position: absolute;
-      bottom: 24px;
-      right: -24px;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      box-shadow: var(--shadow-md);
-      min-width: 160px;
-      border: 1px solid var(--gray-100);
-    }
-
-    .about-badge-number {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .about-badge-text {
-      font-size: 0.75rem;
-      color: var(--gray-600);
-      font-weight: 500;
-    }
-
-    .creci-badge {
-      position: absolute;
-      top: 24px;
-      right: -24px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
-      box-shadow: var(--shadow-md);
-    }
-
-    .creci-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2px;
-    }
-
-    .creci-number {
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .about-text .section-label { margin-bottom: 8px; }
-
-    .about-name {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 8px;
-    }
-
-    .about-name-subtitle {
-      font-size: 0.9rem;
-      color: var(--gold);
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
-    }
-
-    .about-desc {
-      font-size: 0.97rem;
-      color: var(--text-medium);
-      line-height: 1.85;
-      margin-bottom: 28px;
-    }
-
-    .about-certs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--gold-dark);
-    }
-
-    .about-differentials {
-      margin-bottom: 36px;
-    }
-
-    .differential-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-100);
-    }
-
-    .differential-item:last-child {
-      border-bottom: none;
-    }
-
-    .differential-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--navy);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .differential-text strong {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--navy);
-      margin-bottom: 2px;
-    }
-
-    .differential-text p {
-      font-size: 0.82rem;
-      color: var(--gray-600);
-    }
-
-    .about-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    /* ===== SERVICES ===== */
-    #servicos {
-      padding: 100px 0;
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #servicos::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-    }
-
-    #servicos .section-title {
-      color: var(--white);
-    }
-
-    #servicos .section-subtitle {
-      color: rgba(255,255,255,0.6);
-    }
-
-    #servicos .section-header {
-      position: relative;
-      z-index: 1;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
-
-    .service-card:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(201,168,76,0.2);
-      transform: translateY(-4px);
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-icon-wrap {
-      width: 60px;
-      height: 60px;
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--gold);
-      margin-bottom: 22px;
-      transition: var(--transition);
-    }
-
-    .service-card:hover .service-icon-wrap {
-      background: rgba(201,168,76,0.2);
-      transform: scale(1.05);
-    }
-
-    .service-title {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .service-desc {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-
-    .service-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--gold);
-      transition: var(--transition);
-    }
-
-    .service-link i {
-      font-size: 0.75rem;
-      transition: var(--transition);
-    }
-
-    .service-card:hover .service-link i {
-      transform: translateX(4px);
-    }
-
-    /* ===== TESTIMONIALS ===== */
-    #depoimentos {
-      padding: 100px 0;
-      background: var(--off-white);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-100);
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .testimonial-card::before {
-      content: '\201C';
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      font-family: var(--font-heading);
-      font-size: 5rem;
-      color: rgba(201,168,76,0.12);
-      line-height: 1;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-stars i {
-      color: var(--gold);
-      font-size: 0.85rem;
-    }
-
-    .testimonial-text {
-      font-size: 0.93rem;
-      color: var(--text-medium);
-      line-height: 1.8;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      font-family: var(--font-heading);
-      flex-shrink: 0;
-    }
-
-    .avatar-a { background: linear-gradient(135deg, #f7d89e, #e2c97a); }
-    .avatar-b { background: linear-gradient(135deg, #a8d8ea, #7fbfd9); }
-    .avatar-c { background: linear-gradient(135deg, #f7c5c5, #e8a0a0); }
-
-    .testimonial-info .author-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 2px;
-    }
-
-    .testimonial-info .author-detail {
-      font-size: 0.75rem;
-      color: var(--gray-600);
-    }
-
-    /* ===== CTA SECTION ===== */
-    #contato {
-      padding: 100px 0;
-      background: var(--white);
-    }
-
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .cta-left .section-title {
-      margin-bottom: 16px;
-    }
-
-    .cta-left .section-subtitle {
-      margin-bottom: 32px;
-    }
-
-    .cta-contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .contact-item-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(201,168,76,0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-item-text .label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray-400);
-      margin-bottom: 2px;
-    }
-
-    .contact-item-text .value {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--navy);
-    }
-
-    .cta-wpp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #25d366;
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: var(--transition);
-      width: 100%;
-      justify-content: center;
-      max-width: 340px;
-    }
-
-    .cta-wpp-btn:hover {
-      background: #20b858;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      background: var(--off-white);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      border: 1px solid var(--gray-200);
-    }
-
-    .contact-form h3 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    .contact-form p {
-      font-size: 0.85rem;
-      color: var(--gray-600);
-      margin-bottom: 28px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      background: var(--white);
-      transition: var(--transition);
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--gray-400);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 15px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .form-submit:hover {
-      background: var(--navy-light);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .form-success.show {
-      display: block;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--navy);
-      padding: 64px 0 24px;
-      position: relative;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-
-    .footer-brand .navbar-logo {
-      margin-bottom: 16px;
-    }
-
-    .footer-desc {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 10px;
-    }
-
-    .footer-social a {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .footer-social a:hover {
-      background: var(--gold);
-      color: var(--navy);
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .footer-col h4 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--white);
-      padding-left: 4px;
-    }
-
-    .footer-contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .footer-contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .footer-contact-item i {
-      color: var(--gold);
-      font-size: 0.9rem;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-
-    .footer-contact-item span {
-      font-size: 0.83rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.5;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding-top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-copyright {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .footer-copyright span {
-      color: var(--gold);
-    }
-
-    .footer-legal {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-legal a {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      transition: var(--transition);
-    }
-
-    .footer-legal a:hover {
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* ===== WHATSAPP FLOATING BUTTON ===== */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 900;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #25d366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--white);
-      box-shadow: 0 6px 25px rgba(37,211,102,0.45);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 35px rgba(37,211,102,0.55);
-    }
-
-    .whatsapp-float::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: #25d366;
-      animation: wppPulse 2.5s ease-out infinite;
-    }
-
-    @keyframes wppPulse {
-      0% { transform: scale(1); opacity: 0.75; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-
-    .whatsapp-float i {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ===== BACK TO TOP ===== */
-    .back-top {
-      position: fixed;
-      bottom: 98px;
-      right: 28px;
-      z-index: 900;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--navy);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: var(--transition);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
-    }
-
-    .back-top.show {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-
-    .back-top:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1100px) {
-      .hero-visual { display: none; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
-
-    @media (max-width: 900px) {
-      .properties-grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-photo-main { aspect-ratio: 4/3; max-height: 400px; }
-      .creci-badge, .about-badge { position: static; margin-top: 16px; }
-      .cta-grid { grid-template-columns: 1fr; gap: 48px; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.07); }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .properties-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; gap: 16px; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      #hero { align-items: flex-end; padding-bottom: 100px; min-height: 100vh; }
-      .hero-content { padding-top: 100px; }
-      .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-    }
-
-    @media (max-width: 480px) {
-      .stats-inner { grid-template-columns: 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-      .hero-buttons { flex-direction: column; }
-      .hero-buttons .btn { text-align: center; justify-content: center; }
-      .contact-form { padding: 24px; }
-      .creci-badge, .about-badge { display: inline-flex; width: auto; }
-    }
-
-    /* ===== SECTION DIVIDER ===== */
-    .wave-divider {
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-
-    .wave-divider svg {
-      display: block;
-      width: 100%;
+      --navy:        #0a1628;
+      --navy-light:  #0f2040;
+      --navy-mid:    #152b50;
+      --gold:        #c9a84c;
+      --gold-light:  #e2c97a;
+      --gold-dark:   #a8893a;
+      --white:       #ffffff;
+      --off-white:   #f8f5f0;
+      --gray-100:    #f0ece4;
+      --gray-400:    #9e9b94;
+      --gray-600:    #5a5752;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #444444;
+      --green-wa:    #25d366;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:   0 8px 30px rgba(0,0,0,.14);
+      --shadow-lg:   0 20px 60px rgba(0,0,0,.2);
+      --shadow-gold: 0 8px 30px rgba(201,168,76,.3);
+      --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
+      --tr: all .3s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--text-dark);background:var(--white);overflow-x:hidden;line-height:1.6}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{border:none;cursor:pointer;font-family:inherit}
+
+    /* ── Utilities ── */
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r-sm);font-weight:600;font-size:.95rem;transition:var(--tr);cursor:pointer}
+    .btn-gold{background:var(--gold);color:var(--navy);box-shadow:var(--shadow-gold)}
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.4)}
+    .btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5)}
+    .btn-outline:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+    .btn-navy{background:var(--navy);color:var(--white)}
+    .btn-navy:hover{background:var(--navy-light);transform:translateY(-2px)}
+    .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px;border-radius:40px;background:rgba(201,168,76,.15);color:var(--gold);margin-bottom:12px}
+    .section-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.2;margin-bottom:16px}
+    .section-sub{font-size:1.05rem;color:var(--gray-600);line-height:1.7;max-width:560px}
+    .divider{width:60px;height:3px;background:var(--gold);border-radius:2px;margin:20px 0}
+
+    /* animate on scroll — progressive enhancement */
+    .anim{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
+    .js-ready .anim{opacity:0;transform:translateY(30px)}
+    .js-ready .anim.from-left{transform:translateX(-40px)}
+    .js-ready .anim.from-right{transform:translateX(40px)}
+    .js-ready .anim.visible{opacity:1;transform:none}
+    .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+    .delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}.delay-6{transition-delay:.6s}
+
+    /* ── NAVBAR ── */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:var(--tr)}
+    .navbar.scrolled{background:rgba(10,22,40,.96);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.3);padding:12px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-logo{display:flex;flex-direction:column;line-height:1}
+    .nav-logo .name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white)}
+    .nav-logo .creci{font-size:.65rem;font-weight:500;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{color:rgba(255,255,255,.8);font-size:.9rem;font-weight:500;transition:var(--tr)}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:var(--r-sm);font-size:.88rem;font-weight:700;transition:var(--tr);white-space:nowrap}
+    .nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--tr)}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:var(--white);font-size:1.4rem;font-weight:600;font-family:'Playfair Display',serif;transition:var(--tr)}
+    .mobile-menu a:hover{color:var(--gold)}
+
+    /* ── HERO ── */
+    .hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#0d1f3c 40%,#162540 70%,#0a1628 100%);position:relative;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:40px;padding:8px 18px;margin-bottom:24px}
+    .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s infinite}
+    .hero-badge span{font-size:.8rem;font-weight:600;color:var(--gold);letter-spacing:.06em;text-transform:uppercase}
+    @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:20px}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:36px;max-width:480px}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+    .hero-trust{display:flex;align-items:center;gap:16px}
+    .trust-avatars{display:flex}
+    .trust-avatars .av{width:38px;height:38px;border-radius:50%;border:2.5px solid var(--navy);margin-left:-10px;background:linear-gradient(135deg,var(--gold-dark),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--navy)}
+    .trust-avatars .av:first-child{margin-left:0}
+    .trust-text{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.4}
+    .trust-text strong{color:var(--white)}
+    /* Hero visual card */
+    .hero-visual{position:relative}
+    .hero-card{background:rgba(255,255,255,.07);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:28px;position:relative}
+    .hero-card-img{width:100%;aspect-ratio:4/3;border-radius:var(--r-md);background:linear-gradient(135deg,#1a3a5c 0%,#0d2440 40%,#152535 100%);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;overflow:hidden}
+    .hero-card-img svg{opacity:.3}
+    .hero-card-img .price-tag{position:absolute;top:16px;right:16px;background:var(--gold);color:var(--navy);padding:6px 14px;border-radius:20px;font-weight:800;font-size:.9rem}
+    .hero-card-img .location-tag{position:absolute;bottom:16px;left:16px;background:rgba(10,22,40,.8);backdrop-filter:blur(10px);color:var(--white);padding:6px 14px;border-radius:20px;font-size:.8rem;display:flex;align-items:center;gap:6px}
+    .hero-card h3{color:var(--white);font-size:1.15rem;font-weight:700;margin-bottom:8px}
+    .hero-card-specs{display:flex;gap:16px}
+    .spec{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.82rem}
+    .spec svg{color:var(--gold)}
+    .floating-badge{position:absolute;top:-16px;right:-16px;background:var(--gold);color:var(--navy);border-radius:var(--r-sm);padding:12px 16px;font-size:.78rem;font-weight:800;text-align:center;line-height:1.3;box-shadow:var(--shadow-gold)}
+    .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+    .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scroll-anim 1.8s ease-in-out infinite}
+    @keyframes scroll-anim{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
+
+    /* ── STATS ── */
+    .stats{background:var(--gold);padding:32px 0}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .stat-item{text-align:center;padding:16px;border-right:1px solid rgba(10,22,40,.15)}
+    .stat-item:last-child{border-right:none}
+    .stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--navy);line-height:1}
+    .stat-label{font-size:.82rem;font-weight:600;color:rgba(10,22,40,.65);margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
+
+    /* ── PROPERTIES ── */
+    .properties{padding:100px 0;background:var(--off-white)}
+    .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+    .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+    .filter-tab{padding:9px 20px;border-radius:40px;font-size:.85rem;font-weight:600;background:var(--white);color:var(--gray-600);border:1.5px solid var(--gray-200,#e0dcd2);transition:var(--tr);cursor:pointer}
+    .filter-tab.active,.filter-tab:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+    .properties-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .prop-card{background:var(--white);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--tr)}
+    .prop-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .prop-img{position:relative;height:220px;overflow:hidden}
+    .prop-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .prop-img-bg svg{width:64px;height:64px;opacity:.5}
+    .prop-badge{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    .badge-new{background:var(--gold);color:var(--navy)}
+    .badge-exc{background:#e74c3c;color:#fff}
+    .badge-hot{background:#ff6b35;color:#fff}
+    .prop-fav{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr);border:none}
+    .prop-fav:hover{background:var(--white);transform:scale(1.1)}
+    .prop-fav svg{transition:var(--tr)}
+    .prop-fav.faved svg{fill:#e74c3c;stroke:#e74c3c}
+    .prop-price{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.88);backdrop-filter:blur(10px);color:var(--white);padding:6px 14px;border-radius:20px;font-weight:800;font-size:.92rem}
+    .prop-body{padding:22px}
+    .prop-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;color:var(--text-dark)}
+    .prop-loc{display:flex;align-items:center;gap:5px;color:var(--gray-600);font-size:.83rem;margin-bottom:14px}
+    .prop-loc svg{color:var(--gold);flex-shrink:0}
+    .prop-specs{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);margin-bottom:16px}
+    .prop-spec{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--gray-600)}
+    .prop-spec svg{color:var(--gold)}
+    .prop-cta{width:100%;padding:11px;border-radius:var(--r-sm);background:var(--navy);color:var(--white);font-weight:600;font-size:.88rem;transition:var(--tr)}
+    .prop-cta:hover{background:var(--gold);color:var(--navy)}
+
+    /* property image gradients */
+    .g1{background:linear-gradient(135deg,#1a3a5c,#0d2440)}
+    .g2{background:linear-gradient(135deg,#2d4a3e,#1a3020)}
+    .g3{background:linear-gradient(135deg,#4a2d3a,#2d1a22)}
+    .g4{background:linear-gradient(135deg,#3a3a1a,#2d2d0d)}
+    .g5{background:linear-gradient(135deg,#1a2d4a,#0d1a2d)}
+    .g6{background:linear-gradient(135deg,#3a1a4a,#200d2d)}
+
+    /* ── ABOUT ── */
+    .about{padding:100px 0;background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .about-photo-wrap{position:relative}
+    .about-photo{width:100%;aspect-ratio:3/4;border-radius:var(--r-xl);background:linear-gradient(160deg,var(--navy-mid) 0%,var(--navy) 60%,#0d1520 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    .about-photo svg{opacity:.15;width:120px;height:120px}
+    .about-photo .photo-name{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(10,22,40,.95),transparent)}
+    .about-photo .photo-name h3{font-family:'Playfair Display',serif;color:var(--white);font-size:1.4rem;margin-bottom:4px}
+    .about-photo .photo-name p{color:var(--gold);font-size:.85rem;font-weight:600}
+    .creci-badge{position:absolute;top:24px;right:-20px;background:var(--gold);color:var(--navy);border-radius:var(--r-sm);padding:12px 18px;font-weight:800;font-size:.82rem;text-align:center;box-shadow:var(--shadow-gold)}
+    .exp-badge{position:absolute;bottom:120px;left:-20px;background:var(--navy);border:2px solid var(--gold);color:var(--white);border-radius:var(--r-sm);padding:12px 18px;font-size:.82rem;text-align:center;box-shadow:var(--shadow-md)}
+    .exp-badge strong{display:block;font-size:1.6rem;color:var(--gold);font-family:'Playfair Display',serif}
+    .about-content .section-title{color:var(--navy)}
+    .about-desc{color:var(--text-mid);font-size:1rem;line-height:1.8;margin-bottom:28px}
+    .about-certs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+    .cert{background:var(--gray-100);color:var(--gray-600);border-radius:var(--r-sm);padding:8px 16px;font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:6px}
+    .cert svg{color:var(--gold)}
+    .about-diff{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px}
+    .diff-item{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500;color:var(--text-mid)}
+    .diff-icon{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .diff-icon svg{color:var(--gold)}
+    .about-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* ── SERVICES ── */
+    .services{padding:100px 0;background:var(--navy)}
+    .services .section-title{color:var(--white)}
+    .services .section-sub{color:rgba(255,255,255,.6)}
+    .services .divider{background:var(--gold)}
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+    .srv-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:32px 24px;transition:var(--tr)}
+    .srv-card:hover{background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.25);transform:translateY(-4px)}
+    .srv-icon{width:56px;height:56px;border-radius:var(--r-sm);background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .srv-icon svg{color:var(--gold)}
+    .srv-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--white);margin-bottom:10px}
+    .srv-card p{font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.7}
+
+    /* ── TESTIMONIALS ── */
+    .testimonials{padding:100px 0;background:var(--off-white)}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+    .testi-card{background:var(--white);border-radius:var(--r-lg);padding:32px;box-shadow:var(--shadow-sm);position:relative;transition:var(--tr)}
+    .testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .testi-card::before{content:'\201C';position:absolute;top:20px;right:28px;font-size:5rem;line-height:1;color:var(--gold);opacity:.15;font-family:'Playfair Display',serif}
+    .stars{display:flex;gap:3px;margin-bottom:14px}
+    .star{color:var(--gold);font-size:1rem}
+    .testi-text{font-size:.92rem;color:var(--text-mid);line-height:1.75;margin-bottom:20px;font-style:italic}
+    .testi-author{display:flex;align-items:center;gap:12px}
+    .testi-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;color:var(--navy);flex-shrink:0}
+    .av-gold{background:linear-gradient(135deg,var(--gold-dark),var(--gold-light))}
+    .av-navy{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:var(--gold)!important}
+    .av-blue{background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff!important}
+    .testi-info strong{display:block;font-weight:700;font-size:.9rem;color:var(--text-dark)}
+    .testi-info span{font-size:.78rem;color:var(--gray-400)}
+    .trust-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--navy);border-radius:var(--r-lg);margin-top:48px;overflow:hidden}
+    .trust-item{padding:28px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+    .trust-item:last-child{border-right:none}
+    .trust-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+    .trust-label{font-size:.78rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+
+    /* ── CTA CONTACT ── */
+    .contact{padding:100px 0;background:linear-gradient(135deg,var(--navy) 0%,#0f2245 100%);position:relative;overflow:hidden}
+    .contact::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .contact-info .section-title{color:var(--white)}
+    .contact-info .section-sub{color:rgba(255,255,255,.65)}
+    .contact-info .divider{background:var(--gold)}
+    .contact-items{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+    .c-item{display:flex;align-items:center;gap:16px}
+    .c-icon{width:48px;height:48px;border-radius:var(--r-sm);background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .c-icon svg{color:var(--gold)}
+    .c-text strong{display:block;color:var(--white);font-weight:600;font-size:.9rem}
+    .c-text span{color:rgba(255,255,255,.55);font-size:.85rem}
+    .wa-big-btn{display:inline-flex;align-items:center;gap:12px;background:var(--green-wa);color:var(--white);padding:16px 28px;border-radius:var(--r-sm);font-weight:700;font-size:1rem;transition:var(--tr);margin-top:28px;box-shadow:0 8px 30px rgba(37,211,102,.35)}
+    .wa-big-btn:hover{background:#1fba5a;transform:translateY(-2px);box-shadow:0 12px 40px rgba(37,211,102,.45)}
+    /* Form */
+    .contact-form{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);padding:40px}
+    .form-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);margin-bottom:6px}
+    .form-sub{color:rgba(255,255,255,.5);font-size:.88rem;margin-bottom:28px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;color:rgba(255,255,255,.7);font-size:.82rem;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border-radius:var(--r-sm);border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--white);font-size:.9rem;font-family:inherit;transition:var(--tr);outline:none}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.3)}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(255,255,255,.09)}
+    .form-group select{color:rgba(255,255,255,.7);appearance:none}
+    .form-group select option{background:var(--navy);color:var(--white)}
+    .form-group textarea{resize:vertical;min-height:110px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-submit{width:100%;padding:15px;border-radius:var(--r-sm);background:var(--gold);color:var(--navy);font-weight:800;font-size:1rem;transition:var(--tr);border:none;cursor:pointer}
+    .form-submit:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:var(--shadow-gold)}
+    .form-success{display:none;text-align:center;padding:24px;color:var(--white)}
+    .form-success.show{display:block}
+    .form-success svg{color:var(--gold);margin:0 auto 12px}
+    .form-success h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:8px}
+    .form-success p{color:rgba(255,255,255,.6);font-size:.9rem}
+
+    /* ── FOOTER ── */
+    footer{background:#060e1a;padding:64px 0 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-brand .logo-text{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);font-weight:700}
+    .footer-brand .logo-creci{font-size:.7rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+    .footer-brand p{color:rgba(255,255,255,.45);font-size:.87rem;line-height:1.7;max-width:280px}
+    .footer-social{display:flex;gap:10px;margin-top:20px}
+    .soc-link{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+    .soc-link:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
+    .soc-link:hover svg{color:var(--navy)}
+    .soc-link svg{color:rgba(255,255,255,.5)}
+    .footer-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:20px}
+    .footer-col ul{display:flex;flex-direction:column;gap:10px}
+    .footer-col ul li a{color:rgba(255,255,255,.45);font-size:.87rem;transition:var(--tr)}
+    .footer-col ul li a:hover{color:var(--gold)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .footer-bottom p{color:rgba(255,255,255,.25);font-size:.8rem}
+    .footer-bottom a{color:rgba(255,255,255,.35);font-size:.8rem;transition:var(--tr)}
+    .footer-bottom a:hover{color:var(--gold)}
+
+    /* ── FLOATING WA ── */
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:990;display:flex;align-items:center;gap:10px}
+    .wa-float-btn{width:58px;height:58px;border-radius:50%;background:var(--green-wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,.45);transition:var(--tr);cursor:pointer;position:relative}
+    .wa-float-btn:hover{transform:scale(1.08)}
+    .wa-float-btn::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+    .wa-tooltip{background:var(--navy);color:var(--white);padding:8px 14px;border-radius:var(--r-sm);font-size:.8rem;font-weight:600;white-space:nowrap;box-shadow:var(--shadow-md);opacity:0;transform:translateX(10px);transition:var(--tr);pointer-events:none}
+    .wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-visual{display:none}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat-item{border-right:none;border-bottom:1px solid rgba(10,22,40,.12)}
+      .stat-item:nth-child(odd){border-right:1px solid rgba(10,22,40,.12)}
+      .stat-item:nth-child(3),.stat-item:nth-child(4){border-bottom:none}
+      .properties-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr;gap:48px}
+      .creci-badge,.exp-badge{display:none}
+      .services-grid{grid-template-columns:1fr}
+      .testi-grid{grid-template-columns:1fr}
+      .trust-bar{grid-template-columns:repeat(2,1fr)}
+      .trust-item:nth-child(2){border-right:none}
+      .trust-item:nth-child(3){border-right:1px solid rgba(255,255,255,.07)}
+      .contact-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .form-row{grid-template-columns:1fr}
+      .about-diff{grid-template-columns:1fr}
+      .section-header{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:480px){
+      .hero-btns{flex-direction:column}
+      .btn{justify-content:center}
+      .about-btns{flex-direction:column}
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="#hero" class="navbar-logo">
-        <div class="logo-icon">IA</div>
-        <div class="logo-text">
-          <span class="logo-name">Igor Alves</span>
-          <span class="logo-title">Corretor de Imóveis</span>
-        </div>
+<!-- ══════════════════════════════════════ NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="name">Igor Alves</span>
+        <span class="creci">Corretor · CRECI 123456-F</span>
       </a>
-
       <ul class="nav-links">
         <li><a href="#imoveis">Imóveis</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#contato" class="nav-cta">
-          <i class="fa-brands fa-whatsapp"></i> Falar Agora
-        </a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
-
+      <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20gostaria%20de%20mais%20informações!" class="nav-cta" target="_blank" rel="noopener">
+        📲 WhatsApp
+      </a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#imoveis" class="mobile-link">Imóveis</a>
-    <a href="#sobre" class="mobile-link">Sobre</a>
-    <a href="#servicos" class="mobile-link">Serviços</a>
-    <a href="#depoimentos" class="mobile-link">Depoimentos</a>
-    <a href="#contato" class="mobile-link">Contato</a>
-    <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20saber%20mais%20sobre%20imóveis!" class="mobile-cta">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
   </div>
+</nav>
 
-  <!-- ===== HERO ===== -->
-  <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-gradient-orb hero-orb-1"></div>
-      <div class="hero-gradient-orb hero-orb-2"></div>
-    </div>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#imoveis" class="mobile-link">Imóveis</a>
+  <a href="#sobre" class="mobile-link">Sobre</a>
+  <a href="#servicos" class="mobile-link">Serviços</a>
+  <a href="#depoimentos" class="mobile-link">Depoimentos</a>
+  <a href="#contato" class="mobile-link">Contato</a>
+  <a href="https://wa.me/5521999999999" class="btn btn-gold" target="_blank" rel="noopener">Falar no WhatsApp</a>
+</div>
 
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge fade-up">
-          <i class="fa-solid fa-star"></i>
-          Corretor Premium · Rio de Janeiro
+<!-- ══════════════════════════════════════ HERO ══ -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>Especialista em Alto Padrão · Rio de Janeiro</span>
         </div>
-
-        <h1 class="hero-title fade-up delay-1">
-          Encontre o Imóvel<br>
-          dos <span class="accent">Seus Sonhos</span>
-        </h1>
-
-        <p class="hero-subtitle fade-up delay-2">
-          Especialista em imóveis de alto padrão nos bairros mais exclusivos do Rio de Janeiro.
-          Com 15 anos de experiência, realizo o seu sonho com segurança e transparência.
-        </p>
-
-        <div class="hero-buttons fade-up delay-3">
-          <a href="#imoveis" class="btn btn-primary">
-            <i class="fa-solid fa-building"></i>
+        <h1>Encontre o Imóvel dos <em>Seus Sonhos</em></h1>
+        <p class="hero-sub">Há mais de 15 anos transformando sonhos em endereços reais. Do Leblon à Barra, conheço cada oportunidade do mercado carioca.</p>
+        <div class="hero-btns">
+          <a href="#imoveis" class="btn btn-gold">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             Ver Imóveis
           </a>
-          <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20falar%20sobre%20imóveis!" class="btn btn-outline" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i>
-            Falar com Corretor
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor!" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar com Igor
           </a>
         </div>
-
-        <div class="hero-trust fade-up delay-4">
-          <div class="hero-avatars">
-            <div class="avatar">MA</div>
-            <div class="avatar">RB</div>
-            <div class="avatar">CT</div>
-            <div class="avatar">FS</div>
-            <div class="avatar">+</div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <div class="av">MA</div>
+            <div class="av">RC</div>
+            <div class="av">FS</div>
+            <div class="av">+</div>
           </div>
-          <div class="hero-trust-text">
-            <strong>+500 clientes satisfeitos</strong>
-            Avaliação 5 estrelas no Google
+          <div class="trust-text">
+            <strong>+500 famílias</strong><br>já encontraram seu lar com Igor
+          </div>
+        </div>
+      </div>
+      <!-- Right (visual card) -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="floating-badge">
+            ⭐ 4.9/5<br>Google Reviews
+          </div>
+          <div class="hero-card-img g1">
+            <svg width="80" height="80" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div class="price-tag">R$ 3.200.000</div>
+            <div class="location-tag">
+              <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+              Leblon, Rio de Janeiro
+            </div>
+          </div>
+          <h3>Cobertura Duplex · 4 Suítes</h3>
+          <div class="hero-card-specs">
+            <div class="spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              280 m²
+            </div>
+            <div class="spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3h-8v4h8V3z"/></svg>
+              4 Suítes
+            </div>
+            <div class="spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              3 Vagas
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Role para baixo</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-    <!-- Hero Visual (desktop) -->
-    <div class="hero-visual">
-      <div class="hero-property-card">
-        <div class="hero-property-img">
-          <div class="hero-property-img-icon">
-            <i class="fa-solid fa-city"></i>
-          </div>
-          <div class="hero-property-badge">Destaque</div>
-        </div>
-        <div class="hero-card-body">
-          <div class="hero-card-price">R$ 4.800.000</div>
-          <div class="hero-card-address">
-            <i class="fa-solid fa-location-dot"></i>
-            Leblon, Rio de Janeiro
-          </div>
-          <div class="hero-card-features">
-            <div class="hero-card-feature">
-              <i class="fa-solid fa-bed"></i> 4 Quartos
-            </div>
-            <div class="hero-card-feature">
-              <i class="fa-solid fa-bath"></i> 3 Banheiros
-            </div>
-            <div class="hero-card-feature">
-              <i class="fa-solid fa-expand"></i> 220m²
-            </div>
-          </div>
-        </div>
+<!-- ══════════════════════════════════════ STATS ══ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item anim">
+        <div class="stat-num" data-count="500">500+</div>
+        <div class="stat-label">Imóveis Vendidos</div>
       </div>
-
-      <div class="hero-stat-card stat-card-1">
-        <div class="hero-stat-card-icon">
-          <i class="fa-solid fa-trophy"></i>
-        </div>
-        <div>
-          <div class="hero-stat-card-value">#1 Ranking</div>
-          <div class="hero-stat-card-label">Zona Sul do RJ</div>
-        </div>
+      <div class="stat-item anim delay-1">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Anos de Experiência</div>
       </div>
-
-      <div class="hero-stat-card stat-card-2">
-        <div class="hero-stat-card-icon">
-          <i class="fa-solid fa-handshake"></i>
-        </div>
-        <div>
-          <div class="hero-stat-card-value">98%</div>
-          <div class="hero-stat-card-label">Satisfação</div>
-        </div>
+      <div class="stat-item anim delay-2">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Clientes Satisfeitos</div>
+      </div>
+      <div class="stat-item anim delay-3">
+        <div class="stat-num">R$2Bi+</div>
+        <div class="stat-label">em Transações</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-mouse"></div>
-      <span>Role para baixo</span>
+<!-- ══════════════════════════════════════ PROPERTIES ══ -->
+<section class="properties" id="imoveis">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="tag">Portfólio</div>
+        <h2 class="section-title anim">Imóveis em <em style="font-style:italic;color:var(--gold)">Destaque</em></h2>
+        <div class="divider"></div>
+        <p class="section-sub">Seleção exclusiva de imóveis de alto padrão nas melhores localizações do Rio de Janeiro.</p>
+      </div>
+      <a href="#contato" class="btn btn-navy anim delay-2">Ver Todos os Imóveis →</a>
     </div>
-  </section>
 
-  <!-- ===== STATS BAR ===== -->
-  <section id="stats">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item fade-up">
-          <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">Imóveis Vendidos</div>
-        </div>
-        <div class="stat-item fade-up delay-1">
-          <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
-          <div class="stat-number" data-target="15">0</div>
-          <div class="stat-label">Anos de Experiência</div>
-        </div>
-        <div class="stat-item fade-up delay-2">
-          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
-          <div class="stat-number" data-suffix="%" data-target="98">0</div>
-          <div class="stat-label">Clientes Satisfeitos</div>
-        </div>
-        <div class="stat-item fade-up delay-3">
-          <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <div class="stat-number" data-prefix="R$" data-suffix="Bi+" data-target="2">0</div>
-          <div class="stat-label">em Transações</div>
-        </div>
-      </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="todos">Todos</button>
+      <button class="filter-tab" data-filter="apartamento">Apartamentos</button>
+      <button class="filter-tab" data-filter="casa">Casas</button>
+      <button class="filter-tab" data-filter="cobertura">Coberturas</button>
     </div>
-  </section>
 
-  <!-- ===== FEATURED PROPERTIES ===== -->
-  <section id="imoveis">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label"><i class="fa-solid fa-sparkles"></i> Portfólio Exclusivo</span>
-        <h2 class="section-title">Imóveis em <span>Destaque</span></h2>
-        <p class="section-subtitle">Seleção premium dos melhores imóveis disponíveis nos bairros mais valorizados do Rio de Janeiro.</p>
-      </div>
+    <div class="properties-grid" id="propGrid">
 
-      <!-- Filter Tabs -->
-      <div class="filter-tabs fade-up delay-1">
-        <button class="filter-tab active" data-filter="all">
-          <i class="fa-solid fa-grip"></i> Todos
-        </button>
-        <button class="filter-tab" data-filter="apartamento">
-          <i class="fa-solid fa-building"></i> Apartamentos
-        </button>
-        <button class="filter-tab" data-filter="casa">
-          <i class="fa-solid fa-house"></i> Casas
-        </button>
-        <button class="filter-tab" data-filter="terreno">
-          <i class="fa-solid fa-land-mine-on"></i> Terrenos
-        </button>
-      </div>
-
-      <!-- Properties Grid -->
-      <div class="properties-grid">
-
-        <!-- Card 1 -->
-        <div class="property-card show fade-up" data-category="apartamento">
-          <div class="property-img">
-            <div class="property-img-placeholder prop-img-1">
-              <i class="fa-solid fa-city"></i>
-            </div>
-            <div class="property-tag venda">À Venda</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
+      <!-- Card 1 -->
+      <div class="prop-card anim" data-type="apartamento">
+        <div class="prop-img">
+          <div class="prop-img-bg g1">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>4.800.000</span></div>
-            <div class="property-name">Apartamento Alto Padrão Leblon</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Leblon, Zona Sul — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-bed"></i> 4 Quartos
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-bath"></i> 3 Suítes
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 220m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-car"></i> 3 Vagas
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
+          <span class="prop-badge badge-exc">Exclusivo</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 2.850.000</div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="property-card show fade-up delay-1" data-category="casa">
-          <div class="property-img">
-            <div class="property-img-placeholder prop-img-2">
-              <i class="fa-solid fa-house-chimney"></i>
-            </div>
-            <div class="property-tag lancamento">Lançamento</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
-          </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>8.200.000</span></div>
-            <div class="property-name">Casa em Condomínio Barra da Tijuca</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Barra da Tijuca — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-bed"></i> 5 Quartos
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-bath"></i> 5 Suítes
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 480m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-car"></i> 4 Vagas
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="property-card show fade-up delay-2" data-category="apartamento">
-          <div class="property-img">
-            <div class="property-img-placeholder prop-img-3">
-              <i class="fa-solid fa-water"></i>
-            </div>
-            <div class="property-tag venda">À Venda</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
-          </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>3.400.000</span></div>
-            <div class="property-name">Cobertura Vista Mar Ipanema</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Ipanema, Zona Sul — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-bed"></i> 3 Quartos
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-bath"></i> 2 Suítes
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 175m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-car"></i> 2 Vagas
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
-        </div>
-
-        <!-- Card 4 (Terreno - hidden by default unless filter matches) -->
-        <div class="property-card show fade-up delay-3" data-category="terreno">
-          <div class="property-img">
-            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #1a2a15, #253520, #111a10);">
-              <i class="fa-solid fa-seedling"></i>
-            </div>
-            <div class="property-tag venda">À Venda</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
-          </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>2.100.000</span></div>
-            <div class="property-name">Terreno Condomínio Recreio</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Recreio dos Bandeirantes — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 800m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-shield-halved"></i> Condomínio
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-water"></i> Vista Mar
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="property-card show fade-up delay-4" data-category="apartamento">
-          <div class="property-img">
-            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #1e1530, #2a1f40, #15102a);">
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <div class="property-tag venda">À Venda</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
-          </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>2.650.000</span></div>
-            <div class="property-name">Apartamento Lagoa Rodrigo de Freitas</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Lagoa, Zona Sul — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-bed"></i> 3 Quartos
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-bath"></i> 2 Suítes
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 140m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-car"></i> 2 Vagas
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="property-card show fade-up delay-5" data-category="casa">
-          <div class="property-img">
-            <div class="property-img-placeholder" style="background: linear-gradient(135deg, #200a0a, #361515, #180808);">
-              <i class="fa-solid fa-house-flag"></i>
-            </div>
-            <div class="property-tag venda">À Venda</div>
-            <div class="property-favorite"><i class="fa-regular fa-heart"></i></div>
-          </div>
-          <div class="property-body">
-            <div class="property-price">R$ <span>5.900.000</span></div>
-            <div class="property-name">Casa Gávea com Piscina e Jardim</div>
-            <div class="property-location">
-              <i class="fa-solid fa-location-dot"></i>
-              Gávea, Zona Sul — Rio de Janeiro
-            </div>
-            <div class="property-features">
-              <div class="property-feature">
-                <i class="fa-solid fa-bed"></i> 4 Quartos
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-bath"></i> 4 Suítes
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-expand"></i> 650m²
-              </div>
-              <div class="property-feature">
-                <i class="fa-solid fa-car"></i> 4 Vagas
-              </div>
-            </div>
-            <button class="property-btn">Ver Detalhes</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="sobre">
-    <div class="container">
-      <div class="about-grid">
-
-        <!-- Photo Column -->
-        <div class="about-photo-wrap slide-left">
-          <div class="about-photo-main">
-            <div class="about-photo-silhouette"></div>
-            <div class="about-photo-icon">
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <div class="about-photo-frame"></div>
-          </div>
-
-          <div class="creci-badge" style="position:absolute; top:24px; right:-24px;">
-            <div class="creci-label">CRECI-RJ</div>
-            <div class="creci-number">123.456-F</div>
-          </div>
-
-          <div class="about-badge" style="position:absolute; bottom:24px; right:-24px;">
-            <div class="about-badge-number">15+</div>
-            <div class="about-badge-text">Anos de<br>Experiência</div>
-          </div>
-        </div>
-
-        <!-- Text Column -->
-        <div class="about-text slide-right">
-          <span class="section-label"><i class="fa-solid fa-user"></i> Sobre mim</span>
-          <h2 class="about-name">Igor Alves</h2>
-          <div class="about-name-subtitle">Corretor de Imóveis de Alto Padrão · Zona Sul, RJ</div>
-
-          <p class="about-desc">
-            Com mais de 15 anos de atuação no mercado imobiliário carioca, me especializei na intermediação de imóveis de alto padrão nos bairros mais exclusivos do Rio de Janeiro — Leblon, Ipanema, Gávea, Lagoa e Barra da Tijuca.
+        <div class="prop-body">
+          <h3 class="prop-title">Apartamento de Alto Padrão</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Ipanema, Zona Sul · Rio de Janeiro
           </p>
-          <p class="about-desc" style="margin-top: -16px;">
-            Minha missão é transformar a busca pelo imóvel ideal em uma experiência tranquila, segura e personalizada. Cada cliente recebe atenção exclusiva, do primeiro contato até a entrega das chaves.
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 180 m²
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 3 Suítes
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 2 Vagas
+            </div>
+          </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20no%20apartamento%20em%20Ipanema!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prop-card anim delay-1" data-type="cobertura">
+        <div class="prop-img">
+          <div class="prop-img-bg g2">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="prop-badge badge-new">Novo</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 5.200.000</div>
+        </div>
+        <div class="prop-body">
+          <h3 class="prop-title">Cobertura Duplex Vista Mar</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Leblon, Zona Sul · Rio de Janeiro
           </p>
-
-          <!-- Certifications -->
-          <div class="about-certs">
-            <span class="cert-badge"><i class="fa-solid fa-medal"></i> CRECI Ativo RJ</span>
-            <span class="cert-badge"><i class="fa-solid fa-award"></i> COFECI Certificado</span>
-            <span class="cert-badge"><i class="fa-solid fa-graduation-cap"></i> MBA Mercado Imobiliário</span>
-            <span class="cert-badge"><i class="fa-solid fa-star"></i> Top 1% Corretor 2024</span>
-          </div>
-
-          <!-- Differentials -->
-          <div class="about-differentials">
-            <div class="differential-item">
-              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
-              <div class="differential-text">
-                <strong>Avaliação Gratuita e Precisa</strong>
-                <p>Análise completa de mercado para garantir o melhor preço na venda ou compra.</p>
-              </div>
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 320 m²
             </div>
-            <div class="differential-item">
-              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
-              <div class="differential-text">
-                <strong>Atendimento Exclusivo e Personalizado</strong>
-                <p>Dedicação total ao seu perfil e necessidades, com suporte 7 dias por semana.</p>
-              </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 4 Suítes
             </div>
-            <div class="differential-item">
-              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
-              <div class="differential-text">
-                <strong>Documentação e Jurídico Sem Complicação</strong>
-                <p>Toda a burocracia resolvida com equipe jurídica especializada parceira.</p>
-              </div>
-            </div>
-            <div class="differential-item">
-              <div class="differential-icon"><i class="fa-solid fa-check"></i></div>
-              <div class="differential-text">
-                <strong>Rede Exclusiva de Compradores e Investidores</strong>
-                <p>Base ativa com mais de 2.000 compradores qualificados prontos para fechar negócio.</p>
-              </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 3 Vagas
             </div>
           </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20na%20cobertura%20no%20Leblon!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
 
-          <div class="about-actions">
-            <a href="https://wa.me/5521999999999?text=Olá%20Igor!" class="btn btn-primary" target="_blank">
-              <i class="fa-brands fa-whatsapp"></i>
-              Falar Comigo
-            </a>
-            <a href="#servicos" class="btn btn-outline-dark">
-              Ver Serviços
-            </a>
+      <!-- Card 3 -->
+      <div class="prop-card anim delay-2" data-type="casa">
+        <div class="prop-img">
+          <div class="prop-img-bg g3">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="prop-badge badge-hot">🔥 Destaque</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 4.800.000</div>
+        </div>
+        <div class="prop-body">
+          <h3 class="prop-title">Casa em Condomínio de Luxo</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Barra da Tijuca · Rio de Janeiro
+          </p>
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 450 m²
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 5 Suítes
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 4 Vagas
+            </div>
+          </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20na%20casa%20na%20Barra!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="prop-card anim delay-3" data-type="apartamento">
+        <div class="prop-img">
+          <div class="prop-img-bg g4">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="prop-badge badge-new">Lançamento</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 1.750.000</div>
+        </div>
+        <div class="prop-body">
+          <h3 class="prop-title">Apartamento Garden Luxo</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Lagoa, Zona Sul · Rio de Janeiro
+          </p>
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 145 m²
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 3 Suítes
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 2 Vagas
+            </div>
+          </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20no%20garden%20na%20Lagoa!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="prop-card anim delay-4" data-type="cobertura">
+        <div class="prop-img">
+          <div class="prop-img-bg g5">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="prop-badge badge-exc">Exclusivo</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 7.900.000</div>
+        </div>
+        <div class="prop-body">
+          <h3 class="prop-title">Penthouse 360° Vista Mar</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Gávea, Zona Sul · Rio de Janeiro
+          </p>
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 520 m²
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 5 Suítes
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 4 Vagas
+            </div>
+          </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20no%20penthouse%20na%20Gávea!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="prop-card anim delay-5" data-type="casa">
+        <div class="prop-img">
+          <div class="prop-img-bg g6">
+            <svg width="56" height="56" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="prop-badge badge-hot">Oportunidade</span>
+          <button class="prop-fav" onclick="this.classList.toggle('faved')" aria-label="Favoritar">
+            <svg width="18" height="18" fill="none" stroke="#e74c3c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+          <div class="prop-price">R$ 3.600.000</div>
+        </div>
+        <div class="prop-body">
+          <h3 class="prop-title">Casa à Beira-Mar Completa</h3>
+          <p class="prop-loc">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Recreio dos Bandeirantes · RJ
+          </p>
+          <div class="prop-specs">
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 380 m²
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/></svg> 4 Quartos
+            </div>
+            <div class="prop-spec">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> 3 Vagas
+            </div>
+          </div>
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20tenho%20interesse%20na%20casa%20no%20Recreio!" target="_blank" rel="noopener" class="prop-cta" style="display:block;text-align:center">Ver Detalhes</a>
+        </div>
+      </div>
+
+    </div><!-- /properties-grid -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ ABOUT ══ -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Photo -->
+      <div class="about-photo-wrap anim from-left">
+        <div class="about-photo">
+          <svg width="120" height="120" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div class="photo-name">
+            <h3>Igor Alves</h3>
+            <p>Corretor de Imóveis · CRECI 123456-F</p>
           </div>
         </div>
-
+        <div class="creci-badge">CRECI<br>123456-F<br>✓ Ativo</div>
+        <div class="exp-badge"><strong>15</strong>anos de<br>experiência</div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section id="servicos">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label"><i class="fa-solid fa-briefcase"></i> Como Posso Ajudar</span>
-        <h2 class="section-title" style="color: var(--white);">Serviços <span>Especializados</span></h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">
-          Ofereço uma gama completa de serviços imobiliários para atender todas as suas necessidades com excelência e dedicação.
+      <!-- Content -->
+      <div class="about-content anim from-right">
+        <div class="tag">Sobre Mim</div>
+        <h2 class="section-title">Seu Especialista em <em style="color:var(--gold);font-style:italic">Alto Padrão</em></h2>
+        <div class="divider"></div>
+        <p class="about-desc">
+          Há 15 anos no mercado imobiliário carioca, já ajudei mais de 500 famílias a realizarem o sonho da casa própria. Minha especialização é em imóveis de alto padrão na Zona Sul e Barra da Tijuca, onde conheço cada rua, cada oportunidade e cada nuance do mercado.
         </p>
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service-card fade-up delay-1">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-key"></i>
+        <p class="about-desc">
+          Trabalho com dedicação total ao cliente, desde a busca do imóvel ideal até a entrega das chaves — sempre com transparência, ética e um atendimento personalizado que resulta em mais de 70% de indicações dos meus clientes.
+        </p>
+        <div class="about-certs">
+          <div class="cert">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            CRECI Ativo
           </div>
-          <div class="service-title">Compra de Imóvel</div>
-          <p class="service-desc">Encontro o imóvel ideal para você dentro do seu perfil e orçamento. Negoço as melhores condições e cuido de toda a documentação.</p>
-          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card fade-up delay-2">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-handshake"></i>
+          <div class="cert">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Cofeci Certificado
           </div>
-          <div class="service-title">Venda Rápida</div>
-          <p class="service-desc">Marketing digital avançado, fotografia profissional e acesso à minha rede exclusiva de compradores. Seu imóvel vendido no menor tempo.</p>
-          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card fade-up delay-3">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <div class="cert">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            MBA Imobiliário
           </div>
-          <div class="service-title">Avaliação Gratuita</div>
-          <p class="service-desc">Análise comparativa de mercado baseada em dados reais. Saiba exatamente quanto vale o seu imóvel sem nenhum custo.</p>
-          <a href="#contato" class="service-link">Solicitar Avaliação <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card fade-up delay-4">
-          <div class="service-icon-wrap">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <div class="service-title">Consultoria de Investimento</div>
-          <p class="service-desc">Análise de rentabilidade, tendências de mercado e melhores oportunidades para seu dinheiro trabalhar por você no setor imobiliário.</p>
-          <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section id="depoimentos">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-label"><i class="fa-solid fa-comments"></i> Depoimentos</span>
-        <h2 class="section-title">O que Dizem<br>Nossos <span>Clientes</span></h2>
-        <p class="section-subtitle">A satisfação dos meus clientes é a minha maior conquista. Confira o que eles têm a dizer sobre a experiência.</p>
-      </div>
-
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card fade-up delay-1">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <p class="testimonial-text">
-            "O Igor superou todas as minhas expectativas. Em menos de 30 dias vendeu meu apartamento no Leblon pelo preço que eu queria, sem stress e com toda a documentação em ordem. Profissional excepcional!"
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar avatar-a">MA</div>
-            <div class="testimonial-info">
-              <div class="author-name">Marcela Andrade</div>
-              <div class="author-detail">Vendedora — Leblon, RJ</div>
-            </div>
+          <div class="cert">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Especialista em Luxo
           </div>
         </div>
-
-        <div class="testimonial-card fade-up delay-2">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+        <div class="about-diff">
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Atendimento personalizado 24h
           </div>
-          <p class="testimonial-text">
-            "Comprei minha casa na Barra da Tijuca com a ajuda do Igor. Ele me mostrou opções que eu nunca teria encontrado sozinho, negociou um desconto de R$ 200 mil e acompanhou cada detalhe da escritura. Nota 10!"
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar avatar-b">RB</div>
-            <div class="testimonial-info">
-              <div class="author-name">Roberto Barbosa</div>
-              <div class="author-detail">Comprador — Barra da Tijuca, RJ</div>
-            </div>
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Avaliação gratuita do imóvel
           </div>
-        </div>
-
-        <div class="testimonial-card fade-up delay-3">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Assessoria jurídica inclusa
           </div>
-          <p class="testimonial-text">
-            "Investidor há 10 anos, nunca encontrei um corretor tão bem preparado tecnicamente. A consultoria do Igor me ajudou a montar um portfólio de imóveis que rende acima do mercado. Parceria de longo prazo!"
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar avatar-c">CT</div>
-            <div class="testimonial-info">
-              <div class="author-name">Carlos Teixeira</div>
-              <div class="author-detail">Investidor — Ipanema & Gávea, RJ</div>
-            </div>
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Gestão completa da negociação
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Ampla rede de clientes ativos
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Parceria com os maiores bancos
           </div>
         </div>
-
-      </div>
-
-      <!-- Trust Banner -->
-      <div class="fade-up" style="margin-top: 56px; background: var(--white); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--gray-100); display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-around; box-shadow: var(--shadow-sm);">
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">⭐ 5.0</div>
-          <div style="font-size: 0.8rem; color: var(--gray-600);">Google Avaliações</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--navy);">+230</div>
-          <div style="font-size: 0.8rem; color: var(--gray-600);">Avaliações Verificadas</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">Top 1%</div>
-          <div style="font-size: 0.8rem; color: var(--gray-600);">Corretores do RJ 2024</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--navy);">15 Anos</div>
-          <div style="font-size: 0.8rem; color: var(--gray-600);">de Mercado</div>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--gold);">R$ 2Bi+</div>
-          <div style="font-size: 0.8rem; color: var(--gray-600);">em Transações</div>
+        <div class="about-btns">
+          <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20gostaria%20de%20conversar!" class="btn btn-gold" target="_blank" rel="noopener">Falar com Igor</a>
+          <a href="#contato" class="btn btn-navy">Solicitar Avaliação</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== CTA / CONTACT ===== -->
-  <section id="contato">
-    <div class="container">
-      <div class="cta-grid">
+<!-- ══════════════════════════════════════ SERVICES ══ -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="tag">Serviços</div>
+    <h2 class="section-title anim">O Que Posso Fazer <em style="font-style:italic;color:var(--gold)">por Você</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub">Soluções completas para compra, venda e investimento imobiliário de alto padrão.</p>
+    <div class="services-grid">
+      <div class="srv-card anim delay-1">
+        <div class="srv-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Compra de Imóveis</h3>
+        <p>Encontro o imóvel perfeito para você com base em suas necessidades, orçamento e estilo de vida. Cuido de tudo: visitas, documentação e negociação.</p>
+      </div>
+      <div class="srv-card anim delay-2">
+        <div class="srv-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Venda Rápida</h3>
+        <p>Estratégia de marketing digital + rede qualificada de compradores para vender seu imóvel pelo melhor preço, no menor tempo possível.</p>
+      </div>
+      <div class="srv-card anim delay-3">
+        <div class="srv-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Avaliação Gratuita</h3>
+        <p>Análise de mercado completa e gratuita do seu imóvel. Saiba exatamente quanto vale sua propriedade com base em dados reais.</p>
+      </div>
+      <div class="srv-card anim delay-4">
+        <div class="srv-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Consultoria de Investimento</h3>
+        <p>Assessoria especializada para quem deseja investir em imóveis de alto padrão com foco em rentabilidade e valorização do patrimônio.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Left Column -->
-        <div class="cta-left slide-left">
-          <span class="section-label"><i class="fa-solid fa-phone"></i> Fale Comigo</span>
-          <h2 class="section-title">Pronto para Encontrar<br>seu <span>Imóvel Ideal?</span></h2>
-          <p class="section-subtitle">
-            Entre em contato agora mesmo. Respondo rapidamente pelo WhatsApp ou preencha o formulário e entro em contato em até 2 horas.
-          </p>
+<!-- ══════════════════════════════════════ TESTIMONIALS ══ -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="tag">Depoimentos</div>
+    <h2 class="section-title anim">O Que Dizem Meus <em style="color:var(--gold);font-style:italic">Clientes</em></h2>
+    <div class="divider"></div>
+    <div class="testi-grid">
+      <div class="testi-card anim delay-1">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">"O Igor foi incrível! Encontrou o apartamento dos meus sonhos no Leblon em apenas 3 semanas. Profissionalismo impecável, atendimento rápido e sempre muito honesto. Super recomendo!"</p>
+        <div class="testi-author">
+          <div class="testi-av av-gold">MA</div>
+          <div class="testi-info">
+            <strong>Mariana Albuquerque</strong>
+            <span>Compradora · Leblon, RJ · 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card anim delay-2">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">"Vendi meu apartamento em tempo recorde e pelo valor que eu queria. O Igor tem uma carteira impressionante de clientes qualificados. Foi uma experiência excelente do início ao fim!"</p>
+        <div class="testi-author">
+          <div class="testi-av av-navy">RC</div>
+          <div class="testi-info">
+            <strong>Ricardo Carvalho</strong>
+            <span>Vendedor · Ipanema, RJ · 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card anim delay-3">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">"Estava procurando casa na Barra há meses sem sucesso. Com o Igor, em 2 meses já estava morando na casa dos meus sonhos. Atendimento 24h, sempre disponível. É o melhor corretor que conheço!"</p>
+        <div class="testi-author">
+          <div class="testi-av av-blue">FS</div>
+          <div class="testi-info">
+            <strong>Fernanda Souza</strong>
+            <span>Compradora · Barra da Tijuca, RJ · 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-bar">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Clientes Atendidos</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">⭐ 4.9</div>
+        <div class="trust-label">Nota no Google</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">98%</div>
+        <div class="trust-label">Recomendam</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">70%</div>
+        <div class="trust-label">Por Indicação</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="cta-contact-info">
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fa-brands fa-whatsapp"></i>
-              </div>
-              <div class="contact-item-text">
-                <div class="label">WhatsApp / Telefone</div>
-                <div class="value">(21) 99999-9999</div>
-              </div>
+<!-- ══════════════════════════════════════ CONTACT ══ -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info">
+        <div class="tag">Contato</div>
+        <h2 class="section-title anim">Pronto para Encontrar <em style="font-style:italic;color:var(--gold)">Seu Imóvel?</em></h2>
+        <div class="divider"></div>
+        <p class="section-sub">Entre em contato agora e dê o primeiro passo rumo ao imóvel dos seus sonhos. Atendimento rápido e personalizado.</p>
+        <div class="contact-items">
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
             </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div class="contact-item-text">
-                <div class="label">E-mail</div>
-                <div class="value">igor@igoralvsimoveis.com.br</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div class="contact-item-text">
-                <div class="label">Escritório</div>
-                <div class="value">Av. Ataulfo de Paiva, 270 · Leblon, Rio de Janeiro</div>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div class="contact-item-text">
-                <div class="label">Horário</div>
-                <div class="value">Seg – Sab: 8h às 20h</div>
-              </div>
+            <div class="c-text">
+              <strong>(21) 99999-9999</strong>
+              <span>WhatsApp disponível</span>
             </div>
           </div>
-
-          <a href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20conversar%20sobre%20imóveis!" class="cta-wpp-btn" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
-            Chamar no WhatsApp Agora
-          </a>
-        </div>
-
-        <!-- Right Column - Form -->
-        <div class="contact-form slide-right">
-          <h3>Envie uma Mensagem</h3>
-          <p>Preencha o formulário e entro em contato em até 2 horas.</p>
-
-          <form id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nome">Nome Completo *</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-              </div>
-              <div class="form-group">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-              </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="telefone">Telefone / WhatsApp *</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(21) 99999-9999" required />
-              </div>
-              <div class="form-group">
-                <label for="interesse">Interesse</label>
-                <select id="interesse" name="interesse">
-                  <option value="">Selecione...</option>
-                  <option value="comprar">Quero Comprar</option>
-                  <option value="vender">Quero Vender</option>
-                  <option value="avaliar">Avaliar Imóvel</option>
-                  <option value="investir">Investimento</option>
-                </select>
-              </div>
+            <div class="c-text">
+              <strong>igor@igoralvesimoveis.com.br</strong>
+              <span>Resposta em até 2h</span>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="c-text">
+              <strong>Ipanema, Rio de Janeiro – RJ</strong>
+              <span>Atendimento em toda a Zona Sul e Barra</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20gostaria%20de%20encontrar%20meu%20imóvel!" class="wa-big-btn" target="_blank" rel="noopener">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp Agora
+        </a>
+      </div>
+      <!-- Form -->
+      <div class="contact-form anim from-right">
+        <h3 class="form-title">Envie uma Mensagem</h3>
+        <p class="form-sub">Preencha o formulário e entrarei em contato rapidamente.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Seu Nome *</label>
+              <input type="text" id="fname" placeholder="Ex: João Silva" required />
             </div>
             <div class="form-group">
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o que procura..."></textarea>
+              <label>Telefone / WhatsApp *</label>
+              <input type="tel" id="fphone" placeholder="(21) 9 9999-9999" required />
             </div>
-            <button type="submit" class="form-submit">
-              <i class="fa-solid fa-paper-plane"></i>
-              Enviar Mensagem
-            </button>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <div style="font-size: 2.5rem; margin-bottom: 12px;">✅</div>
-            <h4 style="color: var(--navy); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 8px;">Mensagem Enviada!</h4>
-            <p style="font-size: 0.9rem; color: var(--gray-600);">Obrigado! Entrarei em contato em breve.</p>
           </div>
+          <div class="form-group">
+            <label>E-mail *</label>
+            <input type="email" id="femail" placeholder="joao@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Interesse</label>
+            <select id="finterest">
+              <option value="">Selecione...</option>
+              <option>Quero Comprar um Imóvel</option>
+              <option>Quero Vender meu Imóvel</option>
+              <option>Avaliação Gratuita</option>
+              <option>Consultoria de Investimento</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensagem</label>
+            <textarea id="fmsg" placeholder="Descreva o imóvel que procura, localização preferida, orçamento..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Enviar Mensagem →</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3>Mensagem Enviada!</h3>
+          <p>Obrigado pelo contato. Entrarei em contato em breve via WhatsApp ou e-mail.</p>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-
-        <!-- Brand Column -->
-        <div class="footer-brand">
-          <a href="#hero" class="navbar-logo">
-            <div class="logo-icon">IA</div>
-            <div class="logo-text">
-              <span class="logo-name">Igor Alves</span>
-              <span class="logo-title">Corretor de Imóveis</span>
-            </div>
+<!-- ══════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">Igor Alves</div>
+        <div class="logo-creci">Corretor de Imóveis · CRECI 123456-F</div>
+        <p>Especialista em imóveis de alto padrão no Rio de Janeiro. Há 15 anos realizando sonhos com ética, transparência e dedicação.</p>
+        <div class="footer-social">
+          <a href="#" class="soc-link" aria-label="Instagram">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <p class="footer-desc">
-            Especialista em imóveis de alto padrão no Rio de Janeiro. CRECI-RJ 123.456-F. Transformando o sonho do imóvel ideal em realidade há mais de 15 anos.
-          </p>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram" title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" aria-label="Facebook" title="Facebook">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="#" aria-label="LinkedIn" title="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="#" aria-label="YouTube" title="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://wa.me/5521999999999" aria-label="WhatsApp" title="WhatsApp" target="_blank">
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-          </div>
+          <a href="#" class="soc-link" aria-label="Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="LinkedIn">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://wa.me/5521999999999" class="soc-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
-
-        <!-- Navigation -->
-        <div class="footer-col">
-          <h4>Navegação</h4>
-          <ul class="footer-links">
-            <li><a href="#imoveis">Imóveis</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
-        </div>
-
-        <!-- Services -->
-        <div class="footer-col">
-          <h4>Serviços</h4>
-          <ul class="footer-links">
-            <li><a href="#servicos">Compra de Imóvel</a></li>
-            <li><a href="#servicos">Venda Rápida</a></li>
-            <li><a href="#servicos">Avaliação Gratuita</a></li>
-            <li><a href="#servicos">Consultoria</a></li>
-            <li><a href="#servicos">Investimento</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-col">
-          <h4>Contato</h4>
-          <div class="footer-contact-list">
-            <div class="footer-contact-item">
-              <i class="fa-brands fa-whatsapp"></i>
-              <span>(21) 99999-9999</span>
-            </div>
-            <div class="footer-contact-item">
-              <i class="fa-solid fa-envelope"></i>
-              <span>igor@igoralvsimoveis.com.br</span>
-            </div>
-            <div class="footer-contact-item">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Av. Ataulfo de Paiva, 270<br>Leblon — Rio de Janeiro, RJ</span>
-            </div>
-            <div class="footer-contact-item">
-              <i class="fa-solid fa-clock"></i>
-              <span>Seg – Sab: 8h às 20h</span>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p class="footer-copyright">
-          © 2025 <span>Igor Alves Imóveis</span>. Todos os direitos reservados. CRECI-RJ 123.456-F
-        </p>
-        <div class="footer-legal">
-          <a href="#">Política de Privacidade</a>
-          <a href="#">Termos de Uso</a>
-        </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#imoveis">Imóveis</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Compra de Imóveis</a></li>
+          <li><a href="#servicos">Venda Rápida</a></li>
+          <li><a href="#servicos">Avaliação Gratuita</a></li>
+          <li><a href="#servicos">Consultoria</a></li>
+          <li><a href="#contato">Financiamento</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Regiões</h4>
+        <ul>
+          <li><a href="#imoveis">Leblon</a></li>
+          <li><a href="#imoveis">Ipanema</a></li>
+          <li><a href="#imoveis">Barra da Tijuca</a></li>
+          <li><a href="#imoveis">Lagoa</a></li>
+          <li><a href="#imoveis">Gávea</a></li>
+          <li><a href="#imoveis">Recreio</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Igor Alves — Corretor de Imóveis. CRECI 123456-F. Todos os direitos reservados.</p>
+      <a href="#inicio">Voltar ao topo ↑</a>
+    </div>
+  </div>
+</footer>
 
-  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
-  <a class="whatsapp-float" href="https://wa.me/5521999999999?text=Olá%20Igor%2C%20gostaria%20de%20saber%20mais%20sobre%20imóveis!" target="_blank" aria-label="Falar pelo WhatsApp" title="Falar pelo WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+<!-- ══════════════════════════════════════ WA FLOAT ══ -->
+<div class="wa-float">
+  <div class="wa-tooltip">Fale comigo agora!</div>
+  <a href="https://wa.me/5521999999999?text=Olá%20Igor,%20vim%20pelo%20site!" class="wa-float-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
+</div>
 
-  <!-- Back to Top -->
-  <button class="back-top" id="backTop" aria-label="Voltar ao topo">
-    <i class="fa-solid fa-chevron-up"></i>
-  </button>
+<script>
+  // ── Progressive enhancement: enable animations only when JS runs
+  document.documentElement.classList.add('js-ready');
 
-  <!-- ===== JAVASCRIPT ===== -->
-  <script>
-    'use strict';
+  // ── Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive: true});
 
-    /* ---- Navbar scroll behavior ---- */
-    const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-      lastScroll = scrollY;
-    }, { passive: true });
-
-    /* ---- Hamburger / Mobile Menu ---- */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  // ── Hamburger / mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(el => {
+    el.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
     });
+  });
 
-    document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
+  // ── Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+  // ── Property filter tabs
+  const tabs = document.querySelectorAll('.filter-tab');
+  const cards = document.querySelectorAll('.prop-card');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'todos' || card.dataset.type === filter) ? '' : 'none';
       });
     });
+  });
 
-    /* ---- Smooth Scroll ---- */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        const offset = 80;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
+  // ── Phone mask
+  const phoneInput = document.getElementById('fphone');
+  if(phoneInput) {
+    phoneInput.addEventListener('input', function() {
+      let v = this.value.replace(/\D/g,'').slice(0,11);
+      if(v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3');
+      else if(v.length > 6) v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/,'($1) $2-$3');
+      else if(v.length > 2) v = v.replace(/(\d{2})(\d+)/,'($1) $2');
+      else if(v.length) v = '(' + v;
+      this.value = v;
     });
+  }
 
-    /* ---- IntersectionObserver Scroll Animations ---- */
-    const observeTargets = document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    observeTargets.forEach(el => observer.observe(el));
-
-    /* Trigger hero animations immediately */
-    document.querySelectorAll('#hero .fade-up').forEach(el => {
-      setTimeout(() => el.classList.add('visible'), 100);
+  // ── Contact form
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      const phone = document.getElementById('fphone').value.trim();
+      if(!name || !email || !phone) { alert('Por favor preencha Nome, E-mail e Telefone.'); return; }
+      const msg = encodeURIComponent(
+        `Olá Igor! Me chamo *${name}*.\n📱 Telefone: ${phone}\n📧 E-mail: ${email}\n\nInteresse: ${document.getElementById('finterest').value || 'Não especificado'}\n\n${document.getElementById('fmsg').value}`
+      );
+      window.open(`https://wa.me/5521999999999?text=${msg}`, '_blank');
+      form.style.display = 'none';
+      success.classList.add('show');
     });
-
-    /* ---- Counter Animation ---- */
-    const counters = document.querySelectorAll('.stat-number[data-target]');
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target, 10);
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || (target >= 100 ? '+' : el.dataset.target >= 15 ? ' Anos' : '');
-      const duration = 1800;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(eased * target);
-        el.textContent = prefix + current + (progress >= 1 ? suffix : '');
-        if (progress < 1) requestAnimationFrame(update);
-        else el.textContent = prefix + target + suffix;
-      }
-
-      requestAnimationFrame(update);
-    }
-
-    /* Fix stat suffixes */
-    const statItems = document.querySelectorAll('.stat-number');
-    statItems.forEach(el => {
-      // Leave as-is; handled by animateCounter
-    });
-
-    /* ---- Property Filter Tabs ---- */
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const propertyCards = document.querySelectorAll('.property-card');
-
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Update active tab
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const filter = tab.dataset.filter;
-
-        propertyCards.forEach(card => {
-          const category = card.dataset.category;
-          const matches = filter === 'all' || category === filter;
-
-          if (matches) {
-            card.classList.add('show');
-            card.style.display = '';
-            // Re-trigger animation
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 50);
-          } else {
-            card.classList.remove('show');
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    /* ---- Heart / Favorite Toggle ---- */
-    document.querySelectorAll('.property-favorite').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const icon = btn.querySelector('i');
-        icon.classList.toggle('fa-regular');
-        icon.classList.toggle('fa-solid');
-        icon.style.color = icon.classList.contains('fa-solid') ? '#e74c3c' : '';
-      });
-    });
-
-    /* ---- Contact Form ---- */
-    const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
-
-    // Phone mask
-    const phoneInput = document.getElementById('telefone');
-    if (phoneInput) {
-      phoneInput.addEventListener('input', (e) => {
-        let v = e.target.value.replace(/\D/g, '');
-        if (v.length > 11) v = v.slice(0, 11);
-        if (v.length > 7) {
-          v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-        } else if (v.length > 2) {
-          v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-        } else if (v.length > 0) {
-          v = `(${v}`;
-        }
-        e.target.value = v;
-      });
-    }
-
-    if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
-
-        if (!nome || !email || !telefone) {
-          // Simple validation highlight
-          [['nome', nome], ['email', email], ['telefone', telefone]].forEach(([id, val]) => {
-            const el = document.getElementById(id);
-            if (!val) {
-              el.style.borderColor = '#e74c3c';
-              el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
-            }
-          });
-          return;
-        }
-
-        const submitBtn = contactForm.querySelector('.form-submit');
-        submitBtn.textContent = 'Enviando...';
-        submitBtn.disabled = true;
-
-        // Simulate form submission
-        setTimeout(() => {
-          contactForm.style.display = 'none';
-          formSuccess.classList.add('show');
-        }, 1200);
-      });
-    }
-
-    /* ---- Back to Top ---- */
-    const backTop = document.getElementById('backTop');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
-        backTop.classList.add('show');
-      } else {
-        backTop.classList.remove('show');
-      }
-    }, { passive: true });
-
-    backTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    /* ---- Property Detail Button (demo) ---- */
-    document.querySelectorAll('.property-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.property-card');
-        const name = card.querySelector('.property-name').textContent;
-        const price = card.querySelector('.property-price').textContent.trim();
-        const wppMsg = encodeURIComponent(`Olá Igor! Tenho interesse no imóvel: ${name} (${price}). Pode me dar mais informações?`);
-        window.open(`https://wa.me/5521999999999?text=${wppMsg}`, '_blank');
-      });
-    });
-
-    /* ---- Parallax subtle effect on hero ---- */
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) {
-      window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        if (scrolled < window.innerHeight) {
-          heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-      }, { passive: true });
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
