@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sistema Personal Trainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:       #0d0d0d;
+  --surface:  #161616;
+  --card:     #1e1e1e;
+  --border:   #2a2a2a;
+  --accent:   #e8ff00;
+  --accent2:  #ff4d4d;
+  --text:     #f0f0f0;
+  --muted:    #888;
+  --green:    #00e676;
+  --orange:   #ff9100;
+  --blue:     #448aff;
+  --radius:   12px;
+  --font:     'Inter', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ─── LAYOUT ─── */
+.app { max-width: 860px; margin: 0 auto; padding: 24px 16px 80px; }
+
+/* ─── HEADER ─── */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
+.logo span { color: var(--accent); }
+.nav-tabs { display: flex; gap: 4px; }
+.nav-tab {
+  padding: 8px 16px; border-radius: 8px; border: none;
+  background: transparent; color: var(--muted); font-size: .85rem;
+  font-family: var(--font); cursor: pointer; transition: all .2s;
+}
+.nav-tab.active, .nav-tab:hover { background: var(--card); color: var(--text); }
+.nav-tab.active { color: var(--accent); }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-size: 1rem; font-weight: 700; margin-bottom: 20px;
+  text-transform: uppercase; letter-spacing: .5px; color: var(--accent);
+}
+
+/* ─── ANAMNESE FORM ─── */
+.step-indicator {
+  display: flex; gap: 6px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.step-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: var(--border); transition: background .3s;
+}
+.step-dot.done { background: var(--accent); }
+.step-dot.active { background: var(--accent); opacity: .5; }
+
+.step { display: none; }
+.step.active { display: block; }
+
+.step-header { margin-bottom: 24px; }
+.step-number { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.step-title { font-size: 1.4rem; font-weight: 700; margin-top: 4px; }
+
+.field { margin-bottom: 20px; }
+.field label {
+  display: block; font-size: .85rem; color: var(--muted);
+  margin-bottom: 8px; font-weight: 500;
+}
+.field input, .field select, .field textarea {
+  width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; color: var(--text);
+  font-family: var(--font); font-size: .95rem;
+  transition: border-color .2s; outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+}
+.field select option { background: var(--surface); }
+.field textarea { resize: vertical; min-height: 80px; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:500px){ .field-row { grid-template-columns: 1fr; } }
+
+.radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.radio-btn {
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--muted); cursor: pointer; font-size: .85rem;
+  transition: all .2s; user-select: none;
+}
+.radio-btn.selected {
+  border-color: var(--accent); background: rgba(232,255,0,.08);
+  color: var(--accent); font-weight: 600;
+}
+
+.btn {
+  padding: 14px 28px; border-radius: 10px; border: none;
+  font-family: var(--font); font-size: .95rem; font-weight: 700;
+  cursor: pointer; transition: all .2s;
+}
+.btn-primary {
+  background: var(--accent); color: #000;
+  width: 100%; margin-top: 8px;
+}
+.btn-primary:hover { background: #d4e800; transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { color: var(--text); border-color: var(--text); }
+.btn-row { display: flex; gap: 12px; margin-top: 8px; }
+.btn-row .btn-primary { flex: 1; }
+
+/* ─── DIAGNÓSTICO ─── */
+.diag-block {
+  display: flex; gap: 16px; margin-bottom: 16px;
+  padding: 16px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.diag-icon { font-size: 1.8rem; flex-shrink: 0; }
+.diag-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.diag-value { font-size: 1rem; font-weight: 700; margin-top: 2px; }
+.diag-value.green { color: var(--green); }
+.diag-value.orange { color: var(--orange); }
+.diag-value.red { color: var(--accent2); }
+.diag-value.blue { color: var(--blue); }
+
+.alert-box {
+  padding: 16px 20px; border-radius: 10px;
+  border-left: 4px solid var(--accent2);
+  background: rgba(255,77,77,.06);
+  margin-bottom: 16px; font-size: .9rem;
+}
+.alert-box.warn { border-color: var(--orange); background: rgba(255,145,0,.06); }
+.alert-box.info { border-color: var(--blue); background: rgba(68,138,255,.06); }
+.alert-box.ok { border-color: var(--green); background: rgba(0,230,118,.06); }
+
+/* ─── PLANO DE TREINO ─── */
+.week-grid {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  gap: 6px; margin-bottom: 24px;
+}
+@media(max-width:600px){ .week-grid { grid-template-columns: repeat(4,1fr); } }
+.week-day {
+  padding: 12px 6px; border-radius: 8px; text-align: center;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: .75rem;
+}
+.week-day .day-name { color: var(--muted); font-weight: 600; text-transform: uppercase; }
+.week-day .day-type { font-size: .7rem; margin-top: 4px; font-weight: 600; }
+.week-day.treino { border-color: rgba(232,255,0,.3); background: rgba(232,255,0,.04); }
+.week-day.treino .day-type { color: var(--accent); }
+.week-day.cardio { border-color: rgba(68,138,255,.3); background: rgba(68,138,255,.04); }
+.week-day.cardio .day-type { color: var(--blue); }
+.week-day.descanso .day-type { color: var(--muted); }
+
+.treino-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+.treino-tab {
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--muted); font-size: .82rem; cursor: pointer;
+  font-family: var(--font); transition: all .2s; font-weight: 600;
+}
+.treino-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(232,255,0,.06); }
+
+.treino-panel { display: none; }
+.treino-panel.active { display: block; }
+
+.aquecimento {
+  padding: 12px 16px; border-radius: 8px;
+  background: rgba(0,230,118,.05); border: 1px solid rgba(0,230,118,.2);
+  font-size: .85rem; color: var(--green); margin-bottom: 16px;
+}
+.aquecimento strong { display: block; margin-bottom: 4px; }
+
+table {
+  width: 100%; border-collapse: collapse; font-size: .83rem;
+}
+th {
+  text-align: left; padding: 10px 12px;
+  background: var(--surface); color: var(--muted);
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .5px;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 12px; border-bottom: 1px solid rgba(255,255,255,.04);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,.02); }
+.rpe-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: .75rem; font-weight: 700;
+}
+.rpe-6 { background: rgba(0,230,118,.15); color: var(--green); }
+.rpe-7 { background: rgba(255,145,0,.15); color: var(--orange); }
+.rpe-8 { background: rgba(255,77,77,.15); color: var(--accent2); }
+.rpe-9 { background: rgba(255,77,77,.25); color: var(--accent2); }
+
+.obs-text { font-size: .78rem; color: var(--muted); margin-top: 3px; }
+
+/* ─── PROGRESSÃO ─── */
+.progress-weeks { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+@media(max-width:600px){ .progress-weeks { grid-template-columns: 1fr 1fr; } }
+.progress-week {
+  padding: 16px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+  text-align: center;
+}
+.progress-week .pw-num { font-size: .72rem; color: var(--muted); text-transform: uppercase; }
+.progress-week .pw-title { font-size: .9rem; font-weight: 700; margin: 6px 0 4px; }
+.progress-week .pw-rpe { font-size: .78rem; }
+.progress-week.best { border-color: rgba(232,255,0,.4); background: rgba(232,255,0,.04); }
+.progress-week.best .pw-title { color: var(--accent); }
+.progress-week.deload { border-color: rgba(68,138,255,.3); }
+.progress-week.deload .pw-title { color: var(--blue); }
+
+/* ─── CHECK-IN ─── */
+.checkin-form .field label { color: var(--text); font-size: .9rem; }
+.slider-field { margin-bottom: 24px; }
+.slider-field label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .85rem; margin-bottom: 8px;
+}
+.slider-field label span { color: var(--accent); font-weight: 700; font-size: 1rem; }
+input[type=range] {
+  width: 100%; accent-color: var(--accent);
+  background: var(--surface); height: 4px;
+  border: none; border-radius: 2px;
+}
+.checkin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:500px){ .checkin-grid { grid-template-columns: 1fr; } }
+
+.history-item {
+  padding: 16px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+  margin-bottom: 12px;
+}
+.history-date { font-size: .78rem; color: var(--muted); margin-bottom: 8px; }
+.history-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.history-stat { text-align: center; }
+.history-stat .hs-val { font-size: 1.1rem; font-weight: 700; }
+.history-stat .hs-label { font-size: .7rem; color: var(--muted); }
+
+/* ─── ORIENTAÇÕES ─── */
+.tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media(max-width:500px){ .tip-grid { grid-template-columns: 1fr; } }
+.tip-card {
+  padding: 16px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.tip-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.tip-title { font-size: .85rem; font-weight: 700; margin-bottom: 6px; }
+.tip-body { font-size: .8rem; color: var(--muted); }
+
+/* ─── EMPTY ─── */
+.empty {
+  text-align: center; padding: 60px 20px;
+  color: var(--muted); font-size: .9rem;
+}
+.empty .e-icon { font-size: 3rem; margin-bottom: 12px; }
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--card); border: 1px solid var(--accent);
+  color: var(--text); padding: 14px 20px; border-radius: 10px;
+  font-size: .85rem; font-weight: 600; z-index: 9999;
+  transform: translateY(80px); opacity: 0;
+  transition: all .3s; pointer-events: none;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ─── TABLE SCROLL ─── */
+.table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="logo">PERSONAL<span>TRAINER</span></div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="showTab('anamnese')">Anamnese</button>
+      <button class="nav-tab" onclick="showTab('plano')">Plano</button>
+      <button class="nav-tab" onclick="showTab('checkin')">Check-in</button>
+      <button class="nav-tab" onclick="showTab('orientacoes')">Orientações</button>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════ ANAMNESE ═══════════════════════════════ -->
+  <section id="tab-anamnese">
+
+    <div class="card">
+      <div class="step-indicator" id="stepIndicator"></div>
+
+      <!-- STEP 1: Dados pessoais -->
+      <div class="step active" id="step-1">
+        <div class="step-header">
+          <div class="step-number">Etapa 1 de 6</div>
+          <div class="step-title">Dados Pessoais</div>
+        </div>
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" id="a_nome" placeholder="Seu nome"/>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Idade</label>
+            <input type="number" id="a_idade" placeholder="Ex: 28" min="12" max="90"/>
+          </div>
+          <div class="field">
+            <label>Sexo</label>
+            <select id="a_sexo">
+              <option value="">Selecione</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+              <option value="O">Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Altura (cm)</label>
+            <input type="number" id="a_altura" placeholder="Ex: 178" min="140" max="220"/>
+          </div>
+          <div class="field">
+            <label>Peso (kg)</label>
+            <input type="number" id="a_peso" placeholder="Ex: 82" min="40" max="250"/>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="nextStep(1)">Continuar →</button>
+      </div>
+
+      <!-- STEP 2: Objetivos -->
+      <div class="step" id="step-2">
+        <div class="step-header">
+          <div class="step-number">Etapa 2 de 6</div>
+          <div class="step-title">Objetivos</div>
+        </div>
+        <div class="field">
+          <label>Objetivo principal</label>
+          <div class="radio-group" id="rg_objetivo">
+            <div class="radio-btn" data-val="emagrecimento">Emagrecer</div>
+            <div class="radio-btn" data-val="hipertrofia">Ganhar massa</div>
+            <div class="radio-btn" data-val="forca">Ganhar força</div>
+            <div class="radio-btn" data-val="condicionamento">Condicionamento</div>
+            <div class="radio-btn" data-val="recomposicao">Recomposição</div>
+            <div class="radio-btn" data-val="saude">Saúde geral</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nível de experiência</label>
+          <div class="radio-group" id="rg_nivel">
+            <div class="radio-btn" data-val="iniciante">Iniciante (0–6 meses)</div>
+            <div class="radio-btn" data-val="intermediario">Intermediário (6m–2 anos)</div>
+            <div class="radio-btn" data-val="avancado">Avançado (2+ anos)</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Há quanto tempo treina? (meses)</label>
+          <input type="number" id="a_tempoTreino" placeholder="Ex: 12 (0 se nunca treinou)" min="0"/>
+        </div>
+        <div class="field">
+          <label>Prazo desejado para resultado</label>
+          <div class="radio-group" id="rg_prazo">
+            <div class="radio-btn" data-val="1m">1 mês</div>
+            <div class="radio-btn" data-val="3m">3 meses</div>
+            <div class="radio-btn" data-val="6m">6 meses</div>
+            <div class="radio-btn" data-val="12m">12 meses</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="prevStep(2)">← Voltar</button>
+          <button class="btn btn-primary" onclick="nextStep(2)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Disponibilidade -->
+      <div class="step" id="step-3">
+        <div class="step-header">
+          <div class="step-number">Etapa 3 de 6</div>
+          <div class="step-title">Disponibilidade & Local</div>
+        </div>
+        <div class="field">
+          <label>Dias por semana disponíveis para treinar</label>
+          <div class="radio-group" id="rg_dias">
+            <div class="radio-btn" data-val="2">2 dias</div>
+            <div class="radio-btn" data-val="3">3 dias</div>
+            <div class="radio-btn" data-val="4">4 dias</div>
+            <div class="radio-btn" data-val="5">5 dias</div>
+            <div class="radio-btn" data-val="6">6 dias</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tempo por sessão (minutos)</label>
+          <div class="radio-group" id="rg_tempo">
+            <div class="radio-btn" data-val="30">30 min</div>
+            <div class="radio-btn" data-val="45">45 min</div>
+            <div class="radio-btn" data-val="60">60 min</div>
+            <div class="radio-btn" data-val="75">75 min</div>
+            <div class="radio-btn" data-val="90">90+ min</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Local de treino</label>
+          <div class="radio-group" id="rg_local">
+            <div class="radio-btn" data-val="academia">Academia completa</div>
+            <div class="radio-btn" data-val="casa">Casa (sem equipamento)</div>
+            <div class="radio-btn" data-val="casa_halteres">Casa (com halteres)</div>
+            <div class="radio-btn" data-val="ar_livre">Ao ar livre</div>
+            <div class="radio-btn" data-val="misto">Misto</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="prevStep(3)">← Voltar</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Saúde -->
+      <div class="step" id="step-4">
+        <div class="step-header">
+          <div class="step-number">Etapa 4 de 6</div>
+          <div class="step-title">Saúde & Limitações</div>
+        </div>
+        <div class="field">
+          <label>Tem lesões, dores ou limitações físicas?</label>
+          <div class="radio-group" id="rg_lesao">
+            <div class="radio-btn" data-val="nenhuma">Nenhuma</div>
+            <div class="radio-btn" data-val="joelho">Joelho</div>
+            <div class="radio-btn" data-val="lombar">Lombar</div>
+            <div class="radio-btn" data-val="ombro">Ombro</div>
+            <div class="radio-btn" data-val="cervical">Cervical</div>
+            <div class="radio-btn" data-val="outra">Outra</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Possui alguma condição de saúde?</label>
+          <div class="radio-group" id="rg_condicao">
+            <div class="radio-btn" data-val="nenhuma">Nenhuma</div>
+            <div class="radio-btn" data-val="pressao">Pressão alta</div>
+            <div class="radio-btn" data-val="diabetes">Diabetes</div>
+            <div class="radio-btn" data-val="cardiaco">Cardíaco</div>
+            <div class="radio-btn" data-val="outra">Outra</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Usa medicamentos?</label>
+          <div class="radio-group" id="rg_medicamentos">
+            <div class="radio-btn" data-val="nao">Não</div>
+            <div class="radio-btn" data-val="sim">Sim</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="prevStep(4)">← Voltar</button>
+          <button class="btn btn-primary" onclick="nextStep(4)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Estilo de vida -->
+      <div class="step" id="step-5">
+        <div class="step-header">
+          <div class="step-number">Etapa 5 de 6</div>
+          <div class="step-title">Estilo de Vida</div>
+        </div>
+        <div class="field">
+          <label>Horas de sono por noite</label>
+          <div class="radio-group" id="rg_sono">
+            <div class="radio-btn" data-val="menos5">Menos de 5h</div>
+            <div class="radio-btn" data-val="5a6">5–6h</div>
+            <div class="radio-btn" data-val="7a8">7–8h</div>
+            <div class="radio-btn" data-val="mais8">Mais de 8h</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nível de estresse</label>
+          <div class="radio-group" id="rg_estresse">
+            <div class="radio-btn" data-val="baixo">Baixo</div>
+            <div class="radio-btn" data-val="medio">Médio</div>
+            <div class="radio-btn" data-val="alto">Alto</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Atividade diária (fora do treino)</label>
+          <div class="radio-group" id="rg_atividade">
+            <div class="radio-btn" data-val="sedentario">Sedentário (escritório)</div>
+            <div class="radio-btn" data-val="leve">Leve (&lt;5.000 passos)</div>
+            <div class="radio-btn" data-val="moderado">Moderado (5–10k passos)</div>
+            <div class="radio-btn" data-val="ativo">Ativo (10k+ passos)</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Faz cardio atualmente?</label>
+          <div class="radio-group" id="rg_cardio">
+            <div class="radio-btn" data-val="nao">Não</div>
+            <div class="radio-btn" data-val="ocasional">Ocasional</div>
+            <div class="radio-btn" data-val="regular">Regular (3x+/semana)</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="prevStep(5)">← Voltar</button>
+          <button class="btn btn-primary" onclick="nextStep(5)">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 6: Alimentação -->
+      <div class="step" id="step-6">
+        <div class="step-header">
+          <div class="step-number">Etapa 6 de 6</div>
+          <div class="step-title">Alimentação & Hidratação</div>
+        </div>
+        <div class="field">
+          <label>Como está sua alimentação hoje?</label>
+          <div class="radio-group" id="rg_alimentacao">
+            <div class="radio-btn" data-val="ruim">Ruim (fast food, irregular)</div>
+            <div class="radio-btn" data-val="razoavel">Razoável (às vezes saudável)</div>
+            <div class="radio-btn" data-val="boa">Boa (maioria comida real)</div>
+            <div class="radio-btn" data-val="otima">Ótima (controlada)</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Consumo de água por dia</label>
+          <div class="radio-group" id="rg_agua">
+            <div class="radio-btn" data-val="menos1">Menos de 1L</div>
+            <div class="radio-btn" data-val="1a2">1–2L</div>
+            <div class="radio-btn" data-val="2a3">2–3L</div>
+            <div class="radio-btn" data-val="mais3">Mais de 3L</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Usa suplementação?</label>
+          <div class="radio-group" id="rg_suplemento">
+            <div class="radio-btn" data-val="nao">Não</div>
+            <div class="radio-btn" data-val="whey">Whey protein</div>
+            <div class="radio-btn" data-val="creatina">Creatina</div>
+            <div class="radio-btn" data-val="varios">Vários suplementos</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="prevStep(6)">← Voltar</button>
+          <button class="btn btn-primary" style="background:#00e676;color:#000" onclick="gerarPlano()">Gerar Plano de Treino</button>
+        </div>
+      </div>
+
+    </div><!-- /card -->
+  </section>
+
+  <!-- ═══════════════════════════════ PLANO ═══════════════════════════════ -->
+  <section id="tab-plano" style="display:none">
+
+    <div id="plano-vazio" class="empty">
+      <div class="e-icon">🏋️</div>
+      <div>Complete a anamnese para gerar seu plano de treino personalizado.</div>
+    </div>
+
+    <div id="plano-conteudo" style="display:none">
+
+      <!-- Diagnóstico -->
+      <div class="card" id="diagnostico-card">
+        <div class="card-title">Diagnóstico</div>
+        <div id="diag-blocks"></div>
+        <div id="diag-alertas"></div>
+      </div>
+
+      <!-- Semana -->
+      <div class="card">
+        <div class="card-title">Divisão Semanal</div>
+        <div class="week-grid" id="week-grid"></div>
+        <div id="divisao-nome" style="font-size:.85rem;color:var(--muted);margin-top:8px;"></div>
+      </div>
+
+      <!-- Treinos -->
+      <div class="card">
+        <div class="card-title">Treinos</div>
+        <div class="treino-tabs" id="treino-tabs"></div>
+        <div id="treino-panels"></div>
+      </div>
+
+      <!-- Cardio -->
+      <div class="card" id="cardio-card">
+        <div class="card-title">Cardio</div>
+        <div id="cardio-conteudo"></div>
+      </div>
+
+      <!-- Progressão -->
+      <div class="card">
+        <div class="card-title">Progressão — 4 Semanas</div>
+        <div class="progress-weeks" id="progress-weeks"></div>
+        <div style="margin-top:16px;padding:14px;border-radius:8px;background:var(--surface);font-size:.85rem;">
+          <strong>Critério de progressão:</strong> Se completar todas as séries no topo da faixa com boa técnica → aumente a carga.<br>
+          Compostos: +2,5 a 5kg · Isolados: +1 a 2,5kg
+        </div>
+      </div>
+
+      <!-- Botão reiniciar -->
+      <button class="btn btn-secondary" style="width:100%;margin-top:8px" onclick="reiniciar()">Refazer Anamnese</button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CHECK-IN ═══════════════════════════════ -->
+  <section id="tab-checkin" style="display:none">
+
+    <div class="card">
+      <div class="card-title">Check-in Semanal</div>
+
+      <div id="checkin-sem-plano" class="empty" style="padding:30px 0">
+        <div class="e-icon">📋</div>
+        <div>Gere seu plano de treino primeiro.</div>
+      </div>
+
+      <div id="checkin-form" style="display:none">
+        <div class="checkin-grid">
+          <div class="field">
+            <label>Peso esta semana (kg)</label>
+            <input type="number" id="ci_peso" placeholder="Ex: 85.2" step="0.1"/>
+          </div>
+          <div class="field">
+            <label>Treinos realizados</label>
+            <select id="ci_treinos">
+              <option value="0">0 treinos</option>
+              <option value="1">1 treino</option>
+              <option value="2">2 treinos</option>
+              <option value="3">3 treinos</option>
+              <option value="4">4 treinos</option>
+              <option value="5">5 treinos</option>
+              <option value="6">6 treinos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="slider-field">
+          <label>Sono <span id="val_sono">5</span>/10</label>
+          <input type="range" min="1" max="10" value="5" id="ci_sono" oninput="updateSlider('sono')"/>
+        </div>
+        <div class="slider-field">
+          <label>Energia no treino <span id="val_energia">5</span>/10</label>
+          <input type="range" min="1" max="10" value="5" id="ci_energia" oninput="updateSlider('energia')"/>
+        </div>
+        <div class="slider-field">
+          <label>Adesão alimentar <span id="val_alimentacao">5</span>/10</label>
+          <input type="range" min="1" max="10" value="5" id="ci_alimentacao" oninput="updateSlider('alimentacao')"/>
+        </div>
+        <div class="slider-field">
+          <label>Estresse geral <span id="val_estresse">5</span>/10</label>
+          <input type="range" min="1" max="10" value="5" id="ci_estresse" oninput="updateSlider('estresse')"/>
+        </div>
+
+        <div class="field">
+          <label>Dores ou desconfortos?</label>
+          <textarea id="ci_dores" placeholder="Ex: Dor no joelho direito no agachamento..."></textarea>
+        </div>
+        <div class="field">
+          <label>Observações / evolução de cargas</label>
+          <textarea id="ci_obs" placeholder="Ex: Supino subiu de 60 para 65kg. Agachamento ainda com 80kg..."></textarea>
+        </div>
+
+        <button class="btn btn-primary" onclick="salvarCheckin()">Salvar Check-in</button>
+      </div>
+    </div>
+
+    <!-- Histórico -->
+    <div class="card" id="historico-card" style="display:none">
+      <div class="card-title">Histórico</div>
+      <div id="historico-lista"></div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════ ORIENTAÇÕES ═══════════════════════════════ -->
+  <section id="tab-orientacoes" style="display:none">
+
+    <div class="card">
+      <div class="card-title">Orientações Gerais</div>
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🥩</div>
+          <div class="tip-title">Proteína</div>
+          <div class="tip-body">1,8–2,2g por kg de peso por dia. Priorize em toda refeição. Frango, ovo, carne, atum, queijo cottage, whey.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💧</div>
+          <div class="tip-title">Hidratação</div>
+          <div class="tip-body">35ml por kg de peso por dia. Para 80kg = ~2,8L mínimo. Mais em dias de treino e calor.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">😴</div>
+          <div class="tip-title">Sono</div>
+          <div class="tip-body">7–9h por noite. Sem sono adequado, cortisol sobe, GH cai, resultado vai pela metade. Não negocie.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📈</div>
+          <div class="tip-title">Progressão</div>
+          <div class="tip-body">Anote suas cargas. Sem progressão, sem estímulo. Sem estímulo, sem crescimento. Simples assim.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🚶</div>
+          <div class="tip-title">Passos Diários</div>
+          <div class="tip-body">Meta mínima: 7.000–10.000 passos/dia. Atividade fora do treino é subestimada para emagrecer.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🍺</div>
+          <div class="tip-title">Álcool</div>
+          <div class="tip-body">Atrapalha síntese proteica, qualidade do sono e redução de gordura. Não proíbo, mas que você saiba o custo.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚖️</div>
+          <div class="tip-title">Déficit / Superávit</div>
+          <div class="tip-body">Emagrecer = comer menos calorias que gasta. Ganhar massa = comer mais. Não tem segredo nenhum além disso.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚠️</div>
+          <div class="tip-title">Dor Articular</div>
+          <div class="tip-body">Não é sinal de treino bom. É sinal de ajuste necessário. Reduza carga, melhore técnica. Se persistir: fisioterapeuta.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">RPE — Esforço Percebido</div>
+      <table>
+        <thead><tr><th>RPE</th><th>Como se sente</th><th>Quando usar</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rpe-badge rpe-6">6</span></td><td>Leve — sobram ~4 reps</td><td>Aquecimento, iniciantes, deload</td></tr>
+          <tr><td><span class="rpe-badge rpe-7">7</span></td><td>Moderado — sobram ~3 reps</td><td>Semanas 1–2 do ciclo</td></tr>
+          <tr><td><span class="rpe-badge rpe-8">8</span></td><td>Difícil — sobram ~2 reps</td><td>Semanas 2–3, exercícios principais</td></tr>
+          <tr><td><span class="rpe-badge rpe-9">9</span></td><td>Muito difícil — sobra ~1 rep</td><td>Semana 3, avançados</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Limites de Segurança</div>
+      <div class="alert-box" style="border-color:var(--accent2);background:rgba(255,77,77,.06)">
+        Este sistema não substitui avaliação médica ou fisioterapêutica. Em caso de dor aguda, tontura, falta de ar, palpitações ou qualquer sintoma incomum durante o treino — <strong>pare imediatamente</strong> e procure avaliação profissional presencial.
+      </div>
+      <div class="alert-box warn">
+        Não prescrevo dietas clínicas. As orientações alimentares são gerais e educativas. Para dieta personalizada, procure um nutricionista.
+      </div>
+    </div>
+
+  </section>
+
+</div><!-- /app -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════ STATE ═══════════════════════════
+const TOTAL_STEPS = 6;
+let currentStep = 1;
+let dados = {};
+let planoGerado = false;
+
+// ═══════════════════════════ INIT ═══════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  buildStepIndicator();
+  buildRadioGroups();
+  carregarDados();
+});
+
+function buildStepIndicator() {
+  const el = document.getElementById('stepIndicator');
+  el.innerHTML = '';
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    const d = document.createElement('div');
+    d.className = 'step-dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
+    d.id = 'dot-' + i;
+    el.appendChild(d);
+  }
+}
+
+function buildRadioGroups() {
+  document.querySelectorAll('.radio-group').forEach(group => {
+    group.querySelectorAll('.radio-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+  });
+}
+
+// ═══════════════════════════ NAVEGAÇÃO ═══════════════════════════
+function nextStep(current) {
+  if (!validateStep(current)) return;
+  collectStep(current);
+  currentStep = current + 1;
+  showStep(currentStep);
+}
+
+function prevStep(current) {
+  currentStep = current - 1;
+  showStep(currentStep);
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('step-' + n);
+  if (el) el.classList.add('active');
+  buildStepIndicator();
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    const d = document.getElementById('dot-' + i);
+    if (!d) continue;
+    d.className = 'step-dot' + (i < n ? ' done' : i === n ? ' active' : '');
+  }
+}
+
+// ═══════════════════════════ VALIDAÇÃO ═══════════════════════════
+function validateStep(n) {
+  const checks = {
+    1: () => {
+      if (!v('a_nome')) return err('Informe seu nome.');
+      if (!v('a_idade')) return err('Informe sua idade.');
+      if (!v('a_sexo')) return err('Selecione seu sexo.');
+      if (!v('a_altura')) return err('Informe sua altura.');
+      if (!v('a_peso')) return err('Informe seu peso.');
+      return true;
+    },
+    2: () => {
+      if (!rg('rg_objetivo')) return err('Selecione seu objetivo principal.');
+      if (!rg('rg_nivel')) return err('Selecione seu nível de experiência.');
+      if (!rg('rg_prazo')) return err('Selecione seu prazo.');
+      return true;
+    },
+    3: () => {
+      if (!rg('rg_dias')) return err('Selecione quantos dias por semana.');
+      if (!rg('rg_tempo')) return err('Selecione o tempo por sessão.');
+      if (!rg('rg_local')) return err('Selecione o local de treino.');
+      return true;
+    },
+    4: () => {
+      if (!rg('rg_lesao')) return err('Responda sobre lesões.');
+      if (!rg('rg_condicao')) return err('Responda sobre condições de saúde.');
+      if (!rg('rg_medicamentos')) return err('Responda sobre medicamentos.');
+      return true;
+    },
+    5: () => {
+      if (!rg('rg_sono')) return err('Responda sobre sono.');
+      if (!rg('rg_estresse')) return err('Responda sobre estresse.');
+      if (!rg('rg_atividade')) return err('Responda sobre atividade diária.');
+      if (!rg('rg_cardio')) return err('Responda sobre cardio.');
+      return true;
+    },
+    6: () => {
+      if (!rg('rg_alimentacao')) return err('Responda sobre alimentação.');
+      if (!rg('rg_agua')) return err('Responda sobre hidratação.');
+      if (!rg('rg_suplemento')) return err('Responda sobre suplementação.');
+      return true;
+    }
+  };
+  return checks[n] ? checks[n]() : true;
+}
+
+function v(id) { const e = document.getElementById(id); return e && e.value.trim() !== ''; }
+function rg(id) { return document.querySelector('#' + id + ' .radio-btn.selected'); }
+function rgVal(id) { const b = rg(id); return b ? b.dataset.val : null; }
+function err(msg) { toast(msg, true); return false; }
+
+// ═══════════════════════════ COLETA ═══════════════════════════
+function collectStep(n) {
+  if (n === 1) {
+    dados.nome    = document.getElementById('a_nome').value.trim();
+    dados.idade   = parseInt(document.getElementById('a_idade').value);
+    dados.sexo    = document.getElementById('a_sexo').value;
+    dados.altura  = parseInt(document.getElementById('a_altura').value);
+    dados.peso    = parseFloat(document.getElementById('a_peso').value);
+    dados.imc     = +(dados.peso / ((dados.altura/100)**2)).toFixed(1);
+  }
+  if (n === 2) {
+    dados.objetivo    = rgVal('rg_objetivo');
+    dados.nivel       = rgVal('rg_nivel');
+    dados.tempoTreino = parseInt(document.getElementById('a_tempoTreino').value) || 0;
+    dados.prazo       = rgVal('rg_prazo');
+  }
+  if (n === 3) {
+    dados.dias  = parseInt(rgVal('rg_dias'));
+    dados.tempo = parseInt(rgVal('rg_tempo'));
+    dados.local = rgVal('rg_local');
+  }
+  if (n === 4) {
+    dados.lesao        = rgVal('rg_lesao');
+    dados.condicao     = rgVal('rg_condicao');
+    dados.medicamentos = rgVal('rg_medicamentos');
+  }
+  if (n === 5) {
+    dados.sono       = rgVal('rg_sono');
+    dados.estresse   = rgVal('rg_estresse');
+    dados.atividade  = rgVal('rg_atividade');
+    dados.cardioAtual= rgVal('rg_cardio');
+  }
+  if (n === 6) {
+    dados.alimentacao = rgVal('rg_alimentacao');
+    dados.agua        = rgVal('rg_agua');
+    dados.suplemento  = rgVal('rg_suplemento');
+  }
+}
+
+function collectAll() {
+  for (let i = 1; i <= 6; i++) collectStep(i);
+}
+
+// ═══════════════════════════ GERAR PLANO ═══════════════════════════
+function gerarPlano() {
+  if (!validateStep(6)) return;
+  collectAll();
+  salvarLocal();
+
+  const plano = buildPlano(dados);
+  renderDiagnostico(plano);
+  renderSemana(plano);
+  renderTreinos(plano);
+  renderCardio(plano);
+  renderProgressao(plano);
+
+  planoGerado = true;
+  showTab('plano');
+  document.getElementById('plano-vazio').style.display = 'none';
+  document.getElementById('plano-conteudo').style.display = 'block';
+  document.getElementById('checkin-sem-plano').style.display = 'none';
+  document.getElementById('checkin-form').style.display = 'block';
+
+  toast('Plano gerado com sucesso!');
+}
+
+// ═══════════════════════════ LÓGICA DO PLANO ═══════════════════════════
+function buildPlano(d) {
+  const nivel   = resolveNivel(d);
+  const risco   = resolveRisco(d);
+  const divisao = resolveDivisao(d, nivel);
+  const semana  = buildSemana(divisao, d.dias);
+  const treinos = buildTreinos(divisao, d, nivel);
+  const cardio  = buildCardio(d, nivel);
+  const alertas = buildAlertas(d, risco);
+  const gargalo = resolveGargalo(d);
+  const protMeta = Math.round(d.peso * 2.0);
+
+  return { nivel, risco, divisao, semana, treinos, cardio, alertas, gargalo, protMeta };
+}
+
+function resolveNivel(d) {
+  if (d.nivel === 'avancado' && d.tempoTreino >= 24) return 'avancado';
+  if (d.nivel === 'intermediario' || d.tempoTreino >= 6) return 'intermediario';
+  return 'iniciante';
+}
+
+function resolveRisco(d) {
+  if (d.condicao === 'cardiaco') return 'alto';
+  if (d.condicao !== 'nenhuma' || d.medicamentos === 'sim') return 'moderado';
+  if (d.lesao !== 'nenhuma') return 'moderado';
+  return 'baixo';
+}
+
+function resolveDivisao(d, nivel) {
+  const dias = d.dias;
+  if (dias <= 2) return { nome: 'Full Body A/B', tipo: 'fullbody_ab', dias: 2 };
+  if (dias === 3) {
+    if (nivel === 'iniciante') return { nome: 'Full Body 3x', tipo: 'fullbody_3x', dias: 3 };
+    return { nome: 'Superior / Inferior / Full Body', tipo: 'sup_inf_full', dias: 3 };
+  }
+  if (dias === 4) return { nome: 'Upper / Lower 2x', tipo: 'upper_lower', dias: 4 };
+  if (dias >= 5) {
+    if (nivel === 'iniciante') return { nome: 'Upper / Lower 2x + Full Body', tipo: 'upper_lower_plus', dias: 5 };
+    return { nome: 'Push / Pull / Legs 2x', tipo: 'ppl', dias: Math.min(dias, 6) };
+  }
+  return { nome: 'Full Body 3x', tipo: 'fullbody_3x', dias: 3 };
+}
+
+function buildSemana(divisao, diasDisp) {
+  const templates = {
+    fullbody_ab: [
+      {d:'Seg',t:'Full A',c:'treino'},{d:'Ter',t:'Descanso',c:'descanso'},
+      {d:'Qua',t:'Full B',c:'treino'},{d:'Qui',t:'Descanso',c:'descanso'},
+      {d:'Sex',t:'Cardio',c:'cardio'},{d:'Sáb',t:'Descanso',c:'descanso'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ],
+    fullbody_3x: [
+      {d:'Seg',t:'Full A',c:'treino'},{d:'Ter',t:'Descanso',c:'descanso'},
+      {d:'Qua',t:'Full B',c:'treino'},{d:'Qui',t:'Descanso',c:'descanso'},
+      {d:'Sex',t:'Full C',c:'treino'},{d:'Sáb',t:'Cardio',c:'cardio'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ],
+    sup_inf_full: [
+      {d:'Seg',t:'Superior',c:'treino'},{d:'Ter',t:'Descanso',c:'descanso'},
+      {d:'Qua',t:'Inferior',c:'treino'},{d:'Qui',t:'Cardio',c:'cardio'},
+      {d:'Sex',t:'Full Body',c:'treino'},{d:'Sáb',t:'Descanso',c:'descanso'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ],
+    upper_lower: [
+      {d:'Seg',t:'Upper A',c:'treino'},{d:'Ter',t:'Lower A',c:'treino'},
+      {d:'Qua',t:'Cardio',c:'cardio'},{d:'Qui',t:'Upper B',c:'treino'},
+      {d:'Sex',t:'Lower B',c:'treino'},{d:'Sáb',t:'Cardio leve',c:'cardio'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ],
+    upper_lower_plus: [
+      {d:'Seg',t:'Upper A',c:'treino'},{d:'Ter',t:'Lower A',c:'treino'},
+      {d:'Qua',t:'Cardio',c:'cardio'},{d:'Qui',t:'Upper B',c:'treino'},
+      {d:'Sex',t:'Lower B',c:'treino'},{d:'Sáb',t:'Full Body',c:'treino'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ],
+    ppl: [
+      {d:'Seg',t:'Push',c:'treino'},{d:'Ter',t:'Pull',c:'treino'},
+      {d:'Qua',t:'Legs',c:'treino'},{d:'Qui',t:'Push',c:'treino'},
+      {d:'Sex',t:'Pull',c:'treino'},{d:'Sáb',t:'Legs',c:'treino'},
+      {d:'Dom',t:'Descanso',c:'descanso'}
+    ]
+  };
+  return templates[divisao.tipo] || templates['upper_lower'];
+}
+
+function buildTreinos(divisao, d, nivel) {
+  const isAcad = d.local === 'academia';
+  const temHalt = d.local === 'casa_halteres' || isAcad;
+  const casa = d.local === 'casa';
+  const rpe1 = nivel === 'iniciante' ? '6–7' : '7';
+  const obs = {
+    joelho: d.lesao === 'joelho',
+    lombar: d.lesao === 'lombar',
+    ombro:  d.lesao === 'ombro',
+  };
+
+  const squat = obs.joelho
+    ? { ex: 'Agachamento livre (amplitude reduzida)', obs_: 'Limite a profundidade onde há dor. Prefira agachamento hack se disponível.' }
+    : { ex: 'Agachamento livre com barra', obs_: 'Joelhos alinhados com o 2° dedo. Descida controlada.' };
+
+  const press = obs.ombro
+    ? { ex: 'Supino inclinado com halteres (pegada neutra)', obs_: 'Pegada neutra protege o ombro. Amplitude parcial se necessário.' }
+    : { ex: isAcad ? 'Supino reto com barra' : 'Flexão de braço (lastro progressivo)', obs_: 'Escápula retraída durante todo o movimento.' };
+
+  const row = isAcad
+    ? { ex: 'Remada curvada com barra', obs_: 'Tronco a 45°. Puxe o cotovelo para trás, não para cima.' }
+    : { ex: 'Remada unilateral com halter (apoiado)', obs_: 'Coluna neutra. Puxe o cotovelo para o quadril.' };
+
+  const terra = obs.lombar
+    ? { ex: 'Terra romeno com halteres (leve)', obs_: 'Amplitude reduzida. Foco em posterior, não em flexão lombar.' }
+    : { ex: 'Terra romeno com barra', obs_: 'Quadril para trás, barra próxima ao corpo. Joelho levemente dobrado.' };
+
+  const legPress = obs.joelho
+    ? { ex: 'Abdução de quadril na polia baixa', obs_: 'Substituição segura. Ativa glúteo médio, protege joelho.' }
+    : { ex: isAcad ? 'Leg press 45°' : 'Avanço com peso corporal', obs_: 'Pés na posição média. Joelho alinha com o 2° dedo.' };
+
+  const templates = {
+    upper_lower: [
+      {
+        id: 'A', nome: 'Upper A', foco: 'Peito, Ombro, Tríceps, Costas, Bíceps',
+        aquecimento: 'Mobilidade de ombro (rotação) + 1 série leve de supino e remada sem carga — 5 min',
+        exercicios: [
+          { ex: press.ex, series: 4, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: press.obs_ },
+          { ex: row.ex,   series: 4, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: row.obs_ },
+          { ex: obs.ombro ? 'Elevação lateral com halteres (leve)' : (isAcad ? 'Desenvolvimento com halteres' : 'Elevação lateral com halteres'), series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Sem balanço do tronco. Para no ombro.' },
+          { ex: isAcad ? 'Puxada frontal na polia' : 'Barra fixa (assistida ou negativa)', series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Puxe para o peito. Abdômen contraído.' },
+          { ex: isAcad ? 'Crucifixo inclinado com halteres' : 'Flexão de braço inclinada (pés elevados)', series: 3, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Cotovelo levemente dobrado. Sente o alongamento.' },
+          { ex: temHalt ? 'Rosca direta com halteres' : 'Rosca com elástico', series: 3, reps: '10–12', descanso: '60s', rpe: '7', obs_: 'Sem balanço do tronco. Se estiver balançando, reduza a carga.' },
+          { ex: isAcad ? 'Tríceps corda na polia' : 'Mergulho entre bancos', series: 3, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Cotovelo fixo ao lado do tronco. Abre no final.' },
+        ]
+      },
+      {
+        id: 'B', nome: 'Lower A', foco: 'Quadríceps, Glúteo, Posterior, Panturrilha',
+        aquecimento: 'Agachamento com peso corporal 2×15 + ponte de glúteo 2×20 + mobilidade de quadril — 7 min',
+        exercicios: [
+          { ex: squat.ex, series: 4, reps: '6–8', descanso: '2min', rpe: '7–8', obs_: squat.obs_ },
+          { ex: legPress.ex, series: 3, reps: '10–12', descanso: '90s', rpe: '7', obs_: legPress.obs_ },
+          { ex: terra.ex, series: 3, reps: '10–12', descanso: '90s', rpe: '7–8', obs_: terra.obs_ },
+          { ex: 'Avanço com halteres', series: 3, reps: '10 cada', descanso: '75s', rpe: '7', obs_: obs.joelho ? 'Prefira avanço reverso — menos impacto no joelho.' : 'Passo controlado. Joelho da frente não passa do pé.' },
+          { ex: isAcad ? 'Cadeira extensora (parcial)' : 'Agachamento búlgaro', series: 3, reps: '12–15', descanso: '60s', rpe: '6–7', obs_: obs.joelho ? 'Amplitude de 0° a 60° apenas.' : 'Controle no excêntrico.' },
+          { ex: isAcad ? 'Elevação de panturrilha em pé' : 'Elevação de panturrilha no degrau', series: 4, reps: '15–20', descanso: '45s', rpe: '7–8', obs_: 'Pausa de 1s no topo. Não toque o chão no retorno.' },
+        ]
+      },
+      {
+        id: 'C', nome: 'Upper B', foco: 'Costas (prioridade), Peito, Bíceps, Tríceps',
+        aquecimento: 'Dislocação com elástico + mobilidade escapular + remada leve — 5 min',
+        exercicios: [
+          { ex: isAcad ? 'Remada unilateral com halter' : 'Remada com elástico alta ancoragem', series: 4, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: 'Apoio no banco. Puxe cotovelo para trás e para cima.' },
+          { ex: obs.ombro ? 'Supino reto com halteres (pegada neutra)' : (isAcad ? 'Supino inclinado com halteres' : 'Flexão de braço com pés elevados'), series: 4, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: 'Varia o ângulo do Upper A. Mais peitoral superior.' },
+          { ex: isAcad ? 'Puxada pegada neutra' : 'Barra fixa pegada neutra', series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Palmas voltadas entre si. Mais amigável para ombro.' },
+          { ex: 'Elevação lateral com halteres', series: 4, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Sem balanço. Cotovelo levemente dobrado. Para na altura do ombro.' },
+          { ex: 'Rosca martelo com halteres', series: 3, reps: '10–12', descanso: '60s', rpe: '7', obs_: 'Alternado. Trabalha braquial e bíceps. Controle o excêntrico.' },
+          { ex: isAcad ? 'Tríceps testa com barra EZ' : 'Tríceps francês com halter', series: 3, reps: '10–12', descanso: '60s', rpe: '7', obs_: 'Deitado. Abaixe próximo à testa. Cotovelo fixo.' },
+          { ex: isAcad ? 'Encolhimento com halteres' : 'Encolhimento com peso corporal', series: 3, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Pausa de 1s no topo. Não role o ombro.' },
+        ]
+      },
+      {
+        id: 'D', nome: 'Lower B', foco: 'Posterior, Glúteo (prioridade), Quadríceps complementar',
+        aquecimento: 'Ponte de glúteo com elástico 3×20 + mobilidade de quadril + agachamento sumô leve — 7 min',
+        exercicios: [
+          { ex: terra.ex, series: 4, reps: '8–10', descanso: '2min', rpe: '7–8', obs_: terra.obs_ },
+          { ex: obs.joelho ? 'Agachamento búlgaro com apoio' : (isAcad ? 'Agachamento búlgaro com halteres' : 'Avanço reverso'), series: 3, reps: '8–10 cada', descanso: '90s', rpe: '7–8', obs_: 'Controle total. Pé de trás elevado.' },
+          { ex: isAcad ? 'Mesa flexora' : 'Stiff com halteres', series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Excêntrico lento (3s na descida). Sente o posterior.' },
+          { ex: isAcad ? 'Abdução de quadril na polia' : 'Abdução com elástico lateral', series: 3, reps: '15 cada', descanso: '60s', rpe: '7', obs_: 'Ativa glúteo médio. Essencial para saúde do joelho.' },
+          { ex: 'Ponte de glúteo com carga', series: 3, reps: '12–15', descanso: '60s', rpe: '7–8', obs_: 'Quadril sobe até linha reta com o tronco. Pausa de 1s no topo.' },
+          { ex: isAcad ? 'Elevação de panturrilha sentado' : 'Elevação de panturrilha com peso no colo', series: 3, reps: '15–20', descanso: '45s', rpe: '7–8', obs_: 'Sola muscular profunda.' },
+        ]
+      }
+    ]
+  };
+
+  // Para outras divisões, adaptar com base no Upper/Lower
+  if (divisao.tipo === 'fullbody_ab' || divisao.tipo === 'fullbody_3x') {
+    return buildFullBodyTreinos(d, nivel, obs, isAcad, temHalt, squat, press, row, terra, legPress, divisao);
+  }
+
+  return templates[divisao.tipo] || templates['upper_lower'];
+}
+
+function buildFullBodyTreinos(d, nivel, obs, isAcad, temHalt, squat, press, row, terra, legPress, divisao) {
+  const base = [
+    {
+      id: 'A', nome: 'Full Body A',
+      foco: 'Membros inferiores prioridade + Empurrar + Puxar',
+      aquecimento: 'Agachamento com peso corporal 2×10 + mobilidade geral — 5 min',
+      exercicios: [
+        { ex: squat.ex, series: 3, reps: '8–10', descanso: '2min', rpe: '7–8', obs_: squat.obs_ },
+        { ex: press.ex, series: 3, reps: '8–10', descanso: '90s', rpe: '7', obs_: press.obs_ },
+        { ex: row.ex, series: 3, reps: '10–12', descanso: '90s', rpe: '7', obs_: row.obs_ },
+        { ex: terra.ex, series: 3, reps: '10–12', descanso: '90s', rpe: '7', obs_: terra.obs_ },
+        { ex: isAcad ? 'Puxada frontal' : 'Barra fixa (assistida)', series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Puxe para o peito. Core ativado.' },
+        { ex: temHalt ? 'Rosca direta com halteres' : 'Rosca com elástico', series: 2, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Sem balanço.' },
+        { ex: isAcad ? 'Tríceps corda na polia' : 'Mergulho entre bancos', series: 2, reps: '12–15', descanso: '60s', rpe: '7', obs_: 'Cotovelo fixo.' },
+      ]
+    },
+    {
+      id: 'B', nome: 'Full Body B',
+      foco: 'Membros superiores prioridade + Pernas complementar',
+      aquecimento: 'Mobilidade de ombro + rotação torácica + avanço sem carga — 5 min',
+      exercicios: [
+        { ex: press.ex.replace('reto','inclinado'), series: 3, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: 'Varia ângulo do Full A.' },
+        { ex: 'Remada unilateral com halter', series: 3, reps: '10 cada', descanso: '90s', rpe: '7–8', obs_: 'Apoio no banco. Escápula retraída.' },
+        { ex: legPress.ex, series: 3, reps: '10–12', descanso: '90s', rpe: '7', obs_: legPress.obs_ },
+        { ex: obs.ombro ? 'Elevação lateral (amplitude parcial)' : (isAcad ? 'Desenvolvimento com halteres' : 'Elevação lateral com halteres'), series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Sem balanço.' },
+        { ex: 'Avanço com halteres', series: 3, reps: '10 cada', descanso: '75s', rpe: '7', obs_: obs.joelho ? 'Prefira avanço reverso.' : 'Controle no passo.' },
+        { ex: 'Rosca martelo', series: 2, reps: '12', descanso: '60s', rpe: '7', obs_: 'Alternado. Excêntrico controlado.' },
+        { ex: 'Elevação de panturrilha', series: 3, reps: '20', descanso: '45s', rpe: '7–8', obs_: 'Pausa de 1s no topo.' },
+      ]
+    }
+  ];
+
+  if (divisao.tipo === 'fullbody_3x') {
+    base.push({
+      id: 'C', nome: 'Full Body C',
+      foco: 'Posterior + Força + Pontos fracos',
+      aquecimento: 'Ponte de glúteo 2×20 + mobilidade de quadril + elástico para ativação — 6 min',
+      exercicios: [
+        { ex: terra.ex, series: 4, reps: '6–8', descanso: '2min', rpe: '7–8', obs_: terra.obs_ },
+        { ex: obs.ombro ? 'Supino neutro com halteres' : (isAcad ? 'Supino reto com barra' : 'Flexão de braço'), series: 3, reps: '8–10', descanso: '90s', rpe: '7–8', obs_: 'Controle na descida (2s).' },
+        { ex: isAcad ? 'Puxada pegada neutra' : 'Barra fixa pegada neutra', series: 3, reps: '10–12', descanso: '75s', rpe: '7', obs_: 'Mais amigável para ombro.' },
+        { ex: obs.joelho ? 'Agachamento búlgaro com apoio' : 'Agachamento búlgaro com halteres', series: 3, reps: '8–10 cada', descanso: '90s', rpe: '7–8', obs_: 'Pé de trás elevado.' },
+        { ex: isAcad ? 'Abdução de quadril na polia' : 'Abdução com elástico', series: 3, reps: '15 cada', descanso: '60s', rpe: '7', obs_: 'Glúteo médio. Importante para joelho.' },
+        { ex: 'Elevação lateral com halteres', series: 3, reps: '15', descanso: '60s', rpe: '7', obs_: 'Leve. Amplitude até o ombro.' },
+      ]
+    });
+  }
+
+  return base;
+}
+
+function buildCardio(d, nivel) {
+  const obj = d.objetivo;
+  let sessoes, duracao, tipo, intensidade;
+
+  if (obj === 'emagrecimento') {
+    sessoes = 3; duracao = '25–35 min'; tipo = 'Caminhada rápida, elíptico ou bike';
+    intensidade = 'Moderada (FC 65–75% max)';
+  } else if (obj === 'hipertrofia') {
+    sessoes = 2; duracao = '15–20 min'; tipo = 'Caminhada, bike leve ou elíptico';
+    intensidade = 'Leve (FC 55–65% max) — não atrapalhe recuperação';
+  } else if (obj === 'forca') {
+    sessoes = 1; duracao = '15 min'; tipo = 'Caminhada';
+    intensidade = 'Muito leve — só para saúde cardiovascular';
+  } else if (obj === 'recomposicao') {
+    sessoes = 2; duracao = '20–30 min'; tipo = 'Caminhada rápida ou elíptico';
+    intensidade = 'Moderada (FC 60–70% max)';
+  } else {
+    sessoes = 3; duracao = '20–30 min'; tipo = 'Caminhada, corrida leve, bike ou natação';
+    intensidade = 'Leve a moderada';
+  }
+
+  const fcMax = 220 - d.idade;
+  const hiit = nivel === 'avancado' && obj === 'emagrecimento';
+
+  return { sessoes, duracao, tipo, intensidade, fcMax, hiit };
+}
+
+function buildAlertas(d, risco) {
+  const alertas = [];
+  if (risco === 'alto') {
+    alertas.push({ tipo: 'erro', texto: 'Condição cardíaca identificada. Avaliação médica obrigatória antes de iniciar qualquer treino intenso.' });
+  }
+  if (risco === 'moderado' && d.condicao !== 'nenhuma') {
+    alertas.push({ tipo: 'warn', texto: 'Condição de saúde identificada. Informe ao seu médico que vai iniciar atividade física e peça liberação.' });
+  }
+  if (d.lesao !== 'nenhuma') {
+    alertas.push({ tipo: 'warn', texto: `Lesão no(a) ${d.lesao} — exercícios foram adaptados. Se a dor piorar durante o treino, pare imediatamente.` });
+  }
+  if (d.sono === 'menos5' || d.sono === '5a6') {
+    alertas.push({ tipo: 'info', texto: 'Sono insuficiente detectado. Sem 7–8h por noite, seu resultado vai ser 40–50% do potencial. Corrija isso antes de otimizar treino.' });
+  }
+  if (d.alimentacao === 'ruim') {
+    alertas.push({ tipo: 'info', texto: 'Alimentação ruim é seu maior gargalo agora. Treino sem nutrição adequada é esforço desperdiçado.' });
+  }
+  return alertas;
+}
+
+function resolveGargalo(d) {
+  if (d.sono === 'menos5') return 'Sono — menos de 5h é o maior sabotador de resultado';
+  if (d.alimentacao === 'ruim') return 'Alimentação — fast food frequente limita qualquer progresso';
+  if (d.agua === 'menos1') return 'Hidratação crítica — menos de 1L por dia afeta performance';
+  if (d.estresse === 'alto') return 'Estresse alto — cortisol elevado dificulta emagrecer e ganhar massa';
+  if (d.atividade === 'sedentario') return 'Sedentarismo fora do treino — aumente seus passos diários';
+  return 'Consistência — aparecer toda semana é mais importante que o treino perfeito';
+}
+
+// ═══════════════════════════ RENDER ═══════════════════════════
+function renderDiagnostico(plano) {
+  const nivelLabel = { iniciante: 'Iniciante', intermediario: 'Intermediário', avancado: 'Avançado' };
+  const riscoLabel = { baixo: 'Baixo', moderado: 'Atenção Moderada', alto: 'Alto — Avalie Antes' };
+  const riscoColor = { baixo: 'green', moderado: 'orange', alto: 'red' };
+  const objLabel = {
+    emagrecimento: 'Perda de Gordura', hipertrofia: 'Hipertrofia',
+    forca: 'Ganho de Força', condicionamento: 'Condicionamento',
+    recomposicao: 'Recomposição Corporal', saude: 'Saúde Geral'
+  };
+
+  const imc = dados.imc;
+  const imcLabel = imc < 18.5 ? 'Abaixo do peso' : imc < 25 ? 'Peso normal' : imc < 30 ? 'Sobrepeso' : 'Obesidade';
+
+  document.getElementById('diag-blocks').innerHTML = `
+    <div class="diag-block">
+      <div class="diag-icon">👤</div>
+      <div><div class="diag-label">Aluno</div>
+      <div class="diag-value">${dados.nome}, ${dados.idade} anos — ${dados.peso}kg / ${dados.altura}cm — IMC ${imc} (${imcLabel})</div></div>
+    </div>
+    <div class="diag-block">
+      <div class="diag-icon">🎯</div>
+      <div><div class="diag-label">Objetivo</div>
+      <div class="diag-value blue">${objLabel[dados.objetivo] || dados.objetivo}</div></div>
+    </div>
+    <div class="diag-block">
+      <div class="diag-icon">💪</div>
+      <div><div class="diag-label">Nível Classificado</div>
+      <div class="diag-value">${nivelLabel[plano.nivel]}</div></div>
+    </div>
+    <div class="diag-block">
+      <div class="diag-icon">⚠️</div>
+      <div><div class="diag-label">Risco</div>
+      <div class="diag-value ${riscoColor[plano.risco]}">${riscoLabel[plano.risco]}</div></div>
+    </div>
+    <div class="diag-block">
+      <div class="diag-icon">🔧</div>
+      <div><div class="diag-label">Principal Gargalo</div>
+      <div class="diag-value orange">${plano.gargalo}</div></div>
+    </div>
+    <div class="diag-block">
+      <div class="diag-icon">🥩</div>
+      <div><div class="diag-label">Meta de Proteína Diária</div>
+      <div class="diag-value green">~${plano.protMeta}g/dia (${dados.peso}kg × 2g)</div></div>
+    </div>
+  `;
+
+  const alertaHTML = plano.alertas.map(a => `
+    <div class="alert-box ${a.tipo === 'erro' ? '' : a.tipo}">${a.texto}</div>
+  `).join('');
+  document.getElementById('diag-alertas').innerHTML = alertaHTML;
+}
+
+function renderSemana(plano) {
+  const grid = document.getElementById('week-grid');
+  grid.innerHTML = plano.semana.map(s => `
+    <div class="week-day ${s.c}">
+      <div class="day-name">${s.d}</div>
+      <div class="day-type">${s.t}</div>
+    </div>
+  `).join('');
+  document.getElementById('divisao-nome').textContent = 'Divisão: ' + plano.divisao.nome;
+}
+
+function renderTreinos(plano) {
+  const tabs = document.getElementById('treino-tabs');
+  const panels = document.getElementById('treino-panels');
+  tabs.innerHTML = '';
+  panels.innerHTML = '';
+
+  plano.treinos.forEach((t, i) => {
+    tabs.innerHTML += `<button class="treino-tab ${i===0?'active':''}" onclick="showTreinoTab('${t.id}')">${t.nome}</button>`;
+    panels.innerHTML += `
+      <div class="treino-panel ${i===0?'active':''}" id="tp-${t.id}">
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:12px">Foco: ${t.foco}</div>
+        <div class="aquecimento"><strong>Aquecimento</strong>${t.aquecimento}</div>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Exercício</th><th>Séries</th><th>Reps</th><th>Descanso</th><th>RPE</th><th>Observação</th></tr></thead>
+          <tbody>
+            ${t.exercicios.map((e,j) => `
+              <tr>
+                <td style="color:var(--muted);font-size:.75rem">${j+1}</td>
+                <td><strong>${e.ex}</strong></td>
+                <td>${e.series}</td>
+                <td>${e.reps}</td>
+                <td>${e.descanso}</td>
+                <td><span class="rpe-badge rpe-${e.rpe[0]}">${e.rpe}</span></td>
+                <td><div class="obs-text">${e.obs_}</div></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        </div>
+        <div style="margin-top:12px;font-size:.78rem;color:var(--muted)">Finalização: 5 min de mobilidade e alongamento da musculatura trabalhada.</div>
+      </div>
+    `;
+  });
+}
+
+function showTreinoTab(id) {
+  document.querySelectorAll('.treino-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.treino-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.treino-tab[onclick="showTreinoTab('${id}')"]`).classList.add('active');
+  document.getElementById('tp-' + id).classList.add('active');
+}
+
+function renderCardio(plano) {
+  const c = plano.cardio;
+  document.getElementById('cardio-conteudo').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="diag-block" style="flex-direction:column;gap:4px">
+        <div class="diag-label">Sessões por semana</div>
+        <div class="diag-value blue">${c.sessoes}x</div>
+      </div>
+      <div class="diag-block" style="flex-direction:column;gap:4px">
+        <div class="diag-label">Duração</div>
+        <div class="diag-value">${c.duracao}</div>
+      </div>
+      <div class="diag-block" style="flex-direction:column;gap:4px">
+        <div class="diag-label">Tipo</div>
+        <div class="diag-value">${c.tipo}</div>
+      </div>
+      <div class="diag-block" style="flex-direction:column;gap:4px">
+        <div class="diag-label">Intensidade</div>
+        <div class="diag-value green">${c.intensidade}</div>
+      </div>
+    </div>
+    <div style="font-size:.82rem;color:var(--muted)">
+      FC máxima estimada: <strong style="color:var(--text)">${c.fcMax} bpm</strong><br>
+      Zona alvo: <strong style="color:var(--text)">${Math.round(c.fcMax*.6)}–${Math.round(c.fcMax*.75)} bpm</strong><br>
+      ${c.hiit ? '<span style="color:var(--accent)">HIIT disponível para seu nível — consulte a aba Orientações.</span>' : 'Evite HIIT por ora — construa base aeróbica primeiro.'}<br><br>
+      <strong style="color:var(--text)">Cardio ajuda, mas não compensa alimentação ruim.</strong> A principal ferramenta de emagrecimento é o déficit calórico — cardio é um acelerador.
+    </div>
+  `;
+}
+
+function renderProgressao(plano) {
+  document.getElementById('progress-weeks').innerHTML = `
+    <div class="progress-week">
+      <div class="pw-num">Semana 1</div>
+      <div class="pw-title">Adaptação</div>
+      <div class="pw-rpe" style="color:var(--green)">RPE 6–7</div>
+      <div class="obs-text" style="margin-top:6px">Cargas conservadoras. Técnica acima de tudo. Não tente bater recordes.</div>
+    </div>
+    <div class="progress-week">
+      <div class="pw-num">Semana 2</div>
+      <div class="pw-title">Progressão</div>
+      <div class="pw-rpe" style="color:var(--orange)">RPE 7–8</div>
+      <div class="obs-text" style="margin-top:6px">Se bateu o teto das reps com técnica → aumente a carga.</div>
+    </div>
+    <div class="progress-week best">
+      <div class="pw-num">Semana 3</div>
+      <div class="pw-title">Performance</div>
+      <div class="pw-rpe" style="color:var(--accent)">RPE 8–9</div>
+      <div class="obs-text" style="margin-top:6px">Melhor semana. Anote tudo. Empurre os limites com técnica.</div>
+    </div>
+    <div class="progress-week deload">
+      <div class="pw-num">Semana 4</div>
+      <div class="pw-title">Deload</div>
+      <div class="pw-rpe" style="color:var(--blue)">RPE 6–7</div>
+      <div class="obs-text" style="margin-top:6px">Reduza volume em 30%. O corpo consolida ganhos e se recupera aqui.</div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════ CHECK-IN ═══════════════════════════
+function updateSlider(key) {
+  const el = document.getElementById('ci_' + key);
+  document.getElementById('val_' + key).textContent = el.value;
+}
+
+function salvarCheckin() {
+  const checkin = {
+    data: new Date().toLocaleDateString('pt-BR'),
+    peso: document.getElementById('ci_peso').value || '—',
+    treinos: document.getElementById('ci_treinos').value,
+    sono: document.getElementById('ci_sono').value,
+    energia: document.getElementById('ci_energia').value,
+    alimentacao: document.getElementById('ci_alimentacao').value,
+    estresse: document.getElementById('ci_estresse').value,
+    dores: document.getElementById('ci_dores').value,
+    obs: document.getElementById('ci_obs').value,
+  };
+
+  const historico = JSON.parse(localStorage.getItem('pt_checkins') || '[]');
+  historico.unshift(checkin);
+  localStorage.setItem('pt_checkins', JSON.stringify(historico));
+
+  renderHistorico();
+  toast('Check-in salvo!');
+
+  document.getElementById('ci_peso').value = '';
+  document.getElementById('ci_dores').value = '';
+  document.getElementById('ci_obs').value = '';
+}
+
+function renderHistorico() {
+  const historico = JSON.parse(localStorage.getItem('pt_checkins') || '[]');
+  const card = document.getElementById('historico-card');
+  const lista = document.getElementById('historico-lista');
+
+  if (!historico.length) { card.style.display = 'none'; return; }
+  card.style.display = 'block';
+
+  lista.innerHTML = historico.map(h => `
+    <div class="history-item">
+      <div class="history-date">${h.data}</div>
+      <div class="history-grid">
+        <div class="history-stat">
+          <div class="hs-val">${h.peso}kg</div>
+          <div class="hs-label">Peso</div>
+        </div>
+        <div class="history-stat">
+          <div class="hs-val">${h.treinos}</div>
+          <div class="hs-label">Treinos</div>
+        </div>
+        <div class="history-stat">
+          <div class="hs-val">${h.sono}/10</div>
+          <div class="hs-label">Sono</div>
+        </div>
+        <div class="history-stat">
+          <div class="hs-val">${h.energia}/10</div>
+          <div class="hs-label">Energia</div>
+        </div>
+        <div class="history-stat">
+          <div class="hs-val">${h.alimentacao}/10</div>
+          <div class="hs-label">Alimentação</div>
+        </div>
+        <div class="history-stat">
+          <div class="hs-val">${h.estresse}/10</div>
+          <div class="hs-label">Estresse</div>
+        </div>
+      </div>
+      ${h.dores ? `<div style="margin-top:8px;font-size:.78rem;color:var(--muted)">Dores: ${h.dores}</div>` : ''}
+      ${h.obs   ? `<div style="margin-top:4px;font-size:.78rem;color:var(--muted)">Obs: ${h.obs}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════ TABS ═══════════════════════════
+function showTab(id) {
+  ['anamnese','plano','checkin','orientacoes'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === id ? 'block' : 'none';
+  });
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  const labels = { anamnese: 'Anamnese', plano: 'Plano', checkin: 'Check-in', orientacoes: 'Orientações' };
+  document.querySelectorAll('.nav-tab').forEach(b => {
+    if (b.textContent.trim() === labels[id]) b.classList.add('active');
+  });
+}
+
+// ═══════════════════════════ PERSISTÊNCIA ═══════════════════════════
+function salvarLocal() {
+  localStorage.setItem('pt_dados', JSON.stringify(dados));
+}
+
+function carregarDados() {
+  const saved = localStorage.getItem('pt_dados');
+  if (saved) {
+    dados = JSON.parse(saved);
+    const plano = buildPlano(dados);
+    renderDiagnostico(plano);
+    renderSemana(plano);
+    renderTreinos(plano);
+    renderCardio(plano);
+    renderProgressao(plano);
+    planoGerado = true;
+    document.getElementById('plano-vazio').style.display = 'none';
+    document.getElementById('plano-conteudo').style.display = 'block';
+    document.getElementById('checkin-sem-plano').style.display = 'none';
+    document.getElementById('checkin-form').style.display = 'block';
+  }
+  renderHistorico();
+}
+
+function reiniciar() {
+  if (!confirm('Isso vai apagar seu plano atual. Tem certeza?')) return;
+  localStorage.removeItem('pt_dados');
+  dados = {};
+  planoGerado = false;
+  currentStep = 1;
+  showStep(1);
+  document.querySelectorAll('.radio-btn.selected').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('input[type=text], input[type=number]').forEach(i => i.value = '');
+  document.getElementById('plano-vazio').style.display = 'block';
+  document.getElementById('plano-conteudo').style.display = 'none';
+  document.getElementById('checkin-sem-plano').style.display = 'block';
+  document.getElementById('checkin-form').style.display = 'none';
+  showTab('anamnese');
+  toast('Anamnese reiniciada.');
+}
+
+// ═══════════════════════════ TOAST ═══════════════════════════
+function toast(msg, err = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = err ? 'var(--accent2)' : 'var(--accent)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
