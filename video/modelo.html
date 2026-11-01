@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OIKOS · Vídeo de Imóveis</title>
+<style>
+  @font-face { font-family:'Playfair Display'; font-weight:500; src:url(fonts/PlayfairDisplay-500.ttf); }
+  @font-face { font-family:'Playfair Display'; font-weight:600; src:url(fonts/PlayfairDisplay-600.ttf); }
+  @font-face { font-family:'Playfair Display'; font-weight:700; src:url(fonts/PlayfairDisplay-700.ttf); }
+  @font-face { font-family:'Playfair Display'; font-weight:500; font-style:italic; src:url(fonts/PlayfairDisplay-500i.ttf); }
+  @font-face { font-family:'Inter'; font-weight:300; src:url(fonts/Inter-300.ttf); }
+  @font-face { font-family:'Inter'; font-weight:400; src:url(fonts/Inter-400.ttf); }
+  @font-face { font-family:'Inter'; font-weight:500; src:url(fonts/Inter-500.ttf); }
+  @font-face { font-family:'Inter'; font-weight:600; src:url(fonts/Inter-600.ttf); }
+
+  :root {
+    --black:#080808; --white:#ffffff; --cream:#e8e4de; --accent:#c9b99a; --silver:#b8b8b8;
+    --serif:'Playfair Display', Georgia, serif; --sans:'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { background:#111; color:var(--white); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+
+  /* ── Prévia ── */
+  body.preview { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:16px; }
+  .viewport { position:relative; overflow:hidden; border-radius:14px; box-shadow:0 30px 90px rgba(0,0,0,.6); }
+  .controls { display:flex; align-items:center; gap:12px; width:min(100%, 520px); font-size:13px; color:var(--silver); }
+  .controls button { background:var(--white); color:var(--black); border:0; border-radius:999px; width:40px; height:40px; font-size:15px; cursor:pointer; flex:none; }
+  .controls input[type=range] { flex:1; accent-color:var(--accent); }
+  .controls .time { font-variant-numeric:tabular-nums; min-width:92px; text-align:right; }
+  .hint { font-size:12px; color:#777; text-align:center; max-width:520px; }
+
+  /* ── Render ── */
+  body.render { width:1080px; height:1920px; overflow:hidden; }
+  body.render .controls, body.render .hint { display:none; }
+  body.render .viewport { border-radius:0; box-shadow:none; }
+
+  /* ── Palco 1080×1920 ── */
+  #stage { position:absolute; left:0; top:0; width:1080px; height:1920px; background:var(--black); transform-origin:0 0; overflow:hidden; }
+  .scene { position:absolute; inset:0; overflow:hidden; background:var(--black); visibility:hidden; }
+  .layer { position:absolute; inset:0; }
+  .fill { position:absolute; inset:-2%; width:104%; height:104%; object-fit:cover; will-change:transform, opacity; }
+
+  /* Abertura */
+  .intro { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  .intro .glow { position:absolute; inset:0; background:radial-gradient(ellipse 70% 45% at 50% 46%, rgba(201,185,154,.16), transparent 70%); }
+  .intro svg.mark { width:300px; height:325px; overflow:visible; }
+  .intro .name { font-family:var(--serif); font-weight:700; font-size:150px; letter-spacing:.3em; margin-right:-.3em; margin-top:56px; line-height:1; }
+  .intro .sub { font-size:30px; letter-spacing:.6em; margin-right:-.6em; text-transform:uppercase; color:var(--silver); margin-top:26px; font-weight:300; }
+  .intro .rule { width:220px; height:2px; background:var(--accent); margin:80px auto 56px; transform-origin:center; }
+  .intro .tag { font-family:var(--serif); font-style:italic; font-weight:500; font-size:64px; color:var(--cream); }
+  .intro .city { font-size:28px; letter-spacing:.4em; margin-right:-.4em; text-transform:uppercase; color:var(--accent); margin-top:28px; font-weight:500; }
+
+  /* Imóvel */
+  .shade { background:
+      linear-gradient(180deg, rgba(8,8,8,.72) 0%, rgba(8,8,8,0) 18%, rgba(8,8,8,0) 42%, rgba(8,8,8,.86) 66%, rgba(8,8,8,.97) 100%); }
+  .top { position:absolute; left:80px; right:80px; top:96px; display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:20px; }
+  .brand svg { width:52px; height:56px; }
+  .brand .bn { font-family:var(--serif); font-weight:700; font-size:40px; letter-spacing:.24em; line-height:1; }
+  .brand .bs { font-size:15px; letter-spacing:.42em; text-transform:uppercase; color:var(--silver); margin-top:8px; }
+  .count { font-family:var(--serif); font-size:40px; font-weight:500; color:var(--cream); font-variant-numeric:tabular-nums; }
+  .count span { color:var(--silver); font-size:30px; }
+  .bar { position:absolute; left:80px; right:80px; top:200px; height:3px; background:rgba(255,255,255,.18); border-radius:3px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:100%; background:var(--accent); transform-origin:0 50%; }
+  .example { position:absolute; right:80px; top:236px; font-size:20px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.35); padding:10px 18px; border-radius:6px; background:rgba(8,8,8,.35); }
+
+  .info { position:absolute; left:80px; right:80px; bottom:150px; }
+  .badge { display:inline-block; font-size:24px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--black); background:var(--accent); padding:14px 28px; border-radius:4px; }
+  .title { font-family:var(--serif); font-weight:600; font-size:96px; line-height:1.04; margin-top:40px; }
+  .loc { display:flex; align-items:center; gap:16px; font-size:34px; color:var(--cream); margin-top:32px; font-weight:400; }
+  .loc svg { width:34px; height:34px; color:var(--accent); flex:none; }
+  .div { height:2px; background:rgba(255,255,255,.2); margin:56px 0 48px; transform-origin:0 50%; }
+  .specs { display:flex; gap:24px; }
+  .spec { flex:1; display:flex; flex-direction:column; gap:16px; border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:28px 26px; background:rgba(255,255,255,.04); }
+  .spec svg { width:40px; height:40px; color:var(--accent); }
+  .spec b { font-size:36px; font-weight:500; }
+  .price-l { font-size:24px; letter-spacing:.3em; text-transform:uppercase; color:var(--silver); margin-top:60px; }
+  .price { font-family:var(--serif); font-weight:700; font-size:120px; line-height:1; margin-top:16px; }
+
+  /* Encerramento */
+  .outro { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 80px; }
+  .outro .glow { position:absolute; inset:0; background:radial-gradient(ellipse 80% 40% at 50% 40%, rgba(201,185,154,.14), transparent 70%); }
+  .outro .k { font-size:28px; letter-spacing:.4em; margin-right:-.4em; text-transform:uppercase; color:var(--accent); font-weight:500; }
+  .outro h2 { font-family:var(--serif); font-weight:600; font-size:124px; line-height:1.04; margin-top:40px; }
+  .outro .wa { display:flex; align-items:center; gap:24px; margin-top:96px; background:var(--white); color:var(--black); padding:36px 56px; border-radius:999px; font-size:52px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .outro .wa svg { width:60px; height:60px; color:#25d366; }
+  .outro .ig { font-size:38px; color:var(--cream); margin-top:52px; }
+  .outro .foot { position:absolute; bottom:150px; left:0; right:0; display:flex; flex-direction:column; align-items:center; gap:22px; }
+  .outro .foot svg { width:72px; height:78px; }
+  .outro .foot .bn { font-family:var(--serif); font-weight:700; font-size:46px; letter-spacing:.28em; margin-right:-.28em; }
+  .outro .foot .bs { font-size:20px; letter-spacing:.4em; margin-right:-.4em; text-transform:uppercase; color:var(--silver); }
+</style>
+</head>
+<body>
+  <div class="viewport" id="viewport"><div id="stage"></div></div>
+  <div class="controls">
+    <button id="play" aria-label="Reproduzir">▶</button>
+    <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Posição">
+    <span class="time" id="time">0,0 / 0,0 s</span>
+  </div>
+  <p class="hint">Prévia do vídeo. Edite <b>video/imoveis.js</b> e recarregue a página. Para gerar o MP4: <code>node video/gerar-video.js</code></p>
+
+<script src="imoveis.js"></script>
+<script>
+(() => {
+  const D = window.VIDEO_DATA;
+  const C = D.config;
+  const W = 1080, H = 1920, XF = 0.7;           // XF = duração da transição (s)
+  const RENDER = new URLSearchParams(location.search).has('render');
+  document.body.classList.add(RENDER ? 'render' : 'preview');
+
+  /* ---------- utilidades de animação ---------- */
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const seg = (t, start, dur, e = easeOut) => e(clamp((t - start) / dur));
+  const rise = (el, p, dist = 60) => { el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dist}px)`; };
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+
+  /* ---------- ícones ---------- */
+  const ARCH = (stroke = 5) => `<svg viewBox="0 0 48 52" fill="none"><rect x="4" y="22" width="6" height="28" fill="currentColor"/><rect x="38" y="22" width="6" height="28" fill="currentColor"/><rect x="21" y="30" width="6" height="20" fill="currentColor"/><path d="M4 22 C4 6 44 6 44 22" stroke="currentColor" stroke-width="${stroke}" stroke-linecap="round"/></svg>`;
+  const IC = {
+    pin:  '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>',
+    area: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>',
+    bed:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M3 18v2M21 18v2M6 10V7a1 1 0 011-1h4a1 1 0 011 1v3M12 10V7a1 1 0 011-1h4a1 1 0 011 1v3"/></svg>',
+    car:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17h14M5 17a2 2 0 01-2-2v-3l2-5a2 2 0 012-1h10a2 2 0 012 1l2 5v3a2 2 0 01-2 2M5 17v2M19 17v2"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/></svg>',
+    wa:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></svg>',
+  };
+
+  /* Fundo ilustrativo (quando o imóvel não tem fotos) */
+  const PALETTES = [['#2a2520','#0b0a09'],['#1d2328','#090b0c'],['#262a22','#0a0b09'],['#2b2420','#0c0a09'],['#1f2226','#08090b'],['#28261f','#0b0a08']];
+  function placeholder(i) {
+    const [a, b] = PALETTES[i % PALETTES.length];
+    const lines = Array.from({ length: 14 }, (_, k) => {
+      const y = 980 + k * k * 7;
+      return `<line x1="0" y1="${y}" x2="1080" y2="${y}" stroke="rgba(201,185,154,${(0.05 + k * 0.006).toFixed(3)})" stroke-width="2"/>`;
+    }).join('');
+    return `<svg class="fill" viewBox="0 0 1080 1920" preserveAspectRatio="xMidYMid slice">
+      <defs><radialGradient id="g${i}" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></radialGradient></defs>
+      <rect width="1080" height="1920" fill="url(#g${i})"/>
+      ${lines}
+      <g transform="translate(150 260) scale(16.25)" fill="none" stroke="rgba(201,185,154,.16)" stroke-width=".35">
+        <rect x="4" y="22" width="6" height="28"/><rect x="38" y="22" width="6" height="28"/><rect x="21" y="30" width="6" height="20"/>
+        <path d="M4 22 C4 6 44 6 44 22"/>
+      </g>
+      <g transform="translate(330 470) scale(8.75)" fill="none" stroke="rgba(201,185,154,.09)" stroke-width=".4"><path d="M4 22 C4 6 44 6 44 22"/></g>
+    </svg>`;
+  }
+
+  /* ---------- montar cenas ---------- */
+  const stage = document.getElementById('stage');
+  const scenes = [];
+  let t0 = 0;
+  const add = (dur, el, render) => { stage.appendChild(el); scenes.push({ start: t0, dur, el, render }); t0 += dur; };
+  const make = (cls, html) => { const d = document.createElement('div'); d.className = 'scene ' + cls; d.innerHTML = html; return d; };
+  const q = (el, s) => el.querySelector(s);
+
+  // Abertura
+  {
+    const el = make('intro', `
+      <div class="glow"></div>
+      <svg class="mark" viewBox="0 0 48 52" fill="none">
+        <rect class="c1" x="4" y="22" width="6" height="28" fill="#fff"/>
+        <rect class="c3" x="38" y="22" width="6" height="28" fill="#fff"/>
+        <rect class="c2" x="21" y="30" width="6" height="20" fill="#fff"/>
+        <path class="arc" d="M4 22 C4 6 44 6 44 22" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="name">${esc(D.marca.nome)}</div>
+      <div class="sub">${esc(D.marca.sub)}</div>
+      <div class="rule"></div>
+      <div class="tag">${esc(D.marca.chamada)}</div>
+      <div class="city">${esc(D.marca.cidade)}</div>`);
+    const arc = q(el, '.arc'), L = 70;
+    arc.style.strokeDasharray = L;
+    const cols = ['.c1', '.c2', '.c3'].map(s => q(el, s));
+    cols.forEach(c => c.style.transformBox = 'fill-box');
+    add(C.segundosAbertura, el, t => {
+      cols.forEach((c, k) => { const p = seg(t, 0.1 + k * 0.12, 0.6); c.style.transform = `scaleY(${p})`; c.style.transformOrigin = '50% 100%'; c.style.opacity = p; });
+      arc.style.strokeDashoffset = L * (1 - seg(t, 0.45, 0.9, easeInOut));
+      const n = q(el, '.name'), pn = seg(t, 0.7, 1.0);
+      n.style.opacity = pn; n.style.letterSpacing = (0.6 - 0.3 * pn) + 'em'; n.style.marginRight = -(0.6 - 0.3 * pn) + 'em';
+      rise(q(el, '.sub'), seg(t, 1.0, 0.8), 30);
+      q(el, '.rule').style.transform = `scaleX(${seg(t, 1.3, 0.8)})`;
+      rise(q(el, '.tag'), seg(t, 1.5, 0.8), 40);
+      rise(q(el, '.city'), seg(t, 1.75, 0.8), 30);
+      const sc = 1 + 0.03 * (t / C.segundosAbertura);
+      q(el, '.glow').style.transform = `scale(${sc})`;
+    });
+  }
+
+  // Imóveis
+  const N = D.imoveis.length;
+  D.imoveis.forEach((im, i) => {
+    const fotos = (im.fotos || []).filter(Boolean);
+    const bg = fotos.length
+      ? fotos.map(f => `<img class="fill" src="${esc(f)}" alt="">`).join('')
+      : placeholder(i);
+    const el = make('prop', `
+      <div class="layer bgs">${bg}</div>
+      <div class="layer shade"></div>
+      <div class="top">
+        <div class="brand">${ARCH()}<div><div class="bn">${esc(D.marca.nome)}</div><div class="bs">${esc(D.marca.sub)}</div></div></div>
+        <div class="count">${String(i + 1).padStart(2, '0')} <span>/ ${String(N).padStart(2, '0')}</span></div>
+      </div>
+      <div class="bar"><i></i></div>
+      ${im.exemplo ? '<div class="example">Imóvel ilustrativo</div>' : ''}
+      <div class="info">
+        ${im.selo ? `<div class="badge">${esc(im.selo)}</div>` : ''}
+        <div class="title">${esc(im.titulo)}</div>
+        <div class="loc">${IC.pin}<span>${esc([im.bairro, im.cidade].filter(Boolean).join(' · '))}</span></div>
+        <div class="div"></div>
+        <div class="specs">
+          ${[[IC.area, im.area], [IC.bed, im.quartos], [IC.car, im.vagas]].filter(s => s[1]).map(s => `<div class="spec">${s[0]}<b>${esc(s[1])}</b></div>`).join('')}
+        </div>
+        ${im.preco ? `<div class="price-l">Valor</div><div class="price">${esc(im.preco)}</div>` : ''}
+      </div>`);
+    const P = C.segundosPorImovel;
+    const layers = [...el.querySelectorAll('.bgs .fill')];
+    const parts = {
+      top: q(el, '.top'), bar: q(el, '.bar i'), ex: q(el, '.example'), badge: q(el, '.badge'), title: q(el, '.title'),
+      loc: q(el, '.loc'), div: q(el, '.div'), specs: [...el.querySelectorAll('.spec')], pl: q(el, '.price-l'), price: q(el, '.price'),
+    };
+    add(P, el, t => {
+      // Fundo: Ken Burns e troca entre fotos
+      const span = P / layers.length;
+      layers.forEach((L, k) => {
+        const lt = t - k * span;
+        const fadeIn = k === 0 ? 1 : seg(lt, 0, 0.6, easeInOut);
+        L.style.opacity = lt < 0 ? 0 : fadeIn;
+        const pr = clamp((t + XF) / (P + XF));
+        const z = k % 2 ? 1.0 + 0.10 * pr : 1.10 - 0.10 * pr;
+        const dx = (k % 2 ? -1 : 1) * 14 * pr;
+        L.style.transform = `scale(${z}) translateX(${dx}px)`;
+      });
+      rise(parts.top, seg(t, 0.15, 0.6), -30);
+      parts.bar.style.transform = `scaleX(${(i + clamp(t / P)) / N})`;
+      if (parts.ex) parts.ex.style.opacity = seg(t, 0.4, 0.6);
+      if (parts.badge) rise(parts.badge, seg(t, 0.35, 0.6), 40);
+      rise(parts.title, seg(t, 0.45, 0.8), 80);
+      rise(parts.loc, seg(t, 0.7, 0.7), 40);
+      parts.div.style.transform = `scaleX(${seg(t, 0.85, 0.8, easeInOut)})`;
+      parts.specs.forEach((s, k) => rise(s, seg(t, 1.0 + k * 0.12, 0.6), 50));
+      if (parts.pl) rise(parts.pl, seg(t, 1.35, 0.6), 30);
+      if (parts.price) rise(parts.price, seg(t, 1.45, 0.8), 60);
+    });
+  });
+
+  // Encerramento
+  {
+    const ct = D.contato;
+    const el = make('outro', `
+      <div class="glow"></div>
+      <div class="k">${esc(D.marca.chamada)}</div>
+      <h2>${esc(ct.titulo)}</h2>
+      ${ct.whatsapp ? `<div class="wa">${IC.wa}<span>${esc(ct.whatsapp)}</span></div>` : ''}
+      ${ct.instagram ? `<div class="ig">${esc(ct.instagram)}</div>` : ''}
+      <div class="foot">${ARCH()}<div class="bn">${esc(D.marca.nome)}</div><div class="bs">${esc([D.marca.sub, ct.creci].filter(Boolean).join(' · '))}</div></div>`);
+    const E = C.segundosEncerramento;
+    add(E, el, t => {
+      rise(q(el, '.k'), seg(t, 0.2, 0.7), 30);
+      rise(q(el, 'h2'), seg(t, 0.35, 0.9), 70);
+      const wa = q(el, '.wa');
+      if (wa) { const p = seg(t, 0.8, 0.8); wa.style.opacity = p; wa.style.transform = `scale(${0.9 + 0.1 * p})`; }
+      const ig = q(el, '.ig'); if (ig) rise(ig, seg(t, 1.05, 0.7), 30);
+      rise(q(el, '.foot'), seg(t, 1.3, 0.8), 40);
+      el.style.opacity = 1 - seg(t, E - 0.6, 0.6, easeInOut);  // fade final para preto
+    });
+  }
+
+  const TOTAL = t0;
+
+  /* ---------- renderizar um instante ---------- */
+  function renderAt(t) {
+    t = clamp(t, 0, TOTAL - 1e-4);
+    scenes.forEach((s, k) => {
+      const lt = t - s.start;
+      const next = scenes[k + 1];
+      const visibleOwn = lt >= 0 && lt < s.dur;
+      const visibleUnderNext = next && t >= next.start && t < next.start + XF; // segue visível embaixo durante a transição
+      if (!visibleOwn && !visibleUnderNext) { s.el.style.visibility = 'hidden'; return; }
+      s.el.style.visibility = 'visible';
+      s.el.style.zIndex = k;
+      // transição de entrada: cortina subindo
+      if (k > 0 && lt < XF) {
+        const p = easeInOut(clamp(lt / XF));
+        s.el.style.clipPath = `inset(${(1 - p) * 100}% 0 0 0)`;
+      } else s.el.style.clipPath = 'none';
+      s.render(visibleOwn ? lt : s.dur);
+    });
+  }
+
+  /* ---------- prévia / modo render ---------- */
+  const vp = document.getElementById('viewport');
+  function fit() {
+    if (RENDER) { vp.style.width = W + 'px'; vp.style.height = H + 'px'; stage.style.transform = 'none'; return; }
+    const s = Math.min((innerHeight - 140) / H, (innerWidth - 32) / W, 1);
+    vp.style.width = W * s + 'px'; vp.style.height = H * s + 'px';
+    stage.style.transform = `scale(${s})`;
+  }
+  addEventListener('resize', fit); fit();
+
+  const ready = Promise.all([
+    document.fonts.ready,
+    ...[...document.images].map(img => img.decode().catch(() => console.warn('Foto não encontrada:', img.getAttribute('src')))),
+  ]);
+
+  window.VIDEO = { renderAt, duration: TOTAL, fps: C.fps || 30, musica: C.musica || '', ready };
+
+  if (!RENDER) {
+    const btn = document.getElementById('play'), seek = document.getElementById('seek'), time = document.getElementById('time');
+    const fmt = x => x.toFixed(1).replace('.', ',');
+    let cur = 0, playing = false, last = 0;
+    const show = () => { renderAt(cur); seek.value = Math.round(cur / TOTAL * 1000); time.textContent = `${fmt(cur)} / ${fmt(TOTAL)} s`; };
+    const loop = now => { if (!playing) return; cur += (now - last) / 1000; last = now; if (cur >= TOTAL) cur = 0; show(); requestAnimationFrame(loop); };
+    const toggle = () => { playing = !playing; btn.textContent = playing ? '❚❚' : '▶'; if (playing) { last = performance.now(); requestAnimationFrame(loop); } };
+    btn.onclick = toggle;
+    seek.oninput = () => { cur = seek.value / 1000 * TOTAL; show(); };
+    addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); toggle(); } });
+    ready.then(() => { show(); toggle(); });
+  } else {
+    renderAt(0);
+  }
+})();
+</script>
+</body>
+</html>
