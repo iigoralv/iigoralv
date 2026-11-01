@@ -1,22 +1,21 @@
 # Vídeo de imóveis — OIKOS
 
-Base para gerar um vídeo vertical (1080×1920, 9:16) para Reels, Stories, TikTok e WhatsApp.
+Base para gerar um vídeo vertical (1080×1920, 9:16) no estilo Reels: cortes no ritmo da música (120 bpm),
+zoom de impacto, transições whip/flash, texto entrando palavra por palavra e cartelas de seção.
 
 ## Arquivos
 
 | Arquivo | Para quê |
 |---|---|
-| `imoveis.js` | **O único arquivo que você edita**: imóveis, contato, tempos e música |
+| `imoveis.js` | **O único arquivo que você edita**: roteiro de cenas (foto, texto, duração em batidas, movimento, transição), contato e música |
 | `fotos/` | Coloque aqui as fotos dos imóveis |
-| `modelo.html` | Prévia interativa: abra no navegador (play/pause, barra de tempo, espaço = play) |
+| `modelo.html` | Prévia interativa: abra no navegador (play/pause, barra de tempo, espaço = play, "área segura" mostra onde a interface do Instagram cobre) |
 | `gerar-video.js` | Gera o MP4 |
-| `oikos-imoveis.mp4` | Vídeo gerado com os imóveis de exemplo |
+| `oikos-imoveis.mp4` | Vídeo gerado (27,5 s) |
 
 ## Como usar
 
-1. Edite `imoveis.js`: troque os dados, coloque as fotos em `fotos/` e liste em `fotos: ["fotos/arquivo.jpg"]`.
-   Várias fotos por imóvel = elas se alternam durante a cena.
-   Apague `exemplo: true` dos imóveis reais (remove a etiqueta "Imóvel ilustrativo").
+1. Edite `imoveis.js`: coloque as fotos em `fotos/` e monte a lista de `cenas` (instruções no topo do arquivo).
 2. Abra `modelo.html` no navegador para conferir.
 3. Gere o vídeo:
 
@@ -27,5 +26,5 @@ node video/gerar-video.js                                   # cria video/oikos-i
 
 Precisa de Node 18+ e [ffmpeg](https://ffmpeg.org) instalado.
 
-Duração = abertura + (segundos por imóvel × nº de imóveis) + encerramento. Com 6 imóveis: 35 s.
+Duração = soma das batidas × 0,5 s (a 120 bpm). Sem música, publique e escolha o áudio no próprio Instagram.
 Fontes Playfair Display e Inter (licença OFL) estão em `fonts/`.

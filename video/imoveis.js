@@ -1,111 +1,61 @@
 /* ==========================================================================
-   OIKOS · Base do vídeo de imóveis
+   OIKOS · Roteiro do vídeo (Reels 9:16)
    --------------------------------------------------------------------------
    Este é o ÚNICO arquivo que você precisa editar.
-   - Troque os imóveis de exemplo pelos seus.
-   - Fotos: coloque os arquivos em video/fotos/ e liste em "fotos".
-     Ex.: fotos: ["fotos/cabo-branco-1.jpg", "fotos/cabo-branco-2.jpg"]
-     Sem fotos, o vídeo usa um fundo ilustrativo da marca.
-   - Apague a linha  exemplo: true  quando o imóvel for real
-     (ela mostra a etiqueta "Imóvel ilustrativo" no vídeo).
+
+   Cada item de "cenas" é um corte do vídeo, na ordem em que aparece.
+   O tempo é contado em BATIDAS da música (bpm 120 → 1 batida = 0,5 s),
+   assim os cortes caem no ritmo quando você coloca o áudio no Instagram.
+
+   Campos de uma cena:
+     foto       arquivo em video/fotos/
+     legenda    texto pequeno em caixa alta (ex.: "LIVING")
+     titulo     texto grande em itálico (ex.: "integrado")
+     batidas    duração (2 = 1 s, 3 = 1,5 s, 4 = 2 s…)
+     movimento  "zoom-in" | "zoom-out" | "pan-direita" | "pan-esquerda"
+     transicao  "corte" | "flash" | "whip" | "zoom"
+     foco       0 a 1: parte da foto que fica em destaque (0 = esquerda, 1 = direita)
+     tipo       "gancho" (abertura), "secao" (cartela de capítulo) ou "final"
    ========================================================================== */
 
 window.VIDEO_DATA = {
   config: {
     fps: 30,
-    segundosAbertura: 3.5,
-    segundosPorImovel: 4.5,
-    segundosEncerramento: 4.5,
-    // Música opcional (mp3/m4a/wav), ex.: "musica/trilha.mp3". Vazio = sem áudio.
+    bpm: 120,
+    // Música opcional (mp3/m4a/wav), ex.: "musica/trilha.mp3".
+    // Vazio = vídeo sem som (recomendado: escolha o áudio em alta no Instagram).
     musica: "",
   },
 
-  marca: {
-    nome: "OIKOS",
-    sub: "Imobiliária",
-    chamada: "Imóveis selecionados",
-    cidade: "João Pessoa · PB",
-  },
+  marca: { nome: "OIKOS", sub: "Imobiliária" },
 
   contato: {
     titulo: "Agende sua visita",
     whatsapp: "(21) 99999-9999",
     instagram: "@oikosimobiliaria",
-    creci: "CRECI-PB",
   },
 
-  imoveis: [
-    {
-      exemplo: true,
-      selo: "Exclusivo",
-      titulo: "Apartamento de Alto Padrão",
-      bairro: "Cabo Branco",
-      cidade: "João Pessoa, PB",
-      preco: "R$ 2.850.000",
-      area: "180 m²",
-      quartos: "3 Suítes",
-      vagas: "2 Vagas",
-      fotos: [],
-    },
-    {
-      exemplo: true,
-      selo: "Novo",
-      titulo: "Cobertura Duplex Vista Mar",
-      bairro: "Manaíra",
-      cidade: "João Pessoa, PB",
-      preco: "R$ 5.200.000",
-      area: "320 m²",
-      quartos: "4 Suítes",
-      vagas: "3 Vagas",
-      fotos: [],
-    },
-    {
-      exemplo: true,
-      selo: "Destaque",
-      titulo: "Casa em Condomínio de Luxo",
-      bairro: "Altiplano",
-      cidade: "João Pessoa, PB",
-      preco: "R$ 4.800.000",
-      area: "450 m²",
-      quartos: "5 Suítes",
-      vagas: "4 Vagas",
-      fotos: [],
-    },
-    {
-      exemplo: true,
-      selo: "Lançamento",
-      titulo: "Apartamento Garden Luxo",
-      bairro: "Tambaú",
-      cidade: "João Pessoa, PB",
-      preco: "R$ 1.750.000",
-      area: "145 m²",
-      quartos: "3 Suítes",
-      vagas: "2 Vagas",
-      fotos: [],
-    },
-    {
-      exemplo: true,
-      selo: "Exclusivo",
-      titulo: "Penthouse 360° Vista Mar",
-      bairro: "Bessa",
-      cidade: "João Pessoa, PB",
-      preco: "R$ 7.900.000",
-      area: "520 m²",
-      quartos: "5 Suítes",
-      vagas: "4 Vagas",
-      fotos: [],
-    },
-    {
-      exemplo: true,
-      selo: "Oportunidade",
-      titulo: "Casa à Beira-Mar Completa",
-      bairro: "Intermares",
-      cidade: "Cabedelo, PB",
-      preco: "R$ 3.600.000",
-      area: "380 m²",
-      quartos: "4 Quartos",
-      vagas: "3 Vagas",
-      fotos: [],
-    },
+  rodape: "Imagens meramente ilustrativas",
+
+  cenas: [
+    { tipo: "gancho", foto: "fotos/rooftop-piscina.jpg", legenda: "Imagina morar aqui?", titulo: "Piscina no rooftop", batidas: 5, movimento: "zoom-in", foco: 0.55 },
+    { foto: "fotos/fachada.jpg", legenda: "Arquitetura", titulo: "que impressiona", batidas: 4, movimento: "zoom-in", transicao: "flash", foco: 0.62 },
+    { foto: "fotos/hall.jpg", legenda: "Hall de entrada", titulo: "sofisticado", batidas: 3, movimento: "zoom-in", transicao: "whip", foco: 0.45 },
+
+    { tipo: "secao", foto: "fotos/living-painel.jpg", numero: "01", titulo: "O apartamento", batidas: 2, transicao: "flash" },
+    { foto: "fotos/living-painel.jpg", legenda: "Living", titulo: "integrado", batidas: 4, movimento: "pan-direita", transicao: "zoom" },
+    { foto: "fotos/cozinha-verde.jpg", legenda: "Cozinha", titulo: "e jantar", batidas: 3, movimento: "zoom-in", transicao: "whip", foco: 0.7 },
+    { foto: "fotos/living-cozinha.jpg", legenda: "Ambientes", titulo: "amplos e iluminados", batidas: 3, movimento: "pan-esquerda", transicao: "whip" },
+    { foto: "fotos/cozinha-corredor.jpg", batidas: 2, movimento: "zoom-in", transicao: "corte", foco: 0.6 },
+    { foto: "fotos/cozinha-jantar.jpg", batidas: 2, movimento: "zoom-out", transicao: "corte", foco: 0.45 },
+    { foto: "fotos/banheiro.jpg", legenda: "Acabamento", titulo: "sofisticado", batidas: 3, movimento: "zoom-in", transicao: "whip", foco: 0.55 },
+
+    { tipo: "secao", foto: "fotos/piscina-gourmet.jpg", numero: "02", titulo: "Lazer no rooftop", batidas: 2, transicao: "flash" },
+    { foto: "fotos/piscina-gourmet.jpg", legenda: "Piscina", titulo: "e espaço gourmet", batidas: 4, movimento: "pan-direita", transicao: "zoom" },
+    { foto: "fotos/rooftop-lounge.jpg", legenda: "Lounge", titulo: "com vista para a cidade", batidas: 3, movimento: "zoom-in", transicao: "whip", foco: 0.7 },
+    { foto: "fotos/rooftop-deck.jpg", legenda: "Deck", titulo: "com paisagismo", batidas: 3, movimento: "pan-esquerda", transicao: "whip" },
+    { foto: "fotos/brinquedoteca.jpg", legenda: "Brinquedoteca", titulo: "para as crianças", batidas: 3, movimento: "zoom-in", transicao: "whip", foco: 0.5 },
+
+    { tipo: "final", foto: "fotos/fachada.jpg", batidas: 9, transicao: "flash", foco: 0.6 },
   ],
 };
