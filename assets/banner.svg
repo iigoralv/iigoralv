@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#1c1c1c"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+      .sans  { font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .fade  { opacity: 0; animation: in 1.2s ease-out forwards; }
+      .d1 { animation-delay: .2s; } .d2 { animation-delay: .6s; } .d3 { animation-delay: 1s; }
+      @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    </style>
+  </defs>
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <!-- decorative arches -->
+  <g fill="none" stroke="#ffffff" stroke-opacity=".05" stroke-width="2">
+    <path d="M880 320 V200 C880 60 1120 60 1120 200 V320"/>
+    <path d="M910 320 V205 C910 95 1090 95 1090 205 V320"/>
+    <path d="M940 320 V210 C940 130 1060 130 1060 210 V320"/>
+  </g>
+  <!-- OIKOS icon -->
+  <g class="fade"><g transform="translate(110 92) scale(2.6)">
+    <rect x="4" y="22" width="6" height="28" fill="#fff"/>
+    <rect x="38" y="22" width="6" height="28" fill="#fff"/>
+    <rect x="21" y="30" width="6" height="20" fill="#fff"/>
+    <path d="M4 22 C4 6 44 6 44 22" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g></g>
+  <g class="fade d1">
+    <text x="290" y="150" class="serif" font-size="68" font-weight="700" fill="#ffffff">Igor Alves</text>
+    <text x="292" y="190" class="sans" font-size="17" letter-spacing="6" fill="#bdbdbd">FUNDADOR DA OIKOS IMOBILIÁRIA</text>
+  </g>
+  <rect x="290" y="214" width="420" height="1" fill="url(#line)" class="fade d2"/>
+  <text x="290" y="252" class="serif fade d3" font-size="22" font-style="italic" fill="#e6e6e6">Imóveis de alto padrão em João Pessoa · PB</text>
+</svg>
